@@ -71,7 +71,7 @@ namespace VolcanoidsMod
                     core.SlotCount = 200 * train.Wagons.WagonCount;
                     // Increases max energy to 400 times the amount of wagons for Tier 3 Core
                     core.MaxEnergy = 400 * train.Wagons.WagonCount;
-                }            
+                }
             }
         }
         TrainUpgrades trainUpgrades;

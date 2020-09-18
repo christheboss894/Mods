@@ -166,4 +166,13 @@
     <Compile Include="GenericMod.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>mkdir "%25userprofile%25\appdata\locallow\Volcanoid\Volcanoids\Mods\"
+copy "$(TargetPath)" "%25userprofile%25\appdata\locallow\Volcanoid\Volcanoids\Mods\"
+
+SET UnityPath=c:\Program Files\Unity\Hub\Editor\2019.4.10f1
+SET MonoPath=%25UnityPath%25\Editor\Data\MonoBleedingEdge
+"%25MonoPath%25\bin\mono.exe" "%25MonoPath%25\lib\mono\4.5\pdb2mdb.exe" "$(TargetPath)"
+copy "$(TargetPath).mdb" "%25userprofile%25\appdata\locallow\Volcanoid\Volcanoids\Mods\"</PostBuildEvent>
+  </PropertyGroup>
 </Project>

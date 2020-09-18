@@ -15,7 +15,7 @@ namespace VolcanoidsMod
             CreateRecipeSimple("CoalOre", 15, "CopperOre", 10, "0B7717FC2854467FA3D23347E3B9DCFB", "CopperIngot", 10, "CopperIngotRecipe", "10x Copper Smelting");
             CreateRecipeSimple("CoalOre", 20, "CopperOre", 20, "B98720D4DB54470B82DBC2D1B4D7C8C4", "CopperIngot", 20, "CopperIngotRecipe", "20x Copper Smelting");
             CreateRecipeSimple("AlloyT3Ingot", 40, "IntelResearchT3", 5, "IntelRefineryT3", 5, "IntelProductionT3", 5, "EABEBE7067F44B228BDEBAC23548AE47", "TracksT5_Supreme", 1, "TracksUpgrade4Recipe", "TracksT5");
-            CreateRecipeSimple("AlloyT2Ingot", 10, "IntelProductionT2", 1, "C6A85ACFE1504FAFB437A89553B84144", "TurretT1.5", 1, "AlloyT2Recipe", "TurretT1.5Recipe");  
+            CreateRecipeSimple("AlloyT2Ingot", 10, "IntelProductionT2", 1, "C6A85ACFE1504FAFB437A89553B84144", "TurretImproved", 1, "TurretModuleRecipe", "TurretImprovedRecipe");
             if (GenericMod.InfiniteInventory)
             {
                 CreateRecipeSimple("CopperOre", 1, "2B2F51C0DCA6446681867FB440B15472", "CoalOre", 50, "CopperIngotRecipe", "InfiniteInventoryRecipe");

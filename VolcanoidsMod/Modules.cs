@@ -11,11 +11,11 @@ namespace VolcanoidsMod
         private void Awake()
         {
             Debug.Log("Module: " + GetType().Name + " loaded successfully");
-            CreateItemModuleTurret("TurretT1.5", 5,
+            CreateItemModuleTurret("TurretImproved", 5,
                 "Partially Upgraded Turret", "This turret has been modified to increase barrel pressure",
                 "392E44970E284FC38C112B79FB60BC13",
-                "TracksT4_Advanced", 
-                Sprite2("TurretT1-5.png"),
+                "TurretModule", 
+                Sprite2("TurretImproved.png"),
                 2, 3, 2, 2, 2); 
         }
         public static void Initialize<T>(ref T str)
@@ -35,12 +35,12 @@ namespace VolcanoidsMod
             var sprite = Sprite.Create(texture, new Rect(Vector2.zero, Vector2.one * texture.width), new Vector2(0.5f, 0.5f), texture.width, 0, SpriteMeshType.FullRect, Vector4.zero, false);
             return sprite;
         }
-        public void CreateItemModuleTurret(string codename, int maxstack, LocalizedString name, LocalizedString desc, string guidstring, string recipecategoryname, Sprite icon, int aimspeed, int damagemultiplier, int rangemultiplier, int rateoffiremultiplier, int effectiverangemultiplier)
+        public void CreateItemModuleTurret(string codename, int maxstack, LocalizedString name, LocalizedString desc, string guidstring, string categoryname, Sprite icon, int aimspeed, int damagemultiplier, int rangemultiplier, int rateoffiremultiplier, int effectiverangemultiplier)
         {
-            var recipecategory = GameResources.Instance.Items.FirstOrDefault(s => s.name == recipecategoryname);
+            var category = GameResources.Instance.Items.FirstOrDefault(s => s.name == categoryname).Category;
             var item = ScriptableObject.CreateInstance<ItemDefinition>();
             item.name = codename;
-            item.Category = recipecategory.Category;
+            item.Category = category;
             item.MaxStack = maxstack;
             item.Icon = icon;
             var prefabParent = new GameObject();
@@ -51,7 +51,6 @@ namespace VolcanoidsMod
             var turretWeapon = turretStrong.GetComponentInChildren<Weapon>();
             var reloader = GetComponentInChildren<WeaponReloaderNoAmmo>();
             var ammoStats = reloader.LoadedAmmo;
-
             turretComponent.m_pitchSpeed *= aimspeed;
             turretComponent.m_yawSpeed *= aimspeed;
             ammoStats.Damage *= damagemultiplier;
