@@ -16,7 +16,7 @@ namespace VolcanoidsMod
             CreateRecipeSimple("CoalOre", 20, "CopperOre", 20, "B98720D4DB54470B82DBC2D1B4D7C8C4", "CopperIngot", 20, "CopperIngotRecipe", "20xCopperSmeltingRecipe", 10f);
             CreateRecipeSimple("AlloyT3Ingot", 40, "IntelResearchT3", 5, "IntelRefineryT3", 5, "IntelProductionT3", 5, "EABEBE7067F44B228BDEBAC23548AE47", "TracksT5_Supreme", 1, "TracksUpgrade4Recipe", "TracksT5Recipe", 2f);
             // CreateRecipeSimple("AlloyT2Ingot", 10, "IntelProductionT2", 1, "C6A85ACFE1504FAFB437A89553B84144", "TurretImproved", 1, "TurretModuleRecipe", "TurretImprovedRecipe", 1.5f);
-            CreateRecipeSimple("TitaniumTubes", 4, "TitaniumPlates", 2, "Diamond", 6, "IntelProductionT2", 4, "23CA71CB89644644881DC484A1879D0D", "ShipCoreUpgrade4", 1, "ShipCoreUpgrade3Recipe", "ShipCoreUpgrade4Recipe", 2f);
+            CreateRecipeSimple("TitaniumTubes", 4, "TitaniumPlates", 2, "DiamondIngot", 6, "IntelProductionT2", 4, "23CA71CB89644644881DC484A1879D0D", "ShipCoreUpgrade4", 1, "ShipCoreUpgrade3Recipe", "ShipCoreUpgrade4Recipe", 2f);
             CreateRecipeSimple("AlloyT3Ingot", 20, "IntelRefineryT3", 4, "IntelProductionT3", 4, "D7415C76EB4A438C86432501D59998E0", "ShipCoreUpgrade5", 1, "ShipCoreUpgrade4Recipe", "ShipCoreUpgrade5Recipe", 2f); 
 
             if (GenericMod.InfiniteInventory)
