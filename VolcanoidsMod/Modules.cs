@@ -11,12 +11,13 @@ namespace VolcanoidsMod
         private void Awake()
         {
             Debug.Log("Module: " + GetType().Name + " loaded successfully");
-            CreateItemModuleTurret("TurretImproved", 5,
+            /*CreateItemModuleTurret("TurretImproved", 5,
                 "Partially Upgraded Turret", "This turret has been modified to increase barrel pressure",
                 "392E44970E284FC38C112B79FB60BC13",
                 "TurretModule", 
                 Sprite2("TurretImproved.png"),
                 2, 3, 2, 2, 2); 
+            */
         }
         public static void Initialize<T>(ref T str)
     where T : struct, ISerializationCallbackReceiver
@@ -49,7 +50,7 @@ namespace VolcanoidsMod
             var turretStrong = Instantiate(olditem.Prefabs[0], prefabParent.transform);
             var turretComponent = turretStrong.GetComponentInChildren<Turret>();
             var turretWeapon = turretStrong.GetComponentInChildren<Weapon>();
-            var reloader = GetComponentInChildren<WeaponReloaderNoAmmo>();
+            var reloader = turretStrong.GetComponentInChildren<WeaponReloaderNoAmmo>();
             var ammoStats = reloader.LoadedAmmo;
             turretComponent.m_pitchSpeed *= aimspeed;
             turretComponent.m_yawSpeed *= aimspeed;
@@ -57,7 +58,8 @@ namespace VolcanoidsMod
             ammoStats.MaximumRange *= rangemultiplier;
             ammoStats.RateOfFire *= rateoffiremultiplier;
             ammoStats.EffectiveRange *= effectiverangemultiplier;
-
+            turretStrong.GetComponent<GridModule>().VariantName = "UpgradedTurret";
+            turretStrong.GetComponent<GridModule>().Item = item;
             item.Prefabs = new GameObject[] { turretStrong };
 
 

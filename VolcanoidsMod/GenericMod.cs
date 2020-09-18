@@ -28,9 +28,9 @@ namespace VolcanoidsMod
                 scene = arg0;
                 new GameObject("GenericModBaseScript", typeof(ModBehaviour));
                 new GameObject("GenericModItemScript", typeof(Items));
-                new GameObject("GenericModRecipeScript", typeof(Recipes));
                 new GameObject("GenericModModuleScript", typeof(Modules));
                 new GameObject("GenericModMiscDebugScript", typeof(MiscDebug));
+                new GameObject("GenericModRecipeScript", typeof(Recipes));
                 // Adds a new lava source to keep volcano running after end game
                 new GameObject("UnstableLavaSource", typeof(LavaSource));
             }
