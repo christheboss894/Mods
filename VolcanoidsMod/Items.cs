@@ -14,8 +14,14 @@ namespace VolcanoidsMod
             Debug.Log("Module: " + GetType().Name + " loaded successfully");
             CreateItemTracks("TracksT5_Supreme", 18, 62, 1, "Supreme Tracks",
                 "Supremely engineered Tracks and efficient Gearbox ratios result in unmatched performance, \r\n " +
-                "and allow it to maintain ultimate grip no matter the weight of the drillship.", 
+                "and allow it to maintain ultimate grip no matter the weight of the drillship", 
                 "713A4D41B14346EFB234A548B16BADEC", "TracksT4_Advanced", Sprite2("TracksUpgrade5.png"));
+            CreateItemCore("ShipCoreUpgrade4", 400, 1200, 1, "Drillship Core 4", 
+                "Specialised steam tubes allow for a higher flow to the modules", 
+                "787AE6617DA54690BBD05D89653FF707", "ShipCoreUpgrade3", Sprite2("CoreUpgrade4.png"));
+            CreateItemCore("ShipCoreUpgrade5", 800, 2000, 1, "Drillship Core 5", 
+                "Highly advanced production technology allows the use of a titanium - iron alloy to further improve the core",
+                "2602080730BE43979380D9F381927002", "ShipCoreUpgrade4", Sprite2("CoreUpgrade5.png"));
         }
         public static void Initialize<T>(ref T str)
     where T : struct, ISerializationCallbackReceiver

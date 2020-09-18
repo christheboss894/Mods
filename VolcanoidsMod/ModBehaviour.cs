@@ -48,31 +48,6 @@ namespace VolcanoidsMod
                     engine.SegmentCount = 7;
                 }
             }
-            foreach (TrainCoreItemDefinition core in cores)
-            {
-                Debug.Log(core.name);
-                if (core.name == "ShipCoreUpgrade1")
-                {
-                    // Increases max slotcount to 75 times the amount of wagons for Tier 1 Core
-                    core.SlotCount = 75 * train.Wagons.WagonCount;
-                    // Increases max energy to 200 times the amount of wagons for Tier 1 Core
-                    core.MaxEnergy = 200 * train.Wagons.WagonCount;
-                }
-                if (core.name == "ShipCoreUpgrade2")
-                {
-                    // Increases max slotcount to 135 times the amount of wagons for Tier 2 Core
-                    core.SlotCount = 135 * train.Wagons.WagonCount;
-                    // Increases max energy to 300 times the amount of wagons for Tier 2 Core
-                    core.MaxEnergy = 300 * train.Wagons.WagonCount;
-                }
-                if (core.name == "ShipCoreUpgrade3")
-                {
-                    // Increases max slotcount to 200 times the amount of wagons for Tier 3 Core
-                    core.SlotCount = 200 * train.Wagons.WagonCount;
-                    // Increases max energy to 400 times the amount of wagons for Tier 3 Core
-                    core.MaxEnergy = 400 * train.Wagons.WagonCount;
-                }
-            }
         }
         TrainUpgrades trainUpgrades;
         Train train;
