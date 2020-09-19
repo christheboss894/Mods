@@ -17,8 +17,11 @@ namespace VolcanoidsMod
             CreateRecipeSimple("AlloyT3Ingot", 40, "IntelResearchT3", 5, "IntelRefineryT3", 5, "IntelProductionT3", 5, "Parts_TracksT4_Advanced", 5, "EABEBE7067F44B228BDEBAC23548AE47", "TracksT5_Supreme", 1, "TracksUpgrade4Recipe", "TracksT5Recipe", 2f);
             // CreateRecipeSimple("AlloyT2Ingot", 10, "IntelProductionT2", 1, "C6A85ACFE1504FAFB437A89553B84144", "TurretImproved", 1, "TurretModuleRecipe", "TurretImprovedRecipe", 1.5f);
             CreateRecipeSimple("TitaniumTubes", 4, "TitaniumPlates", 2, "DiamondIngot", 6, "IntelProductionT2", 4, "23CA71CB89644644881DC484A1879D0D", "ShipCoreUpgrade4", 1, "ShipCoreUpgrade3Recipe", "ShipCoreUpgrade4Recipe", 2f);
-            CreateRecipeSimple("AlloyT3Ingot", 20, "IntelRefineryT3", 4, "IntelProductionT3", 4, "D7415C76EB4A438C86432501D59998E0", "ShipCoreUpgrade5", 1, "ShipCoreUpgrade4Recipe", "ShipCoreUpgrade5Recipe", 2f); 
-
+            CreateRecipeSimple("AlloyT3Ingot", 20, "IntelRefineryT3", 4, "IntelProductionT3", 4, "D7415C76EB4A438C86432501D59998E0", "ShipCoreUpgrade5", 1, "ShipCoreUpgrade4Recipe", "ShipCoreUpgrade5Recipe", 2f);
+            if (GenericMod.Cheese)
+            {
+                CreateRecipeSimple("CoalOre", 1, GUID.Create().ToString(), "Cheese", 1, "ShipCoreUpgrade5Recipe", "Cheese", 0.01f);
+            }
             if (GenericMod.InfiniteInventory)
             {
                 CreateRecipeSimple("CopperOre", 1, "2B2F51C0DCA6446681867FB440B15472", "CoalOre", 50, "CopperIngotRecipe", "InfiniteInventoryRecipe", 0.01f);

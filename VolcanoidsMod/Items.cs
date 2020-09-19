@@ -22,6 +22,13 @@ namespace VolcanoidsMod
             CreateItemCore("ShipCoreUpgrade5", 800, 2000, 1, "Drillship Core 5", 
                 "Highly advanced production technology allows the use of a titanium - iron alloy to further improve the core",
                 "2602080730BE43979380D9F381927002", "ShipCoreUpgrade4", Sprite2("CoreUpgrade5.png"));
+            // CreateItemHull
+            if (GenericMod.Cheese)
+            {
+                CreateItemEngine("Cheese", 100, 0, 10, "Cheese",
+                    "By replacing coal with Cheese, we can enhance the flavor of our steam",
+                    GUID.Create().ToString(), "ShipCoreUpgrade4", Sprite2("Cheese.png"));
+            }
         }
         public static void Initialize<T>(ref T str)
     where T : struct, ISerializationCallbackReceiver

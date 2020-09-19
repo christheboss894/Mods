@@ -25,6 +25,7 @@ namespace VolcanoidsMod
             if (arg0.name == "Island")
             {
                 InfiniteInventoryCheck();
+                CheeseCheck();
                 scene = arg0;
                 new GameObject("GenericModBaseScript", typeof(ModBehaviour));
                 new GameObject("GenericModItemScript", typeof(Items));
@@ -49,6 +50,20 @@ namespace VolcanoidsMod
             }
 
         }
+        private void CheeseCheck()
+        {
+            if (File.Exists(Application.persistentDataPath + "\\Cheese.txt"))
+            {
+                Debug.Log(File.Exists(Application.persistentDataPath + "\\Cheese.txt"));
+                Cheese = true;
+            }
+            else
+            {
+                Debug.Log(File.Exists(Application.persistentDataPath + "\\Cheese.txt"));
+                Cheese = false;
+            }
+
+        }
 
         // Token: 0x06000006 RID: 6 RVA: 0x000021B3 File Offset: 0x000003B3
         public override void Unload()
@@ -58,6 +73,7 @@ namespace VolcanoidsMod
         }
         public bool Loaded;
         public static bool InfiniteInventory;
+        public static bool Cheese;
 
         public static Scene scene;
 
