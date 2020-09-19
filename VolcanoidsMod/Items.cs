@@ -22,7 +22,18 @@ namespace VolcanoidsMod
             CreateItemCore("ShipCoreUpgrade5", 800, 2000, 1, "Drillship Core 5", 
                 "Highly advanced production technology allows the use of a titanium - iron alloy to further improve the core",
                 "2602080730BE43979380D9F381927002", "ShipCoreUpgrade4", Sprite2("CoreUpgrade5.png"));
-            // CreateItemHull
+            /*
+            CreateItemHull("HullT5_Tungsten", 0, 0.6f, 0.15f, 3410, 1, "Tungsten Hull",
+                "Drillship hull made from Tungsten, granting a much higher melting point and a higher damage resistance than Titanium",
+                "5A806861DF50469CA38CD13DD4E7598F", "HullT4_Titanium", Sprite2("HullT5.png"));
+            CreateItem("TungstenIngot", 10, "Tungsten", 
+                "Used in production to produce base components", 
+                "DD81B8351C2F47A5B55F9400E2ECA86F", "TitaniumIngot", Sprite2("TungstenIngot.png"));
+            
+            CreateItemHull("HullT6_Unobtainium", 0, 1f, 0, 9999, 1, "Unobtainium Hull",
+                "Drillship hull made from an Unobtainium composite resulting in complete damage protection", 
+                "F84B796D47474DBFA81A6579716807DE", "HullT5_Tungsten", Sprite2("HullT6.png")); 
+            */
             if (GenericMod.Cheese)
             {
                 CreateItemEngine("Cheese", 100, 0, 10, "Cheese",
