@@ -11,7 +11,12 @@ namespace VolcanoidsMod
     {
         private void Awake()
         {
+            foreach (CellMaterial cellMaterial in GameResources.Instance.CellMaterials)
+            {
+                Debug.Log(cellMaterial.name);
+            }
             Debug.Log("Module: " + GetType().Name + " loaded successfully");
+            CreateItem("CaptainHead", 1, "Captain", "Come at me", "8010BA2246374E52A9865DEE7A4058BF", "ShipCoreUpgrade3", Sprite2("Captain.png")); 
             CreateItemTracks("TracksT5_Supreme", 18, 62, 1, "Supreme Tracks",
                 "Supremely engineered Tracks and efficient Gearbox ratios result in unmatched performance, \r\n " +
                 "and allow it to maintain ultimate grip no matter the weight of the drillship", 
@@ -24,29 +29,29 @@ namespace VolcanoidsMod
                 "2602080730BE43979380D9F381927002", "ShipCoreUpgrade4", Sprite2("CoreUpgrade5.png"));
             CreateItemHull("HullT5_Tungsten", 0, 0.6f, 0.15f, 3410, 1, "Tungsten Hull",
                 "Drillship hull made from Tungsten, granting a much higher melting point and a higher damage resistance than Titanium",
-                "5A806861DF50469CA38CD13DD4E7598F", "HullT4_Titanium", Sprite2("DrillHullT5.png"));
+                "5A806861DF50469CA38CD13DD4E7598F", "HullT4_Titanium", Sprite2("HullT5.png"));
             CreateItem("TungstenIngot", 10, "Tungsten", 
                 "Used in production to produce base components", 
                 "DD81B8351C2F47A5B55F9400E2ECA86F", "TitaniumIngot", Sprite2("TungstenIngot.png"));
             CreateItemDrill("DrillT5_Tungsten", 0.6f, 1, "Tungsten Drill",
                 "Drillship drill made from Tungsten, completely eliminating the risk of diamond fracture", 
-                "652CE5F6CC9544AA94D96D9EEA862C8B", "DrillT4_Diamond", Sprite2("DrillT5_Tungsten.png"));
-            CreateItemDrill("DrillT6_Unobtainium", 0.6f, 1, "Tungsten Drill",
-                "Drillship drill made from Unobtainium resulting in complete damage protection aswell",
-                "BC676806155B4E5BA4190344105A11D4", "DrillT5_Tungsten", Sprite2("DrillT6_Unobtainium.png"));
+                "652CE5F6CC9544AA94D96D9EEA862C8B", "DrillT4_Diamond", Sprite2("DrillUpgrade5.png"));
+            CreateItemDrill("DrillT6_Unobtainium", 1f, 1, "Unobtainium Drill",
+                "Drillship drill made from Unobtainium resulting in complete damage protection",
+                "BC676806155B4E5BA4190344105A11D4", "DrillT5_Tungsten", Sprite2("DrillUpgrade6.png"));
             CreateItemHull("HullT6_Unobtainium", 0, 1f, 0, 9999, 1, "Unobtainium Hull",
                 "Drillship hull made from an Unobtainium composite resulting in complete damage protection", 
-                "F84B796D47474DBFA81A6579716807DE", "HullT5_Tungsten", Sprite2("HullT6_Unobtainium.png"));
+                "F84B796D47474DBFA81A6579716807DE", "HullT5_Tungsten", Sprite2("HullT6.png"));
             CreateItem("AlloyT4Ingot", 20, "Alloy T4", 
                 "Used in production to produce base components", 
-                "6939388A466C45B899EEF83634EEA6C6", "AlloyT3Ingot", Sprite2("AlloyT4Ingot.png"));
+                "6939388A466C45B899EEF83634EEA6C6", "AlloyT3Ingot", Sprite2("AlloyT4.png"));
             CreateItem("UnobtainiumIngot", 10, "Unobtainium",
                 "a once hypothetical element has come to life due to the close proximity to the volcano. \r\n" +
                 "the use of Unobtainium allows for practically infinite durability and protection", 
-                "C84135CD0447417B9668570D5AADF502", "TungstenIngot", Sprite2("UnobtainiumIngot"));
+                "C84135CD0447417B9668570D5AADF502", "TungstenIngot", Sprite2("PurplishIngot.png"));
             CreateItem("TungstenPlates", 10, "Tungsten plates",
                 "Used in production to produce devices",
-                "CF9FB96DD9B049C5A88CD1E8195AFE94", "TungstenIngot", Sprite2("TungstenPlates.png"));
+                "CF9FB96DD9B049C5A88CD1E8195AFE94", "TitaniumPlates", Sprite2("TungstenPlates.png"));
             CreateItem("TungstenBolts", 10, "Tungsten bolts",  
                 "Used in production to produce devices",
                 "CE39BCA989E84E62AEA54306BCF8F60C", "TungstenPlates", Sprite2("TungstenBolts.png"));  
@@ -55,14 +60,13 @@ namespace VolcanoidsMod
                 "BA7D952FDAA24DFF999682365156F6DB", "TungstenPlates", Sprite2("TungstenTubes.png"));
             CreateItem("UnobtainiumPlates", 10, "Unobtainium plates",
                 "Used in production to produce devices",
-                "1243872643B54937B0B91ECDD5FCB1B6", "UnobtainiumIngot", Sprite2("UnobtainiumPlates.png"));
+                "1243872643B54937B0B91ECDD5FCB1B6", "TungstenPlates", Sprite2("PurplishPlates.png"));
             CreateItem("UnobtainiumBolts", 10, "Unobtainium bolts",
                 "Used in production to produce devices",
-                "7A296148A35F44639DA94EB165D2BFF7", "UnobtainiumPlates", Sprite2("UnobtainiumBolts.png")); 
+                "7A296148A35F44639DA94EB165D2BFF7", "UnobtainiumPlates", Sprite2("PurplishBolts.png")); 
             CreateItem("UnobtainiumTubes", 10, "Unobtainium tubes",
                 "Used in production to produce base components",
-                "7C3BAEF8C42F4A07B10810BC76F73015", "UnobtainiumPlates", Sprite2("UnobtainiumTubes.png"));
-
+                "7C3BAEF8C42F4A07B10810BC76F73015", "UnobtainiumPlates", Sprite2("PurplishTubes.png"));
             if (GenericMod.Cheese)
             {
                 CreateItemEngine("Cheese", 100, 0, 10, "Cheese",
@@ -144,7 +148,7 @@ namespace VolcanoidsMod
         public void CreateItemDrill(string codename, float armorbonus, int maxstack, LocalizedString name, LocalizedString desc, string guidstring, string recipecategoryname, Sprite icon)
         {
             var recipecategory = GameResources.Instance.Items.FirstOrDefault(s => s.name == recipecategoryname);
-            var materials = recipecategory.Prefabs[0].GetComponent<TrainDrillItemDefinition>().Materials;
+            var materials = GameResources.Instance.CellMaterials.ToArray();
 
             var item = ScriptableObject.CreateInstance<TrainDrillItemDefinition>();
             item.name = codename;
