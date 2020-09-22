@@ -33,13 +33,13 @@ namespace VolcanoidsMod
             CreateItem("TungstenIngot", 10, "Tungsten", 
                 "Used in production to produce base components", 
                 "DD81B8351C2F47A5B55F9400E2ECA86F", "TitaniumIngot", Sprite2("TungstenIngot.png"));
-            CreateItemDrill("DrillT5_Tungsten", 0.6f, 1, "Tungsten Drill",
+            CreateItemDrill("DrillT5_Tungsten", 0.9f, 1, "Tungsten Drill",
                 "Drillship drill made from Tungsten, completely eliminating the risk of diamond fracture", 
                 "652CE5F6CC9544AA94D96D9EEA862C8B", "DrillT4_Diamond", Sprite2("DrillUpgrade5.png"));
-            CreateItemDrill("DrillT6_Unobtainium", 1f, 1, "Unobtainium Drill",
+            CreateItemDrill("DrillT6_Unobtainium", 0.9999f, 1, "Unobtainium Drill",
                 "Drillship drill made from Unobtainium resulting in complete damage protection",
                 "BC676806155B4E5BA4190344105A11D4", "DrillT5_Tungsten", Sprite2("DrillUpgrade6.png"));
-            CreateItemHull("HullT6_Unobtainium", 0, 1f, 0, 9999, 1, "Unobtainium Hull",
+            CreateItemHull("HullT6_Unobtainium", 0, 0.9999f, 0, 9999, 1, "Unobtainium Hull",
                 "Drillship hull made from an Unobtainium composite resulting in complete damage protection", 
                 "F84B796D47474DBFA81A6579716807DE", "HullT5_Tungsten", Sprite2("HullT6.png"));
             CreateItem("AlloyT4Ingot", 20, "Alloy T4", 
