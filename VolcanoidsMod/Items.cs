@@ -16,7 +16,7 @@ namespace VolcanoidsMod
                 Debug.Log(cellMaterial.name);
             }
             Debug.Log("Module: " + GetType().Name + " loaded successfully");
-            CreateItem("CaptainHead", 1, "Captain", "Come at me", "8010BA2246374E52A9865DEE7A4058BF", "ShipCoreUpgrade3", Sprite2("Captain.png")); 
+            // CreateItem("CaptainHead", 1, "Captain", "Come at me", "8010BA2246374E52A9865DEE7A4058BF", "ShipCoreUpgrade3", Sprite2("Captain.png")); 
             CreateItemTracks("TracksT5_Supreme", 18, 62, 1, "Supreme Tracks",
                 "Supremely engineered Tracks and efficient Gearbox ratios result in unmatched performance, \r\n " +
                 "and allow it to maintain ultimate grip no matter the weight of the drillship", 

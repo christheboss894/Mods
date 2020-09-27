@@ -10,7 +10,7 @@ namespace VolcanoidsMod
         private void Awake()
         {
             Debug.Log("Module: " + GetType().Name + " loaded successfully");
-            CreateRecipeSimple("CoalOre", 1, "539DF755FAC847BB88CF43DF2AA159C4", "CaptainHead", 1, "ShipCoreUpgrade3Recipe", "CaptainHeadRecipe", 1f);
+            // CreateRecipeSimple("CoalOre", 1, "539DF755FAC847BB88CF43DF2AA159C4", "CaptainHead", 1, "ShipCoreUpgrade3Recipe", "CaptainHeadRecipe", 1f);
             CreateRecipeSimple("CoalOre", 1, "AlloyT1Ingot", 10, "B01B65E123DB438D98D1AB7DED917DE5", "AlloyT2Ingot", 1, "AlloyT2Recipe", "AlloyT1toAlloyT3Recipe", 3f);
             CreateRecipeSimple("CoalOre", 4, "AlloyT2Ingot", 10, "0E98FAF0FA9449338428C7DC771E42F6", "AlloyT3Ingot", 1, "AlloyT3Recipe", "AlloyT2toAlloyT3Recipe", 3f);
             CreateRecipeSimple("CoalOre", 15, "CopperOre", 10, "0B7717FC2854467FA3D23347E3B9DCFB", "CopperIngot", 10, "CopperIngotRecipe", "10xCopperSmeltingRecipe", 5f);
