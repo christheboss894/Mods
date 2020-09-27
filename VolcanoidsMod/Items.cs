@@ -40,14 +40,14 @@ namespace VolcanoidsMod
                 "Drillship drill made from Unobtainium resulting in complete damage protection",
                 "BC676806155B4E5BA4190344105A11D4", "DrillT5_Tungsten", Sprite2("DrillUpgrade6.png"));
             CreateItemHull("HullT6_Unobtainium", 0, 0.9999f, 0, 9999, 1, "Unobtainium Hull",
-                "Drillship hull made from an Unobtainium composite resulting in complete damage protection", 
+                "Drillship hull made from Unobtainium resulting in complete damage protection", 
                 "F84B796D47474DBFA81A6579716807DE", "HullT5_Tungsten", Sprite2("HullT6.png"));
             CreateItem("AlloyT4Ingot", 20, "Alloy T4", 
                 "Used in production to produce base components", 
                 "6939388A466C45B899EEF83634EEA6C6", "AlloyT3Ingot", Sprite2("AlloyT4.png"));
             CreateItem("UnobtainiumIngot", 10, "Unobtainium",
-                "a once hypothetical element has come to life due to the close proximity to the volcano. \r\n" +
-                "the use of Unobtainium allows for practically infinite durability and protection", 
+                "A once hypothetical element has come to life due to the close proximity to the volcano. \r\n" +
+                "The use of Unobtainium allows for practically infinite durability and protection", 
                 "C84135CD0447417B9668570D5AADF502", "TungstenIngot", Sprite2("PurplishIngot.png"));
             CreateItem("TungstenPlates", 10, "Tungsten plates",
                 "Used in production to produce devices",
