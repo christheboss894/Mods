@@ -10,6 +10,7 @@ namespace VolcanoidsMod
         private void Awake()
         {
             Debug.Log("Module: " + GetType().Name + " loaded successfully");
+            Debug.Log("Module: " + GetType().Name + " Initialized successfully");
         }
         /*private void Update()
         {

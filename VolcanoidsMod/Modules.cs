@@ -18,6 +18,7 @@ namespace VolcanoidsMod
                 Sprite2("TurretImproved.png"),
                 2, 3, 2, 2, 2); 
             */
+            Debug.Log("Module: " + GetType().Name + " Initialized successfully");
         }
         public static void Initialize<T>(ref T str)
     where T : struct, ISerializationCallbackReceiver

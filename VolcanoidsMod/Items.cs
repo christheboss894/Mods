@@ -62,17 +62,19 @@ namespace VolcanoidsMod
                 "Used in production to produce devices",
                 "1243872643B54937B0B91ECDD5FCB1B6", "TungstenPlates", Sprite2("PurplishPlates.png"));
             CreateItem("UnobtainiumBolts", 10, "Unobtainium bolts",
-                "Used in production to produce devices",
+                "Used in production to produce devices", 
                 "7A296148A35F44639DA94EB165D2BFF7", "UnobtainiumPlates", Sprite2("PurplishBolts.png")); 
             CreateItem("UnobtainiumTubes", 10, "Unobtainium tubes",
                 "Used in production to produce base components",
                 "7C3BAEF8C42F4A07B10810BC76F73015", "UnobtainiumPlates", Sprite2("PurplishTubes.png"));
+            CreateItem("NullItem", 1000, "Null Item", "How did you even actually get this item?", "29B8BE6CAB6E43BB99ED496C06553B0A", "UnobtainiumIngot", Sprite2("Cheese.png"));
             if (GenericMod.Cheese)
             {
                 CreateItemEngine("Cheese", 100, 0, 10, "Cheese",
                     "By replacing coal with Cheese, we can enhance the flavor of our steam",
-                    GUID.Create().ToString(), "ShipCoreUpgrade4", Sprite2("Cheese.png"));
+                    GUID.Create().ToString(), "ShipCoreUpgrade4", Sprite2("Cheese.png")); 
             }
+            Debug.Log("Module: " + GetType().Name + " Initialized successfully");
         }
         public static void Initialize<T>(ref T str)
     where T : struct, ISerializationCallbackReceiver

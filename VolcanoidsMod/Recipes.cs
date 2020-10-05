@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Mono.WebBrowser;
 using UnityEngine;
 
 namespace VolcanoidsMod
@@ -49,7 +51,7 @@ namespace VolcanoidsMod
             CreateRecipeSimple("TungstenIngot", 10, "TungstenPlates", 8, "TungstenTubes", 5, "TungstenBolts", 5, "2CBFF4BD72C54C6AA7D85B4AA22711D7", "DrillT5_Tungsten", 1, "DrillUpgrade4Recipe", "DrillUpgrade5Recipe", 2f);
 
             CreateRecipeSimple("UnobtainiumIngot", 15, "UnobtainiumPlates", 10, "UnobtainiumTubes", 10, "UnobtainiumBolts", 10, "C922C8F07B294F98BAF5AAAD706F2E4E4", "DrillT6_Unobtainium", 1, "DrillUpgrade5Recipe", "DrillUpgrade6Recipe", 5f);
-
+            
             if (GenericMod.Cheese)
             {
                 CreateRecipeSimple("CoalOre", 1, GUID.Create().ToString(), "Cheese", 1, "ShipCoreUpgrade5Recipe", "Cheese", 0.01f);
@@ -68,7 +70,8 @@ namespace VolcanoidsMod
                     }
                 }
             }
-            
+            Debug.Log("Module: " + GetType().Name + " Initialized successfully");
+
 
         }
         public void CreateRecipe(InventoryItemData[] Inputs, InventoryItemData Output, string guidstring, Recipe recipecategory, string name, float ProductionTimeMultiplier)
@@ -91,7 +94,14 @@ namespace VolcanoidsMod
         }
         public ItemDefinition GetItem(string itemname)
         {
-            return GameResources.Instance.Items.FirstOrDefault(s => s.name == itemname);
+            ItemDefinition item = GameResources.Instance.Items.FirstOrDefault(s => s.name == itemname);
+            if (item == null)
+            {
+                Debug.LogError("Item is null, name: " + itemname + ". Replacing with NullItem");
+                return GameResources.Instance.Items.FirstOrDefault(s => s.name == "NullItem");
+            }
+            return item;
+
         }
         public Recipe GetRecipe(string recipename)
         {
