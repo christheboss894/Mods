@@ -80,7 +80,7 @@ namespace VolcanoidsMod
             newrecipe.Output = Output;
             newrecipe.RequiredUpgrades = recipecategory.RequiredUpgrades;
             newrecipe.Categories = recipecategory.Categories.ToArray();
-            newrecipe.ProductionTime = ProductionTimeMultiplier;
+            newrecipe.ProductionTime = recipecategory.ProductionTime * ProductionTimeMultiplier;
 
             var guid = GUID.Parse(guidstring);
 
