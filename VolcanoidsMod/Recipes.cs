@@ -107,6 +107,10 @@ namespace VolcanoidsMod
         }
         public Sprite Sprite2(string iconpath)
         {
+            if (iconpath == null)
+            {
+                return null;
+            }
             var path = System.IO.Path.Combine(Application.persistentDataPath, "Mods", iconpath);
             var bytes = File.ReadAllBytes(path);
 
