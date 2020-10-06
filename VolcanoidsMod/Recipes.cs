@@ -50,7 +50,7 @@ namespace VolcanoidsMod
 
             CreateRecipeSimple("TungstenPlates", 5, "TungstenBolts", 4, "A3046813A43345AEB6A8AA5353E8A77B", "HullT5_Tungsten", 1, "HullUpgrade4Recipe", "HullUpgrade5Recipe", 2f, null);
 
-            CreateRecipeSimple("UnobtainiumPlates", 10, "UnobtainiumBolts", 10, "UnobtainiumIngot", 15, "B37606501B2B40FABF697CEF68C26DA4", "HullT6_Unobtainium", 1, "HullUpgrade5Recipe", "HullUpgrade6Recipe", 5f, null);
+            CreateRecipeSimple("UnobtainiumPlates", 20, "UnobtainiumBolts", 15, "UnobtainiumIngot", 15, "B37606501B2B40FABF697CEF68C26DA4", "HullT6_Unobtainium", 1, "HullUpgrade5Recipe", "HullUpgrade6Recipe", 5f, null);
 
             CreateRecipeSimple("TungstenIngot", 10, "TungstenPlates", 8, "TungstenTubes", 5, "TungstenBolts", 5, "2CBFF4BD72C54C6AA7D85B4AA22711D7", "DrillT5_Tungsten", 1, "DrillUpgrade4Recipe", "DrillUpgrade5Recipe", 2f, null);
 

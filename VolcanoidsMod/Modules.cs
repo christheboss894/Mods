@@ -18,6 +18,7 @@ namespace VolcanoidsMod
                 Sprite2("TurretImproved.png"),
                 2, 3, 2, 2, 2); 
             */
+            // CreateItemModuleProduction("ProductionModuleT4", 1, "Production Module Tier 4", "placeholder", "22B3DFEFECC94F48AA30638113CA2C77", "ProductionModuleT3", Sprite2("Cheese.png"), Findcategories(new string[] { "ProductionTier1", "ProductionTier2", "ProductionTier3" } ));
             Debug.Log("Module: " + GetType().Name + " Initialized successfully");
         }
         public static void Initialize<T>(ref T str)
@@ -70,6 +71,48 @@ namespace VolcanoidsMod
             Initialize(ref descStr);
 
             typeof(WeaponReloaderNoAmmo).GetField("m_stats", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(reloader, ammoStats);
+            typeof(ItemDefinition).GetField("m_name", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(item, nameStr);
+            typeof(ItemDefinition).GetField("m_description", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(item, descStr);
+
+            var guid = GUID.Parse(guidstring);
+
+            typeof(Definition).GetField("m_assetId", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance).SetValue(item, guid);
+
+            AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = item, Guid = guid, Labels = new string[0] } };
+            RuntimeAssetStorage.Add(assets, default);
+        }
+        public RecipeCategory[] Findcategories(string[] categoryname)
+        {
+            RecipeCategory[] recipeCategories = null;
+            foreach(string category in categoryname)
+            {
+                recipeCategories.Append<RecipeCategory>(RuntimeAssetCacheLookup.Get<RecipeCategory>().FirstOrDefault(s => s.name == category));
+            }
+            return recipeCategories;
+        }
+        public void CreateItemModuleProduction(string codename, int maxstack, LocalizedString name, LocalizedString desc, string guidstring, string categoryname, Sprite icon, RecipeCategory[] categories)
+        {
+            var category = GameResources.Instance.Items.FirstOrDefault(s => s.name == categoryname).Category;
+            var item = ScriptableObject.CreateInstance<ItemDefinition>();
+            item.name = codename;
+            item.Category = category;
+            item.MaxStack = maxstack;
+            item.Icon = icon;
+            var prefabParent = new GameObject();
+            var olditem = GameResources.Instance.Items.FirstOrDefault(s => s.name == "ProductionModuleT3");
+            prefabParent.SetActive(false);
+            var production4 = Instantiate(olditem.Prefabs[0], prefabParent.transform);
+            var module = production4.GetComponentInChildren<ProductionModule>();
+            production4.GetComponent<GridModule>().VariantName = "ProductionModule4";
+            production4.GetComponent<GridModule>().Item = item;
+            item.Prefabs = new GameObject[] { production4 };
+
+
+            LocalizedString nameStr = name;
+            LocalizedString descStr = desc;
+            Initialize(ref nameStr);
+            Initialize(ref descStr);
+
             typeof(ItemDefinition).GetField("m_name", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(item, nameStr);
             typeof(ItemDefinition).GetField("m_description", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(item, descStr);
 
