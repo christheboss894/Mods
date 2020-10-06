@@ -58,7 +58,11 @@ namespace VolcanoidsMod
 
             CreateRecipeSimple("TitaniumTubes", 4, "TitaniumBolts", 5, "TitaniumPlates", 5, "3A53A2D331444AF0A4AE125736F232AF", "EngineUpgrade4", 1, "EngineUpgrade3Recipe", "EngineUpgrade4Recipe", 3f, null);
 
-            CreateRecipeSimple("AlloyT4Ingot", 5, "TungstenBolts", 4, "TungstenTubes", 2, "F0B832C6187D44CE86A6F63165A6D698", "EngineUpgrade5", 1, "EngineUpgrade4Recipe", "EngineUpgrade5Recipe", 2f, null); 
+            CreateRecipeSimple("AlloyT4Ingot", 5, "TungstenBolts", 4, "TungstenTubes", 2, "F0B832C6187D44CE86A6F63165A6D698", "EngineUpgrade5", 1, "EngineUpgrade4Recipe", "EngineUpgrade5Recipe", 2f, null);
+
+            CreateRecipeSimple("Leek", 1, "41231C07EFA44D2F92E3300E93410F19", "Leek", 1, "CopperIngotRecipe", "LeakRecipe", 1, null);
+
+            CreateRecipeSimple("CoalOre", 1, "41231C07EFA44D2F92E3300E93410F19", "Leek", 1, "CopperIngotRecipe", "LeakRecipe", 1, null);
 
 
             if (GenericMod.Cheese)
