@@ -19,18 +19,23 @@ namespace VolcanoidsMod
             // CreateItem("CaptainHead", 1, "Captain", "Come at me", "8010BA2246374E52A9865DEE7A4058BF", "ShipCoreUpgrade3", Sprite2("Captain.png")); 
             CreateItemTracks("TracksT5_Supreme", 18, 62, 1, "Supreme Tracks",
                 "Supremely engineered Tracks and efficient Gearbox ratios result in unmatched performance, \r\n " +
-                "and allow it to maintain ultimate grip no matter the weight of the drillship", 
+                "and allow it to maintain ultimate grip no matter the weight of the drillship",
                 "713A4D41B14346EFB234A548B16BADEC", "TracksT4_Advanced", Sprite2("TracksUpgrade5.png"));
-            CreateItemCore("ShipCoreUpgrade4", 400, 1200, 1, "Drillship Core 4", 
-                "Specialised steam tubes allow for a higher flow to the modules", 
+            CreateItemCore("ShipCoreUpgrade4", 400, 1200, 1, "Drillship Core 4",
+                "Specialised steam tubes allow for a higher flow to the modules",
                 "787AE6617DA54690BBD05D89653FF707", "ShipCoreUpgrade3", Sprite2("CoreUpgrade4.png"));
-            CreateItemCore("ShipCoreUpgrade5", 800, 2000, 1, "Drillship Core 5", 
+            CreateItemCore("ShipCoreUpgrade5", 800, 2000, 1, "Drillship Core 5",
                 "Highly advanced production technology allows the use of tungsten to further improve the core",
                 "2602080730BE43979380D9F381927002", "ShipCoreUpgrade4", Sprite2("CoreUpgrade5.png"));
+            CreateItemCore("ShipCoreUpgrade6", 1600, 4000, 1, "Drillship Core 6",
+                "By implementing Unobtainium into the core, it can sustain a much higher load, \r\n " +
+                "aswell as store energy directly in the unobtainium",
+                "FD05057E43F64735843E8C52B3DCA447", "ShipCoreUpgrade5", Sprite2("CoreUpgrade6.png"));
             CreateItemHull("HullT5_Tungsten", 0, 0.6f, 0.15f, 3410, 1, "Tungsten Hull",
-                "Drillship hull made from Tungsten, granting a much higher melting point and a higher damage resistance than Titanium",
+                "Drillship hull made from Tungsten, \r\n " +
+                "granting a much higher melting point and damage resistance than Titanium",
                 "5A806861DF50469CA38CD13DD4E7598F", "HullT4_Titanium", Sprite2("HullT5.png"));
-            CreateItem("TungstenIngot", 10, "Tungsten", 
+            CreateItem("TungstenIngot", 10, "Tungsten Ingot", 
                 "Used in production to produce base components", 
                 "DD81B8351C2F47A5B55F9400E2ECA86F", "TitaniumIngot", Sprite2("TungstenIngot.png"));
             CreateItemDrill("DrillT5_Tungsten", 0.9f, 1, "Tungsten Drill",
@@ -45,7 +50,7 @@ namespace VolcanoidsMod
             CreateItem("AlloyT4Ingot", 20, "Alloy T4", 
                 "Used in production to produce base components", 
                 "6939388A466C45B899EEF83634EEA6C6", "AlloyT3Ingot", Sprite2("AlloyT4.png"));
-            CreateItem("UnobtainiumIngot", 10, "Unobtainium",
+            CreateItem("UnobtainiumIngot", 10, "Unobtainium Ingot",
                 "A once hypothetical element has come to life due to the close proximity to the volcano. \r\n" +
                 "The use of Unobtainium allows for practically infinite durability and protection", 
                 "C84135CD0447417B9668570D5AADF502", "TungstenIngot", Sprite2("PurplishIngot.png"));
@@ -67,7 +72,13 @@ namespace VolcanoidsMod
             CreateItem("UnobtainiumTubes", 10, "Unobtainium tubes",
                 "Used in production to produce base components",
                 "7C3BAEF8C42F4A07B10810BC76F73015", "UnobtainiumPlates", Sprite2("PurplishTubes.png"));
-            CreateItem("NullItem", 1000, "Null Item", "How did you even actually get this item?", "29B8BE6CAB6E43BB99ED496C06553B0A", "UnobtainiumIngot", Sprite2("Cheese.png"));
+            CreateItemEngine("EngineUpgrade4", 5, 400, 1, "Engine 4",
+                "Utilises the cores specialised steam tubes to provide better flow to the engine", 
+                "D550C8AA6D6E408385F40C66882B15BA", "EngineUpgrade3", Sprite2("EngineUpgrade4.png"));
+            CreateItemEngine("EngineUpgrade5", 6, 800, 1, "Engine 5",
+                "Using a tungsten titanium alloy allows for the engine to let in more steam and provide more torque",
+                "4F0ACF6B26A541A2AF2DB7D7FA50134C", "EngineUpgrade4", Sprite2("EngineUpgrade5.png"));
+            CreateItem("NullItem", 1000, "Null Item", "This item is to indicate that an item is null", "29B8BE6CAB6E43BB99ED496C06553B0A", "UnobtainiumIngot", Sprite2("Cheese.png"));
             if (GenericMod.Cheese)
             {
                 CreateItemEngine("Cheese", 100, 0, 10, "Cheese",

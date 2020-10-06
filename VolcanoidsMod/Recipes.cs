@@ -12,6 +12,7 @@ namespace VolcanoidsMod
     {
         private void Awake()
         {
+            haserror = false;
             Debug.Log("Module: " + GetType().Name + " loaded successfully");
             // CreateRecipeSimple("CoalOre", 1, "539DF755FAC847BB88CF43DF2AA159C4", "CaptainHead", 1, "ShipCoreUpgrade3Recipe", "CaptainHeadRecipe", 1f, null);
             CreateRecipeSimple("CoalOre", 1, "AlloyT1Ingot", 10, "B01B65E123DB438D98D1AB7DED917DE5", "AlloyT2Ingot", 1, "AlloyT2Recipe", "AlloyT1toAlloyT3Recipe", 3f, null);
@@ -45,6 +46,8 @@ namespace VolcanoidsMod
 
             CreateRecipeSimple("TungstenIngot", 12, "IntelRefineryT3", 4, "IntelProductionT3", 4, "D7415C76EB4A438C86432501D59998E0", "ShipCoreUpgrade5", 1, "ShipCoreUpgrade4Recipe", "ShipCoreUpgrade5Recipe", 2f, null);
 
+            CreateRecipeSimple("UnobtainiumIngot", 10, "UnobtainiumTubes", 4, "UnobtainiumBolts", 5, "35FCCDDC5C464FD5A3F7FFA6094AAF53", "ShipCoreUpgrade6", 1, "ShipCoreUpgrade5Recipe", "ShipCoreUpgrade6Recipe", 4f, null); 
+
             CreateRecipeSimple("TungstenPlates", 5, "TungstenBolts", 4, "A3046813A43345AEB6A8AA5353E8A77B", "HullT5_Tungsten", 1, "HullUpgrade4Recipe", "HullUpgrade5Recipe", 2f, null);
 
             CreateRecipeSimple("UnobtainiumPlates", 10, "UnobtainiumBolts", 10, "UnobtainiumIngot", 15, "B37606501B2B40FABF697CEF68C26DA4", "HullT6_Unobtainium", 1, "HullUpgrade5Recipe", "HullUpgrade6Recipe", 5f, null);
@@ -52,7 +55,12 @@ namespace VolcanoidsMod
             CreateRecipeSimple("TungstenIngot", 10, "TungstenPlates", 8, "TungstenTubes", 5, "TungstenBolts", 5, "2CBFF4BD72C54C6AA7D85B4AA22711D7", "DrillT5_Tungsten", 1, "DrillUpgrade4Recipe", "DrillUpgrade5Recipe", 2f, null);
 
             CreateRecipeSimple("UnobtainiumIngot", 15, "UnobtainiumPlates", 10, "UnobtainiumTubes", 10, "UnobtainiumBolts", 10, "C922C8F07B294F98BAF5AAAD706F2E4E4", "DrillT6_Unobtainium", 1, "DrillUpgrade5Recipe", "DrillUpgrade6Recipe", 5f, null);
-            
+
+            CreateRecipeSimple("TitaniumTubes", 4, "TitaniumBolts", 5, "TitaniumPlates", 5, "3A53A2D331444AF0A4AE125736F232AF", "EngineUpgrade4", 1, "EngineUpgrade3Recipe", "EngineUpgrade4Recipe", 3f, null);
+
+            CreateRecipeSimple("AlloyT4Ingot", 5, "TungstenBolts", 4, "TungstenTubes", 2, "F0B832C6187D44CE86A6F63165A6D698", "EngineUpgrade5", 1, "EngineUpgrade4Recipe", "EngineUpgrade5Recipe", 2f, null); 
+
+
             if (GenericMod.Cheese)
             {
                 CreateRecipeSimple("CoalOre", 1, GUID.Create().ToString(), "Cheese", 1, "ShipCoreUpgrade5Recipe", "Cheese", 0.01f, null);
@@ -71,9 +79,14 @@ namespace VolcanoidsMod
                     }
                 }
             }
-            Debug.Log("Module: " + GetType().Name + " Initialized successfully");
-
-
+            if (haserror)
+            {
+                Debug.Log("Module: " + GetType().Name + " Initialized with error");
+            }
+            else
+            {
+                Debug.Log("Module: " + GetType().Name + " Initialized successfully");
+            }
         }
         public void CreateRecipe(InventoryItemData[] Inputs, InventoryItemData Output, string guidstring, Recipe recipecategory, string name, float ProductionTimeMultiplier, Sprite icon)
         {
@@ -100,6 +113,7 @@ namespace VolcanoidsMod
             if (item == null)
             {
                 Debug.LogError("Item is null, name: " + itemname + ". Replacing with NullItem");
+                haserror = true;
                 return GameResources.Instance.Items.FirstOrDefault(s => s.name == "NullItem");
             }
             return item;
@@ -163,7 +177,7 @@ namespace VolcanoidsMod
             CreateSingleIID(Output, Outputamount), GUID,
             GetRecipe(recipecategory), RecipeName, ProductionTimeMultiplier, icon);
         }
-
+        private bool haserror;
 
     }
 }
