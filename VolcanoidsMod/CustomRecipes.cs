@@ -14,25 +14,17 @@ namespace VolcanoidsMod
         {
             Debug.Log("Module: " + GetType().Name + " loaded successfully");
             // Add custom recipes below here
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            CreateRecipeSimple("CoalOre", 1, "CopperOre", 5, "0B7717FC2854467FA3D23347E3B9DCFB", "CopperIngot", 5, "CopperIngotRecipe", "5xCopperSmeltingRecipe", 4f, Sprite2("GenericModFiles/Resources/5xCopperIngot.png"));
+            CreateRecipeSimple("CoalOre", 1, "CopperScrapMetal", 5, "C887223B8D2E4A35BD21412BC6243BD5", "CopperIngot", 5, "CopperIngotRecipe2", "5xCopperScrapSmeltingRecipe", 4f, Sprite2("GenericModFiles/Resources/5xCopperScrap.png"));
+            CreateRecipeSimple("CoalOre", 2, "CopperOre", 10, "B98720D4DB54470B82DBC2D1B4D7C8C4", "CopperIngot", 10, "5xCopperSmeltingRecipe", "10xCopperSmeltingRecipe", 1.75f, Sprite2("GenericModFiles/Resources/10xCopperIngot.png"));
+            CreateRecipeSimple("CoalOre", 1, "IronOre", 5, "D2EFA87BECC544D28864889E28A9A022", "IronIngot", 5, "IronIngotRecipe", "5xIronSmeltingRecipe", 4f, Sprite2("GenericModFiles/Resources/5xIronIngot.png"));
+            CreateRecipeSimple("CoalOre", 1, "IronScrapMetal", 5, "33AB9A638A9748528674F2857007CC2A", "IronIngot", 5, "IronIngotRecipe2", "5xIronScrapSmeltingRecipe", 4f, Sprite2("GenericModFiles/Resources/5xIronScrap.png"));
+            CreateRecipeSimple("CoalOre", 2, "IronOre", 10, "9E9FBCF1D8B649D8A89D970AC316B6C0", "IronIngot", 10, "5xIronSmeltingRecipe", "10xIronSmeltingRecipe", 1.75f, Sprite2("GenericModFiles/Resources/10xIronIngot.png"));
+            CreateRecipeSimple("CoalOre", 1, "CrystalOre", 5, "BE6B310CCD124943A9F66D49083BCAEC", "CrystalIngot", 5, "CrystalIngotRecipe", "5xCrystalSmeltingRecipe", 4f, Sprite2("GenericModFiles/Resources/5xCrystal.png"));
+            CreateRecipeSimple("CoalOre", 2, "CrystalOre", 10, "D7AD946D9CE340EBBADB19D96D2A48B7", "CrystalIngot", 10, "5xCrystalIngotRecipe", "10xCrystalSmeltingRecipe", 1.75f, Sprite2("GenericModFiles/Resources/10xCrystal.png"));
+            CreateRecipeSimple("CoalOre", 1, "TitaniumOre", 5, "3244E6E78A9043D99BC1D847A30473B1", "TitaniumIngot", 5, "TitaniumIngotRecipe", "5xTitaniumSmeltingRecipe", 4f, Sprite2("GenericModFiles/Resources/5xTitaniumIngot.png"));
+            CreateRecipeSimple("CoalOre", 1, "TitaniumScrapMetal", 5, "FE5251FD26D747EDA935BDFF7822CE3A", "TitaniumIngot", 5, "TitaniumIngotRecipe2", "5xTitaniumScrapSmeltingRecipe", 4f, Sprite2("GenericModFiles/Resources/5xTitaniumScrap.png"));
+            CreateRecipeSimple("CoalOre", 1, "DiamondOre", 5, "A4E2E0A221264B26A316899DC25B84B3", "DiamondIngot", 5, "DiamondIngotRecipe", "5xDiamondSmeltingRecipe", 4f, Sprite2("GenericModFiles/Resources/5xDiamond.png"));
             // Add custom recipes above here
             if (haserror)
             {
