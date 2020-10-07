@@ -21,14 +21,14 @@ namespace VolcanoidsMod
             CreateRecipeSimple("CoalOre", 1, "IronScrapMetal", 5, "33AB9A638A9748528674F2857007CC2A", "IronIngot", 5, "IronIngotRecipe2", "5xIronScrapSmeltingRecipe", 4f, Sprite2("GenericModFiles/Resources/5xIronScrap.png"));
             CreateRecipeSimple("CoalOre", 2, "IronOre", 10, "9E9FBCF1D8B649D8A89D970AC316B6C0", "IronIngot", 10, "5xIronSmeltingRecipe", "10xIronSmeltingRecipe", 1.75f, Sprite2("GenericModFiles/Resources/10xIronIngot.png"));
             CreateRecipeSimple("CoalOre", 1, "CrystalOre", 5, "BE6B310CCD124943A9F66D49083BCAEC", "CrystalIngot", 5, "CrystalIngotRecipe", "5xCrystalSmeltingRecipe", 4f, Sprite2("GenericModFiles/Resources/5xCrystal.png"));
-            CreateRecipeSimple("CoalOre", 2, "CrystalOre", 10, "D7AD946D9CE340EBBADB19D96D2A48B7", "CrystalIngot", 10, "5xCrystalIngotRecipe", "10xCrystalSmeltingRecipe", 1.75f, Sprite2("GenericModFiles/Resources/10xCrystal.png"));
+            CreateRecipeSimple("CoalOre", 2, "CrystalOre", 10, "D7AD946D9CE340EBBADB19D96D2A48B7", "CrystalIngot", 10, "5xCrystalSmeltingRecipe", "10xCrystalSmeltingRecipe", 1.75f, Sprite2("GenericModFiles/Resources/10xCrystal.png"));
             CreateRecipeSimple("CoalOre", 1, "TitaniumOre", 5, "3244E6E78A9043D99BC1D847A30473B1", "TitaniumIngot", 5, "TitaniumIngotRecipe", "5xTitaniumSmeltingRecipe", 4f, Sprite2("GenericModFiles/Resources/5xTitaniumIngot.png"));
             CreateRecipeSimple("CoalOre", 1, "TitaniumScrapMetal", 5, "FE5251FD26D747EDA935BDFF7822CE3A", "TitaniumIngot", 5, "TitaniumIngotRecipe2", "5xTitaniumScrapSmeltingRecipe", 4f, Sprite2("GenericModFiles/Resources/5xTitaniumScrap.png"));
             CreateRecipeSimple("CoalOre", 1, "DiamondOre", 5, "A4E2E0A221264B26A316899DC25B84B3", "DiamondIngot", 5, "DiamondIngotRecipe", "5xDiamondSmeltingRecipe", 4f, Sprite2("GenericModFiles/Resources/5xDiamond.png"));
             // Add custom recipes above here
             if (haserror)
             {
-                Debug.Log("Module: " + GetType().Name + " Initialized with error");
+                Debug.LogError("Module: " + GetType().Name + " Initialized with error");
             }
             else
             {
@@ -57,12 +57,12 @@ namespace VolcanoidsMod
         }
         public ItemDefinition GetItem(string itemname)
         {
-            ItemDefinition item = GameResources.Instance.Items.FirstOrDefault(s => s.name == itemname);
+            ItemDefinition item = GameResources.Instance.Items.First(s => s.name == itemname);
             if (item == null)
             {
                 Debug.LogError("Item is null, name: " + itemname + ". Replacing with NullItem");
                 haserror = true;
-                return GameResources.Instance.Items.FirstOrDefault(s => s.name == "NullItem");
+                return GameResources.Instance.Items.First(s => s.name == "NullItem");
             }
             return item;
 
@@ -74,6 +74,12 @@ namespace VolcanoidsMod
                 return null;
             }
             var path = System.IO.Path.Combine(Application.persistentDataPath, "Mods", iconpath);
+            if (!File.Exists(path))
+            {
+                Debug.LogError("Specified Icon path not found: " + path);
+                haserror = true;
+                return null;
+            }
             var bytes = File.ReadAllBytes(path);
 
 
@@ -85,7 +91,14 @@ namespace VolcanoidsMod
         }
         public Recipe GetRecipe(string recipename)
         {
-            return GameResources.Instance.Recipes.FirstOrDefault(s => s.name == recipename);
+            var recipe = GameResources.Instance.Recipes.First(s => s.name == recipename);
+            if (recipe == null)
+            {
+                Debug.LogError("Specified Recipe not found: " + recipename);
+                haserror = true;
+                return GameResources.Instance.Recipes.First(s => s.name == "NullItem");
+            }
+            return recipe;
         }
         public InventoryItemData CreateSingleIID(string itemname, int amount)
         {

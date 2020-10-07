@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using Mono.WebBrowser;
 using UnityEngine;
+using UnityEngine.Assertions.Must;
 
 namespace VolcanoidsMod
 {
@@ -83,7 +84,7 @@ namespace VolcanoidsMod
             }
             if (haserror)
             {
-                Debug.Log("Module: " + GetType().Name + " Initialized with error");
+                Debug.LogError("Module: " + GetType().Name + " Initialized with error");
             }
             else
             {
@@ -128,6 +129,12 @@ namespace VolcanoidsMod
                 return null;
             }
             var path = System.IO.Path.Combine(Application.persistentDataPath, "Mods", iconpath);
+            if (!File.Exists(path))
+            {
+                Debug.LogError("Specified Icon path not found: " + path);
+                haserror = true;
+                return null;
+            }
             var bytes = File.ReadAllBytes(path);
 
 
@@ -139,7 +146,14 @@ namespace VolcanoidsMod
         }
         public Recipe GetRecipe(string recipename)
         {
-            return GameResources.Instance.Recipes.FirstOrDefault(s => s.name == recipename);
+            var recipe = GameResources.Instance.Recipes.FirstOrDefault(s => s.name == recipename);
+            if (recipe == null)
+            {
+                Debug.LogError("Specified Recipe not found: " + recipename);
+                haserror = true;
+                return GameResources.Instance.Recipes.FirstOrDefault(s => s.name == "NullItem");
+            }
+            return recipe;
         }
         public InventoryItemData CreateSingleIID(string itemname, int amount)
         {

@@ -16,6 +16,7 @@ namespace VolcanoidsMod
                 Debug.Log(cellMaterial.name);
             }
             Debug.Log("Module: " + GetType().Name + " loaded successfully");
+            haserror = false;
             // CreateItem("CaptainHead", 1, "Captain", "Come at me", "8010BA2246374E52A9865DEE7A4058BF", "ShipCoreUpgrade3", Sprite2("Captain.png")); 
             CreateItemTracks("TracksT5_Supreme", 18, 62, 1, "Supreme Tracks",
                 "Supremely engineered Tracks and efficient Gearbox ratios result in unmatched performance, \r\n " +
@@ -86,7 +87,14 @@ namespace VolcanoidsMod
                     "By replacing coal with Cheese, we can enhance the flavor of our steam",
                     GUID.Create().ToString(), "ShipCoreUpgrade4", Sprite2("Cheese.png")); 
             }
-            Debug.Log("Module: " + GetType().Name + " Initialized successfully");
+            if (haserror)
+            {
+                Debug.LogError("Module: " + GetType().Name + " Initialized with error");
+            }
+            else
+            {
+                Debug.Log("Module: " + GetType().Name + " Initialized successfully");
+            }
         }
         public static void Initialize<T>(ref T str)
     where T : struct, ISerializationCallbackReceiver
@@ -96,6 +104,12 @@ namespace VolcanoidsMod
         public Sprite Sprite2(string iconpath)
         {
             var path = System.IO.Path.Combine(Application.persistentDataPath, "Mods", iconpath);
+            if (!File.Exists(path))
+            {
+                Debug.LogError("Specified Icon path not found: " + path);
+                haserror = true;
+                return null;
+            }
             var bytes = File.ReadAllBytes(path);
 
 
@@ -262,6 +276,7 @@ namespace VolcanoidsMod
             AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = item, Guid = guid, Labels = new string[0] } };
             RuntimeAssetStorage.Add(assets, default);
         }
+        private bool haserror;
         
     }
 }
