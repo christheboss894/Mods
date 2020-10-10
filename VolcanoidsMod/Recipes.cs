@@ -21,7 +21,7 @@ namespace VolcanoidsMod
             
             // CreateRecipeSimple("AlloyT2Ingot", 10, "IntelProductionT2", 1, "C6A85ACFE1504FAFB437A89553B84144", "TurretImproved", 1, "TurretModuleRecipe", "TurretImprovedRecipe", 1.5f, null);
 
-            CreateRecipeSimple("TitaniumIngot", 15, "CrystalIngot", 10, "2E3EE998AD8F470CAF35471421CA3AAE", "TungstenIngot", 1, "AlloyT3Recipe", "TungstenIngotRecipe", 2f, null);
+            CreateRecipeSimple("TungstenOre", 1, "2E3EE998AD8F470CAF35471421CA3AAE", "TungstenIngot", 1, "TitaniumIngotRecipe", "TungstenIngotRecipe", 2f, null);
 
             CreateRecipeSimple("AlloyT4Ingot", 30, "DiamondIngot", 20, "61C5C4430D7F42D2B599A582C44E930E", "UnobtainiumIngot", 1, "AlloyT3Recipe", "UnobtainiumIngotRecipe", 5f, null);
 

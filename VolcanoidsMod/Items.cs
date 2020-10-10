@@ -79,6 +79,7 @@ namespace VolcanoidsMod
             CreateItemEngine("EngineUpgrade5", 6, 800, 1, "Engine 5",
                 "Using a tungsten titanium alloy allows for the engine to let in more steam and provide more torque",
                 "4F0ACF6B26A541A2AF2DB7D7FA50134C", "EngineUpgrade4", Sprite2("GenericModFiles/Upgrades/EngineUpgrade5.png"));
+            CreateItem("TungstenOre", 20, "Tungsten Ore", "Tungsten Ore", "27144EB886144A0C84AEA4FEE5026D73", "TitaniumOre", Sprite2("GenericModFiles/Resources/TungstenOre.png"));
             CreateItem("NullItem", 1000, "Null Item", "This item is to indicate that an item is null", "29B8BE6CAB6E43BB99ED496C06553B0A", "UnobtainiumIngot", Sprite2("GenericModFiles/Items/Cheese.png"));
             // CreateItem("Leek", 1, "Leek", "Oh no, devs will be mad about you leeking this", "33AA3296DE0342888497AFC837AE8E62", "CopperIngot", Sprite2("Leek.png"));
             if (GenericMod.Cheese)
