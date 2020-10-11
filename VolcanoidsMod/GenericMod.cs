@@ -13,15 +13,16 @@ namespace VolcanoidsMod
         public override void Load()
         {
             System.Version version = typeof(GenericMod).Assembly.GetName().Version;
-            SceneManager.sceneLoaded += this.OnSceneLoaded;
+            SceneManager.sceneLoaded += OnSceneLoaded;
             Debug.Log(string.Format("GenericMod loaded: {0}, build time: {1}", version, File.GetLastWriteTime(typeof(GenericMod).Assembly.Location).ToShortTimeString()));
-            this.Loaded = true;
+            Loaded = true;
         }
 
         // Token: 0x06000005 RID: 5 RVA: 0x0000217C File Offset: 0x0000037C
         private void OnSceneLoaded(Scene arg0, LoadSceneMode arg1)
         {
-
+            InfiniteInventory = false;
+            Cheese = false;
             if (arg0.name == "Island")
             {
                 InfiniteInventoryCheck();
@@ -41,30 +42,23 @@ namespace VolcanoidsMod
 
         private void InfiniteInventoryCheck()
         {
-            if (File.Exists(Application.persistentDataPath + "\\InfiniteInventory.txt")) {
-                Debug.Log(File.Exists(Application.persistentDataPath + "\\InfiniteInventory.txt"));
+            if (File.Exists(Path.Combine(
+                    Application.persistentDataPath,
+                    "InfiniteInventory.txt")))
+            {
+                Debug.Log("Infinite Inventory enabled");
                 InfiniteInventory = true;
             }
-            else
-            {
-                Debug.Log(File.Exists(Application.persistentDataPath + "\\InfiniteInventory.txt"));
-                InfiniteInventory = false;
-            }
-
         }
         private void CheeseCheck()
         {
-            if (File.Exists(Application.persistentDataPath + "\\Cheese.txt"))
+            if (File.Exists(Path.Combine(
+                    Application.persistentDataPath,
+                    "Cheese.txt")))
             {
-                Debug.Log(File.Exists(Application.persistentDataPath + "\\Cheese.txt"));
+                Debug.Log("Cheese enabled");
                 Cheese = true;
             }
-            else
-            {
-                Debug.Log(File.Exists(Application.persistentDataPath + "\\Cheese.txt"));
-                Cheese = false;
-            }
-
         }
 
         // Token: 0x06000006 RID: 6 RVA: 0x000021B3 File Offset: 0x000003B3

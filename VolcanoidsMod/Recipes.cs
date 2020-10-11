@@ -15,11 +15,12 @@ namespace VolcanoidsMod
         {
             haserror = false;
             Debug.Log("Module: " + GetType().Name + " loaded successfully");
-            // CreateRecipeSimple("CoalOre", 1, "539DF755FAC847BB88CF43DF2AA159C4", "CaptainHead", 1, "ShipCoreUpgrade3Recipe", "CaptainHeadRecipe", 1f, null);
+
+         // CreateRecipeSimple("CoalOre", 1, "539DF755FAC847BB88CF43DF2AA159C4", "CaptainHead", 1, "ShipCoreUpgrade3Recipe", "CaptainHeadRecipe", 1f, null);
+
             CreateRecipeSimple("CoalOre", 1, "AlloyT1Ingot", 10, "B01B65E123DB438D98D1AB7DED917DE5", "AlloyT2Ingot", 1, "AlloyT2Recipe", "AlloyT1toAlloyT3Recipe", 3f, null);
+
             CreateRecipeSimple("CoalOre", 4, "AlloyT2Ingot", 10, "0E98FAF0FA9449338428C7DC771E42F6", "AlloyT3Ingot", 1, "AlloyT3Recipe", "AlloyT2toAlloyT3Recipe", 3f, null);
-            
-            // CreateRecipeSimple("AlloyT2Ingot", 10, "IntelProductionT2", 1, "C6A85ACFE1504FAFB437A89553B84144", "TurretImproved", 1, "TurretModuleRecipe", "TurretImprovedRecipe", 1.5f, null);
 
             CreateRecipeSimple("TungstenOre", 1, "2E3EE998AD8F470CAF35471421CA3AAE", "TungstenIngot", 1, "TitaniumIngotRecipe", "TungstenIngotRecipe", 2f, null);
 
@@ -59,10 +60,11 @@ namespace VolcanoidsMod
 
             CreateRecipeSimple("AlloyT4Ingot", 5, "TungstenBolts", 4, "TungstenTubes", 2, "F0B832C6187D44CE86A6F63165A6D698", "EngineUpgrade5", 1, "EngineUpgrade4Recipe", "EngineUpgrade5Recipe", 2f, null);
 
-            //CreateRecipeSimple("Leek", 1, "41231C07EFA44D2F92E3300E93410F19", "Leek", 1, "CopperIngotRecipe", "LeakRecipe", 1, null);
+         // CreateRecipeSimple("CoalOre", 1, "41231C07EFA44D2F92E3300E93410F19", "Leek", 1, "CopperIngotRecipe", "LeakRecipe", 1, null);
 
-            // CreateRecipeSimple("CoalOre", 1, "41231C07EFA44D2F92E3300E93410F19", "Leek", 1, "CopperIngotRecipe", "LeakRecipe", 1, null);
+         // CreateRecipeSimple("AlloyT4Ingot", 5, "TungstenPlates", 5, "TungstenBolts", 4, "B19A14ACBEAC4F4095BCD9BD217BC249", "Omni-ModuleT1", 1, "ProductionModuleSide3Recipe", "Omni-ModuleRecipe", 1, null); 
 
+         // CreateRecipeSimple("AlloyT2Ingot", 10, "IntelProductionT2", 1, "C6A85ACFE1504FAFB437A89553B84144", "TurretImproved", 1, "TurretModuleRecipe", "TurretImprovedRecipe", 1.5f, null);
 
             if (GenericMod.Cheese)
             {

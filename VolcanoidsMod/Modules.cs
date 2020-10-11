@@ -11,15 +11,43 @@ namespace VolcanoidsMod
         private void Awake()
         {
             Debug.Log("Module: " + GetType().Name + " loaded successfully");
-            /*CreateItemModuleTurret("TurretImproved", 5,
+            /*
+            CreateItemModuleTurret("TurretImproved", "UpgradedTurret", 5,
                 "Partially Upgraded Turret", "This turret has been modified to increase barrel pressure",
                 "392E44970E284FC38C112B79FB60BC13",
                 "TurretModule", 
-                Sprite2("TurretImproved.png"),
-                2, 3, 2, 2, 2); 
+                Sprite2("GenericModFiles/Items/TurretImproved.png"),
+                2, 3, 2, 2, 2);
+
+            CreateItemModuleProduction("Omni-ModuleT1", "Tier1OmniModule", 1,
+                "Omni-Module", "This module acts as an all in one module, \r\n " +
+                "it can be a refinery, it can do research, it can even produce things", 
+                "22B3DFEFECC94F48AA30638113CA2C77", 
+                "ProductionModuleT3", "Production", Sprite2("GenericModFiles/Items/OmniModuleT1.png"),
+                new RecipeCategory[] {
+                    Findcategories("ProductionTier1"),
+                    Findcategories("ProductionTier2"),
+                    Findcategories("ProductionTier3"), 
+                    Findcategories("ProductionTierSubmarine"), 
+                    Findcategories("RefinementTier1"), 
+                    Findcategories("RefinementTier2"), 
+                    Findcategories("RefinementTier3"), 
+                    Findcategories("ResearchTier1"), 
+                    Findcategories("ResearchTier2"), 
+                    Findcategories("ResearchTier3"), 
+                    Findcategories("ScrapTier1"), 
+                    Findcategories("ScrapTier2"), 
+                    Findcategories("ScrapTier3") 
+                });
             */
-            // CreateItemModuleProduction("ProductionModuleT4", 1, "Production Module Tier 4", "placeholder", "22B3DFEFECC94F48AA30638113CA2C77", "ProductionModuleT3", Sprite2("Cheese.png"), Findcategories(new string[] { "ProductionTier1", "ProductionTier2", "ProductionTier3" } ));
-            Debug.Log("Module: " + GetType().Name + " Initialized successfully");
+            if (haserror)
+            {
+                Debug.LogError("Module: " + GetType().Name + " Initialized with error");
+            }
+            else
+            {
+                Debug.Log("Module: " + GetType().Name + " Initialized successfully");
+            }
         }
         public static void Initialize<T>(ref T str)
     where T : struct, ISerializationCallbackReceiver
@@ -38,7 +66,7 @@ namespace VolcanoidsMod
             var sprite = Sprite.Create(texture, new Rect(Vector2.zero, Vector2.one * texture.width), new Vector2(0.5f, 0.5f), texture.width, 0, SpriteMeshType.FullRect, Vector4.zero, false);
             return sprite;
         }
-        public void CreateItemModuleTurret(string codename, int maxstack, LocalizedString name, LocalizedString desc, string guidstring, string categoryname, Sprite icon, int aimspeed, int damagemultiplier, int rangemultiplier, int rateoffiremultiplier, int effectiverangemultiplier)
+        public void CreateItemModuleTurret(string codename, string variantname, int maxstack, LocalizedString name, LocalizedString desc, string guidstring, string categoryname, Sprite icon, int aimspeed, int damagemultiplier, int rangemultiplier, int rateoffiremultiplier, int effectiverangemultiplier)
         {
             var category = GameResources.Instance.Items.FirstOrDefault(s => s.name == categoryname).Category;
             var item = ScriptableObject.CreateInstance<ItemDefinition>();
@@ -60,7 +88,7 @@ namespace VolcanoidsMod
             ammoStats.MaximumRange *= rangemultiplier;
             ammoStats.RateOfFire *= rateoffiremultiplier;
             ammoStats.EffectiveRange *= effectiverangemultiplier;
-            turretStrong.GetComponent<GridModule>().VariantName = "UpgradedTurret";
+            turretStrong.GetComponent<GridModule>().VariantName = variantname;
             turretStrong.GetComponent<GridModule>().Item = item;
             item.Prefabs = new GameObject[] { turretStrong };
 
@@ -81,16 +109,25 @@ namespace VolcanoidsMod
             AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = item, Guid = guid, Labels = new string[0] } };
             RuntimeAssetStorage.Add(assets, default);
         }
-        public RecipeCategory[] Findcategories(string[] categoryname)
+        public RecipeCategory Findcategories(string categoryname)
         {
-            RecipeCategory[] recipeCategories = null;
-            foreach(string category in categoryname)
+            foreach(RecipeCategory recipecategory in RuntimeAssetCacheLookup.Get<RecipeCategory>())
             {
-                recipeCategories.Append<RecipeCategory>(RuntimeAssetCacheLookup.Get<RecipeCategory>().FirstOrDefault(s => s.name == category));
+                if (recipecategory.name == categoryname)
+                {
+                    return recipecategory;
+                }
+                else
+                {
+                    Debug.LogError("Specified Category not found: " + categoryname);
+                    haserror = true;
+                    return null;
+                }
             }
-            return recipeCategories;
+            return null;
+            
         }
-        public void CreateItemModuleProduction(string codename, int maxstack, LocalizedString name, LocalizedString desc, string guidstring, string categoryname, Sprite icon, RecipeCategory[] categories)
+        public void CreateItemModuleProduction(string codename, string variantname, int maxstack, LocalizedString name, LocalizedString desc, string guidstring, string categoryname, string factorytypename, Sprite icon, RecipeCategory[] categories)
         {
             var category = GameResources.Instance.Items.FirstOrDefault(s => s.name == categoryname).Category;
             var item = ScriptableObject.CreateInstance<ItemDefinition>();
@@ -100,19 +137,23 @@ namespace VolcanoidsMod
             item.Icon = icon;
             var prefabParent = new GameObject();
             var olditem = GameResources.Instance.Items.FirstOrDefault(s => s.name == "ProductionModuleT3");
+            var factorytype = GameResources.Instance.FactoryTypes.FirstOrDefault(s => s.name == factorytypename);
             prefabParent.SetActive(false);
-            var production4 = Instantiate(olditem.Prefabs[0], prefabParent.transform);
-            var module = production4.GetComponentInChildren<ProductionModule>();
-            production4.GetComponent<GridModule>().VariantName = "ProductionModule4";
-            production4.GetComponent<GridModule>().Item = item;
-            item.Prefabs = new GameObject[] { production4 };
-
+            var newmodule = Instantiate(olditem.Prefabs[0], prefabParent.transform);
+            var module = newmodule.GetComponentInChildren<ProductionModule>();
+            var gridmodule = newmodule.GetComponent<GridModule>();
+            gridmodule.VariantName = variantname;
+            gridmodule.Item = item;
+            item.Prefabs = new GameObject[] { newmodule };
 
             LocalizedString nameStr = name;
             LocalizedString descStr = desc;
             Initialize(ref nameStr);
             Initialize(ref descStr);
 
+            typeof(ProductionModule).GetField("m_factoryType", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(module, factorytype);
+            typeof(ProductionModule).GetField("m_module", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(module, gridmodule);
+            typeof(ProductionModule).GetField("m_categories", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(module, categories);
             typeof(ItemDefinition).GetField("m_name", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(item, nameStr);
             typeof(ItemDefinition).GetField("m_description", BindingFlags.NonPublic | BindingFlags.Instance).SetValue(item, descStr);
 
@@ -123,5 +164,6 @@ namespace VolcanoidsMod
             AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = item, Guid = guid, Labels = new string[0] } };
             RuntimeAssetStorage.Add(assets, default);
         }
+        private bool haserror;
     }
 }
