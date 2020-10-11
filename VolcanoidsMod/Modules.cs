@@ -11,7 +11,7 @@ namespace VolcanoidsMod
         private void Awake()
         {
             Debug.Log("Module: " + GetType().Name + " loaded successfully");
-            /*
+            haserror = false;
             CreateItemModuleTurret("TurretImproved", "UpgradedTurret", 5,
                 "Partially Upgraded Turret", "This turret has been modified to increase barrel pressure",
                 "392E44970E284FC38C112B79FB60BC13",
@@ -19,27 +19,8 @@ namespace VolcanoidsMod
                 Sprite2("GenericModFiles/Items/TurretImproved.png"),
                 2, 3, 2, 2, 2);
 
-            CreateItemModuleProduction("Omni-ModuleT1", "Tier1OmniModule", 1,
-                "Omni-Module", "This module acts as an all in one module, \r\n " +
-                "it can be a refinery, it can do research, it can even produce things", 
-                "22B3DFEFECC94F48AA30638113CA2C77", 
-                "ProductionModuleT3", "Production", Sprite2("GenericModFiles/Items/OmniModuleT1.png"),
-                new RecipeCategory[] {
-                    Findcategories("ProductionTier1"),
-                    Findcategories("ProductionTier2"),
-                    Findcategories("ProductionTier3"), 
-                    Findcategories("ProductionTierSubmarine"), 
-                    Findcategories("RefinementTier1"), 
-                    Findcategories("RefinementTier2"), 
-                    Findcategories("RefinementTier3"), 
-                    Findcategories("ResearchTier1"), 
-                    Findcategories("ResearchTier2"), 
-                    Findcategories("ResearchTier3"), 
-                    Findcategories("ScrapTier1"), 
-                    Findcategories("ScrapTier2"), 
-                    Findcategories("ScrapTier3") 
-                });
-            */
+            
+            
             if (haserror)
             {
                 Debug.LogError("Module: " + GetType().Name + " Initialized with error");
@@ -111,21 +92,17 @@ namespace VolcanoidsMod
         }
         public RecipeCategory Findcategories(string categoryname)
         {
-            foreach(RecipeCategory recipecategory in RuntimeAssetCacheLookup.Get<RecipeCategory>())
+            foreach(Recipe recipe in GameResources.Instance.Recipes)
             {
-                if (recipecategory.name == categoryname)
+                foreach(RecipeCategory category in recipe.Categories)
                 {
-                    return recipecategory;
-                }
-                else
-                {
-                    Debug.LogError("Specified Category not found: " + categoryname);
-                    haserror = true;
-                    return null;
+                    if (category.name == categoryname)
+                    {
+                        tempcategory = category;
+                    }
                 }
             }
-            return null;
-            
+            return tempcategory;
         }
         public void CreateItemModuleProduction(string codename, string variantname, int maxstack, LocalizedString name, LocalizedString desc, string guidstring, string categoryname, string factorytypename, Sprite icon, RecipeCategory[] categories)
         {
@@ -145,7 +122,8 @@ namespace VolcanoidsMod
             gridmodule.VariantName = variantname;
             gridmodule.Item = item;
             item.Prefabs = new GameObject[] { newmodule };
-
+            var modulecategory = RuntimeAssetCacheLookup.Get<ModuleCategory>().First(s => s.name == factorytypename);
+            modulecategory.Modules = modulecategory.Modules.Concat(new ItemDefinition[] { item }).ToArray();
             LocalizedString nameStr = name;
             LocalizedString descStr = desc;
             Initialize(ref nameStr);
@@ -164,6 +142,11 @@ namespace VolcanoidsMod
             AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = item, Guid = guid, Labels = new string[0] } };
             RuntimeAssetStorage.Add(assets, default);
         }
+
         private bool haserror;
+
+        private RecipeCategory[] recipecategories = null;
+
+        private RecipeCategory tempcategory;
     }
 }

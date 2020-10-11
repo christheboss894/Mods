@@ -146,6 +146,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Volcanoids_Data\Managed\UnityEngine.ImageConversionModule.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.PhysicsModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" />
     <Reference Include="UnityEngine.UI">
       <HintPath>..\..\Volcanoids_Data\Managed\UnityEngine.UI.dll</HintPath>
     </Reference>
