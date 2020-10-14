@@ -19,7 +19,26 @@ namespace VolcanoidsMod
                 Sprite2("GenericModFiles/Items/TurretImproved.png"),
                 2, 3, 2, 2, 2);
 
-            
+            CreateItemModuleProduction("Omni-ModuleT1", "Tier1OmniModule", 1,
+                "Omni-Module", "This module acts as an all in one module, \r\n " +
+                "it can be a refinery, it can do research, it can even produce things", 
+                "22B3DFEFECC94F48AA30638113CA2C77", 
+                "ProductionModuleT3", "Refinement", true, Sprite2("GenericModFiles/Items/OmniModuleT1.png"),
+                new RecipeCategory[] {
+                    Findcategories("ProductionTier1"),
+                    Findcategories("ProductionTier2"),
+                    Findcategories("ProductionTier3"), 
+                    Findcategories("ProductionTierSubmarine"), 
+                    Findcategories("RefinementTier1"), 
+                    Findcategories("RefinementTier2"), 
+                    Findcategories("RefinementTier3"), 
+                    Findcategories("ResearchTier1"), 
+                    Findcategories("ResearchTier2"), 
+                    Findcategories("ResearchTier3"), 
+                    Findcategories("ScrapTier1"), 
+                    Findcategories("ScrapTier2"), 
+                    Findcategories("ScrapTier3") 
+                });
             
             if (haserror)
             {
@@ -92,6 +111,7 @@ namespace VolcanoidsMod
         }
         public RecipeCategory Findcategories(string categoryname)
         {
+            tempcategory = null;
             foreach(Recipe recipe in GameResources.Instance.Recipes)
             {
                 foreach(RecipeCategory category in recipe.Categories)
@@ -104,7 +124,7 @@ namespace VolcanoidsMod
             }
             return tempcategory;
         }
-        public void CreateItemModuleProduction(string codename, string variantname, int maxstack, LocalizedString name, LocalizedString desc, string guidstring, string categoryname, string factorytypename, Sprite icon, RecipeCategory[] categories)
+        public void CreateItemModuleProduction(string codename, string variantname, int maxstack, LocalizedString name, LocalizedString desc, string guidstring, string categoryname, string factorytypename, bool omni, Sprite icon, RecipeCategory[] categories)
         {
             var category = GameResources.Instance.Items.FirstOrDefault(s => s.name == categoryname).Category;
             var item = ScriptableObject.CreateInstance<ItemDefinition>();
@@ -122,8 +142,16 @@ namespace VolcanoidsMod
             gridmodule.VariantName = variantname;
             gridmodule.Item = item;
             item.Prefabs = new GameObject[] { newmodule };
-            var modulecategory = RuntimeAssetCacheLookup.Get<ModuleCategory>().First(s => s.name == factorytypename);
-            modulecategory.Modules = modulecategory.Modules.Concat(new ItemDefinition[] { item }).ToArray();
+            if (omni)
+            {
+                var modulecategory = RuntimeAssetCacheLookup.Get<ModuleCategory>().First(s => s.name == "Packable");
+                modulecategory.Modules = modulecategory.Modules.Concat(new ItemDefinition[] { item }).ToArray();
+            }
+            if (!omni)
+            {
+                var modulecategory = RuntimeAssetCacheLookup.Get<ModuleCategory>().First(s => s.name == factorytypename);
+                modulecategory.Modules = modulecategory.Modules.Concat(new ItemDefinition[] { item }).ToArray();
+            }
             LocalizedString nameStr = name;
             LocalizedString descStr = desc;
             Initialize(ref nameStr);

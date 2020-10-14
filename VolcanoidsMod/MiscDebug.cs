@@ -10,16 +10,10 @@ namespace VolcanoidsMod
         private void Awake()
         {
             Debug.Log("Module: " + GetType().Name + " loaded successfully");
-            var olditem = GameResources.Instance.Items.FirstOrDefault(s => s.name == "ProductionModuleT3");
-            var olditem2 = olditem.Prefabs[0];
-            var olditem3 = olditem2.GetComponentInChildren<ProductionModule>();
-            var olditem4 = olditem2.GetComponent<GridModule>();
-            Debug.Log(olditem3.FactoryType.name);
-            foreach(RecipeCategory category in olditem3.Categories)
+            foreach(FactoryType factorytype in GameResources.Instance.FactoryTypes)
             {
-                Debug.Log(category.name);
+                Debug.Log(factorytype.name);
             }
-            Debug.Log(olditem4.VariantName);
             Debug.Log("Module: " + GetType().Name + " Initialized successfully");
         }
         /*private void Update()
