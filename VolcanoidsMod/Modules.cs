@@ -12,13 +12,13 @@ namespace VolcanoidsMod
         {
             Debug.Log("Module: " + GetType().Name + " loaded successfully");
             haserror = false;
+            /*
             CreateItemModuleTurret("TurretImproved", "UpgradedTurret", 5,
                 "Partially Upgraded Turret", "This turret has been modified to increase barrel pressure",
                 "392E44970E284FC38C112B79FB60BC13",
                 "TurretModule", 
                 Sprite2("GenericModFiles/Items/TurretImproved.png"),
                 2, 3, 2, 2, 2);
-
             CreateItemModuleProduction("Omni-ModuleT1", "Tier1OmniModule", 1,
                 "Omni-Module", "This module acts as an all in one module, \r\n " +
                 "it can be a refinery, it can do research, it can even produce things", 
@@ -39,7 +39,7 @@ namespace VolcanoidsMod
                     Findcategories("ScrapTier2"), 
                     Findcategories("ScrapTier3") 
                 });
-            
+            */
             if (haserror)
             {
                 Debug.LogError("Module: " + GetType().Name + " Initialized with error");
