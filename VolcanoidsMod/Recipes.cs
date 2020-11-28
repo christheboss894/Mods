@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using Mono.WebBrowser;
 using UnityEngine;
-using UnityEngine.Assertions.Must;
 
 namespace VolcanoidsMod
 {
@@ -189,7 +186,7 @@ namespace VolcanoidsMod
             CreateSingleIID(Output, Outputamount), GUID,
             GetRecipe(recipecategory), RecipeName, ProductionTimeMultiplier, icon);
         }
-        public void CreateRecipeSimple(string Input1name, int Input1amount, string Input2name, int Input2amount, string Input3name, int Input3amount, string Input4name, int Input4amount, string Input5name, int Input5amount,  string GUID, string Output, int Outputamount, string recipecategory, string RecipeName, float ProductionTimeMultiplier, Sprite icon)
+        public void CreateRecipeSimple(string Input1name, int Input1amount, string Input2name, int Input2amount, string Input3name, int Input3amount, string Input4name, int Input4amount, string Input5name, int Input5amount, string GUID, string Output, int Outputamount, string recipecategory, string RecipeName, float ProductionTimeMultiplier, Sprite icon)
         {
             CreateRecipe(new InventoryItemData[] { CreateSingleIID(Input1name, Input1amount),
             CreateSingleIID(Input2name, Input2amount), CreateSingleIID(Input3name, Input3amount), CreateSingleIID(Input4name, Input4amount), CreateSingleIID(Input5name, Input5amount) },
@@ -216,6 +213,8 @@ namespace VolcanoidsMod
             RuntimeAssetStorage.Add(assets, default);
         }
         private bool haserror;
+
+        RecipeCategory[] categories;
 
     }
 }

@@ -1,8 +1,6 @@
 ﻿using System.Linq;
 using System.Reflection;
-using UnityEngine.Sprites;
 using UnityEngine;
-using UnityEngine.Rendering;
 using System.IO;
 
 namespace VolcanoidsMod
