@@ -10,10 +10,6 @@ namespace VolcanoidsMod
         private void Awake()
         {
             Debug.Log("Module: " + GetType().Name + " loaded successfully");
-            foreach(FactoryType factorytype in GameResources.Instance.FactoryTypes)
-            {
-                Debug.Log(factorytype.name);
-            }
             Debug.Log("Module: " + GetType().Name + " Initialized successfully");
         }
         /*private void Update()

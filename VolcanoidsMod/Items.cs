@@ -11,10 +11,6 @@ namespace VolcanoidsMod
     {
         private void Awake()
         {
-            foreach (CellMaterial cellMaterial in GameResources.Instance.CellMaterials)
-            {
-                Debug.Log(cellMaterial.name);
-            }
             Debug.Log("Module: " + GetType().Name + " loaded successfully");
             haserror = false;
             /*

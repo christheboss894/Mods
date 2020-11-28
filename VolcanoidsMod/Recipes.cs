@@ -72,17 +72,12 @@ namespace VolcanoidsMod
             }
             if (GenericMod.InfiniteInventory)
             {
-                CreateRecipeSimple("CopperOre", 1, "2B2F51C0DCA6446681867FB440B15472", "CoalOre", 50, "CopperIngotRecipe", "InfiniteInventoryRecipe", 0.01f, null);
-                var InfiniteInventoryRecipe = GetRecipe("InfiniteInventoryRecipe");
-                InfiniteInventoryRecipe.ProductionTime = 1f;
                 foreach (Recipe recipe in GameResources.Instance.Recipes)
                 {
-                    if (recipe.name != "InfiniteInventoryRecipe")
-                    {
-                        recipe.Inputs = new InventoryItemData[] { CreateSingleIID("CoalOre", 1) };
-                        recipe.ProductionTime = 1f;
-                    }
+                    recipe.Inputs = new InventoryItemData[0];
+                    recipe.ProductionTime = 1f;
                 }
+                CreateRecipeSimple("6DC6AD0510E341CFA26B78AEBA735B80", "CoalOre", 50, "CopperIngotRecipe", "InfiniteInventoryRecipe2", 0.01f, null);
             }
             if (haserror)
             {
@@ -174,6 +169,12 @@ namespace VolcanoidsMod
             CreateSingleIID(Output, Outputamount), GUID,
             GetRecipe(recipecategory), RecipeName, ProductionTimeMultiplier, icon);
         }
+        public void CreateRecipeSimple(string GUID, string Output, int Outputamount, string recipecategory, string RecipeName, float ProductionTimeMultiplier, Sprite icon)
+        {
+            NewNoInputRecipe(
+            CreateSingleIID(Output, Outputamount), GUID,
+            GetRecipe(recipecategory), RecipeName, ProductionTimeMultiplier, icon);
+        }
         public void CreateRecipeSimple(string Input1name, int Input1amount, string Input2name, int Input2amount, string Input3name, int Input3amount, string GUID, string Output, int Outputamount, string recipecategory, string RecipeName, float ProductionTimeMultiplier, Sprite icon)
         {
             CreateRecipe(new InventoryItemData[] { CreateSingleIID(Input1name, Input1amount),
@@ -194,6 +195,25 @@ namespace VolcanoidsMod
             CreateSingleIID(Input2name, Input2amount), CreateSingleIID(Input3name, Input3amount), CreateSingleIID(Input4name, Input4amount), CreateSingleIID(Input5name, Input5amount) },
             CreateSingleIID(Output, Outputamount), GUID,
             GetRecipe(recipecategory), RecipeName, ProductionTimeMultiplier, icon);
+        }
+        public void NewNoInputRecipe(InventoryItemData Output, string guidstring, Recipe recipecategory, string name, float ProductionTimeMultiplier, Sprite icon)
+        {
+            var newrecipe = ScriptableObject.CreateInstance<Recipe>();
+            newrecipe.name = name;
+            newrecipe.Order = recipecategory.Order;
+            newrecipe.Inputs = new InventoryItemData[0];
+            newrecipe.Output = Output;
+            newrecipe.Icon = icon;
+            newrecipe.RequiredUpgrades = recipecategory.RequiredUpgrades;
+            newrecipe.Categories = recipecategory.Categories.ToArray();
+            newrecipe.ProductionTime = recipecategory.ProductionTime * ProductionTimeMultiplier;
+
+            var guid = GUID.Parse(guidstring);
+
+            typeof(Definition).GetField("m_assetId", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance).SetValue(newrecipe, guid);
+
+            AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = newrecipe, Guid = guid, Labels = new string[0] } };
+            RuntimeAssetStorage.Add(assets, default);
         }
         private bool haserror;
 
