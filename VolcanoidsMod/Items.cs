@@ -101,8 +101,16 @@ namespace VolcanoidsMod
                 "27144EB886144A0C84AEA4FEE5026D73", "TitaniumOre", Sprite2("GenericModFiles/Resources/TungstenOre.png"));
 
             CreateItem("NullItem", 1000, "Null Item",
-                "This item is to indicate that an item is null", 
+                "This item is to indicate that an item is null",
                 "29B8BE6CAB6E43BB99ED496C06553B0A", "UnobtainiumIngot", Sprite2("GenericModFiles/Items/Cheese.png"));
+
+            CreateItem("Volcanite", 20, "Volcanite Ingot",
+                "An ingot made by refining Volcanite Ore, has many uses",
+                "864DF411-103A-4CF4-9B44-07BCE047222C", "UnobtainiumIngot", Sprite2("GenericModFiles/Items/Cheese.png"));
+
+            CreateItem("VolcaniteOre", 20, "Volcanite Ore",
+                "This ore is made by the mixing of all known ores in the heart of a volcano",
+                "934D053FC556405BB7876294B0F5500D", "UnobtainiumIngot", Sprite2("GenericModFiles/Items/Cheese.png"));
             /*
             CreateItem("Leek", 1, "Leek", 
                 "Oh no, devs will be mad about you leeking this", 
@@ -113,6 +121,13 @@ namespace VolcanoidsMod
                 CreateItemEngine("Cheese", 100, 0, 10, "Cheese",
                     "By replacing coal with Cheese, we can enhance the flavor of our steam",
                     "C58EA469639340BF99A89F29BF434386", "ShipCoreUpgrade4", Sprite2("GenericModFiles/Items/Cheese.png")); 
+            }
+            if (GenericMod.InfiniteInventory)
+            {
+                foreach(ItemDefinition item in GameResources.Instance.Items)
+                {
+                    item.MaxStack = 999;
+                }
             }
             if (haserror)
             {

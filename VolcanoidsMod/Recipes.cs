@@ -57,11 +57,13 @@ namespace VolcanoidsMod
 
             CreateRecipeSimple("AlloyT4Ingot", 5, "TungstenBolts", 4, "TungstenTubes", 2, "F0B832C6187D44CE86A6F63165A6D698", "EngineUpgrade5", 1, "EngineUpgrade4Recipe", "EngineUpgrade5Recipe", 2f, null);
 
+            CreateRecipeSimple("VolcaniteOre", 5, "C6BA68F1CC0B4A2480B736E40878C3B1", "Volcanite", 1, "UnobtainiumIngotRecipe", "VolcaniteRefining", 50f, null);
+
          // CreateRecipeSimple("CoalOre", 1, "41231C07EFA44D2F92E3300E93410F19", "Leek", 1, "CopperIngotRecipe", "LeakRecipe", 1, null);
 
-         // CreateRecipeSimple("AlloyT4Ingot", 5, "TungstenPlates", 5, "TungstenBolts", 4, "B19A14ACBEAC4F4095BCD9BD217BC249", "Omni-ModuleT1", 1, "ProductionModuleSide3Recipe", "Omni-ModuleRecipe", 1, null); 
+            // CreateRecipeSimple("AlloyT4Ingot", 5, "TungstenPlates", 5, "TungstenBolts", 4, "B19A14ACBEAC4F4095BCD9BD217BC249", "Omni-ModuleT1", 1, "ProductionModuleSide3Recipe", "Omni-ModuleRecipe", 1, null); 
 
-         // CreateRecipeSimple("AlloyT2Ingot", 10, "IntelProductionT2", 1, "C6A85ACFE1504FAFB437A89553B84144", "TurretImproved", 1, "TurretModuleRecipe", "TurretImprovedRecipe", 1.5f, null);
+            // CreateRecipeSimple("AlloyT2Ingot", 10, "IntelProductionT2", 1, "C6A85ACFE1504FAFB437A89553B84144", "TurretImproved", 1, "TurretModuleRecipe", "TurretImprovedRecipe", 1.5f, null);
 
             if (GenericMod.Cheese)
             {
@@ -72,9 +74,13 @@ namespace VolcanoidsMod
                 foreach (Recipe recipe in GameResources.Instance.Recipes)
                 {
                     recipe.Inputs = new InventoryItemData[0];
-                    recipe.ProductionTime = 1f;
+                    recipe.ProductionTime = 0f;
                 }
-                CreateRecipeSimple("6DC6AD0510E341CFA26B78AEBA735B80", "CoalOre", 50, "CopperIngotRecipe", "InfiniteInventoryRecipe2", 0.01f, null);
+                CreateRecipeSimple("6DC6AD0510E341CFA26B78AEBA735B80", "CoalOre", 50, "CopperIngotRecipe", "InfiniteInventoryRecipe2", 1f, null);
+            }
+            if (GenericMod.ArtificialSun)
+            {
+                GameResources.Instance.Recipes.FirstOrDefault(s => s.name == "LightRecipe").Inputs = new InventoryItemData[0];
             }
             if (haserror)
             {

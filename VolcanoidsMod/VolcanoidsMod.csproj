@@ -158,6 +158,7 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Framework.cs" />
     <Compile Include="Deposits.cs" />
     <Compile Include="CustomRecipes.cs" />
     <Compile Include="MiscDebug.cs" />

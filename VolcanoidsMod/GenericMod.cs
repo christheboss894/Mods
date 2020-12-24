@@ -21,11 +21,14 @@ namespace VolcanoidsMod
         {
             InfiniteInventory = false;
             Cheese = false;
+            ArtificialSun = false;
             if (arg0.name == "Island")
             {
                 InfiniteInventoryCheck();
                 CheeseCheck();
+                ArtificialSunCheck();
                 scene = arg0;
+                new GameObject("GenericModFramework", typeof(Framework));
                 new GameObject("GenericModBaseScript", typeof(ModBehaviour));
                 new GameObject("GenericModItemScript", typeof(Items));
                 new GameObject("GenericModModuleScript", typeof(Modules));
@@ -37,7 +40,6 @@ namespace VolcanoidsMod
                 new GameObject("UnstableLavaSource", typeof(LavaSource));
             }
         }
-
         private void InfiniteInventoryCheck()
         {
             if (File.Exists(Path.Combine(
@@ -46,6 +48,16 @@ namespace VolcanoidsMod
             {
                 Debug.Log("Infinite Inventory enabled");
                 InfiniteInventory = true;
+            }
+        }
+        private void ArtificialSunCheck()
+        {
+            if (File.Exists(Path.Combine(
+                    Application.persistentDataPath,
+                    "ArtificialSun.txt")))
+            {
+                Debug.Log("Artificial Sun enabled");
+                ArtificialSun = true;
             }
         }
         private void CheeseCheck()
@@ -68,6 +80,7 @@ namespace VolcanoidsMod
         public bool Loaded;
         public static bool InfiniteInventory;
         public static bool Cheese;
+        public static bool ArtificialSun;
 
         public static Scene scene;
 
