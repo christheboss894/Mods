@@ -72,7 +72,7 @@ namespace VolcanoidsMod
             {
                 Debug.LogError("Item is null, name: " + itemname + ". Replacing with NullItem");
                 haserror = true;
-                return GameResources.Instance.Items.First(s => s.name == "GenericNullItem");
+                return GameResources.Instance.Items.First(s => s.name == "NullItem");
             }
             return item;
 
