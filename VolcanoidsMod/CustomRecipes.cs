@@ -72,7 +72,7 @@ namespace VolcanoidsMod
             {
                 Debug.LogError("Item is null, name: " + itemname + ". Replacing with NullItem");
                 haserror = true;
-                return GameResources.Instance.Items.First(s => s.name == "NullItem");
+                return GameResources.Instance.Items.First(s => s.name == "GenericNullItem");
             }
             return item;
 
@@ -106,7 +106,7 @@ namespace VolcanoidsMod
             {
                 Debug.LogError("Specified Recipe not found: " + recipename);
                 haserror = true;
-                return GameResources.Instance.Recipes.First(s => s.name == "NullItem");
+                return GameResources.Instance.Recipes.First(s => s.name == "GenericNullItem");
             }
             return recipe;
         }

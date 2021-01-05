@@ -59,7 +59,7 @@ namespace VolcanoidsMod
 
             CreateRecipeSimple("VolcaniteOre", 5, "C6BA68F1CC0B4A2480B736E40878C3B1", "Volcanite", 1, "UnobtainiumIngotRecipe", "VolcaniteRefining", 50f, null);
 
-         // CreateRecipeSimple("CoalOre", 1, "41231C07EFA44D2F92E3300E93410F19", "Leek", 1, "CopperIngotRecipe", "LeakRecipe", 1, null);
+            // CreateRecipeSimple("CoalOre", 1, "41231C07EFA44D2F92E3300E93410F19", "Leek", 1, "CopperIngotRecipe", "LeakRecipe", 1, null);
 
             // CreateRecipeSimple("AlloyT4Ingot", 5, "TungstenPlates", 5, "TungstenBolts", 4, "B19A14ACBEAC4F4095BCD9BD217BC249", "Omni-ModuleT1", 1, "ProductionModuleSide3Recipe", "Omni-ModuleRecipe", 1, null); 
 

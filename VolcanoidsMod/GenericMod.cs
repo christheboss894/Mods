@@ -32,12 +32,12 @@ namespace VolcanoidsMod
                 new GameObject("GenericModBaseScript", typeof(ModBehaviour));
                 new GameObject("GenericModItemScript", typeof(Items));
                 new GameObject("GenericModModuleScript", typeof(Modules));
-                new GameObject("GenericModMiscDebugScript", typeof(MiscDebug));
                 new GameObject("GenericModRecipeScript", typeof(Recipes));
                 new GameObject("GenericModCustomRecipesScript", typeof(CustomRecipes));
                 new GameObject("GenericModDepositsScript", typeof(Deposits));
                 // Adds a new lava source to keep volcano running after end game
                 new GameObject("UnstableLavaSource", typeof(LavaSource));
+                new GameObject("GenericModMiscDebugScript", typeof(MiscDebug));
             }
         }
         private void InfiniteInventoryCheck()

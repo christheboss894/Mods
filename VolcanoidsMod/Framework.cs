@@ -342,7 +342,7 @@ namespace VolcanoidsMod
             turretComponent.m_pitchSpeed *= aimspeed;
             turretComponent.m_yawSpeed *= aimspeed;
             ammoStats.Damage *= damagemultiplier;
-            ammoStats.Range *= rangemultiplier;
+            //ammoStats.Range *= rangemultiplier;
             ammoStats.RateOfFire *= rateoffiremultiplier;
             ammoStats.EffectiveRange *= effectiverangemultiplier;
             turretStrong.GetComponent<GridModule>().VariantName = variantname;
