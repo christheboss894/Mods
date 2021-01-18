@@ -57,7 +57,7 @@ namespace VolcanoidsMod
 
             CreateRecipeSimple("AlloyT4Ingot", 5, "TungstenBolts", 4, "TungstenTubes", 2, "F0B832C6187D44CE86A6F63165A6D698", "EngineUpgrade5", 1, "EngineUpgrade4Recipe", "EngineUpgrade5Recipe", 2f, null);
 
-            CreateRecipeSimple("VolcaniteOre", 5, "C6BA68F1CC0B4A2480B736E40878C3B1", "Volcanite", 1, "UnobtainiumIngotRecipe", "VolcaniteRefining", 50f, null);
+            // CreateRecipeSimple("VolcaniteOre", 5, "C6BA68F1CC0B4A2480B736E40878C3B1", "Volcanite", 1, "UnobtainiumIngotRecipe", "VolcaniteRefining", 50f, null);
 
             // CreateRecipeSimple("CoalOre", 1, "41231C07EFA44D2F92E3300E93410F19", "Leek", 1, "CopperIngotRecipe", "LeakRecipe", 1, null);
 

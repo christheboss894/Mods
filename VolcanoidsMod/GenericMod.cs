@@ -19,6 +19,9 @@ namespace VolcanoidsMod
         // Token: 0x06000005 RID: 5 RVA: 0x0000217C File Offset: 0x0000037C
         private void OnSceneLoaded(Scene arg0, LoadSceneMode arg1)
         {
+            if (scene.name != "Island" || onSceneLoadedDone) return;
+            onSceneLoadedDone = true;
+            InfiniteInventory = false;
             InfiniteInventory = false;
             Cheese = false;
             ArtificialSun = false;
@@ -79,6 +82,7 @@ namespace VolcanoidsMod
         }
         public bool Loaded;
         public static bool InfiniteInventory;
+        private bool onSceneLoadedDone;
         public static bool Cheese;
         public static bool ArtificialSun;
 

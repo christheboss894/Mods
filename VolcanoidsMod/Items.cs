@@ -108,10 +108,11 @@ namespace VolcanoidsMod
                 "An ingot made by refining Volcanite Ore, has many uses",
                 "864DF411-103A-4CF4-9B44-07BCE047222C", "UnobtainiumIngot", Sprite2("GenericModFiles/Items/Cheese.png"));
 
-            CreateItem("VolcaniteOre", 20, "Volcanite Ore",
-                "This ore is made by the mixing of all known ores in the heart of a volcano",
-                "934D053FC556405BB7876294B0F5500D", "UnobtainiumIngot", Sprite2("GenericModFiles/Items/Cheese.png"));
             /*
+            CreateItem("VolcaniteOre", 20, "Volcanite Ore",
+               "This ore is made by the mixing of all known ores in the heart of a volcano",
+                "934D053FC556405BB7876294B0F5500D", "UnobtainiumIngot", Sprite2("GenericModFiles/Items/Cheese.png"));
+
             CreateItem("Leek", 1, "Leek", 
                 "Oh no, devs will be mad about you leeking this", 
                 "33AA3296DE0342888497AFC837AE8E62", "CopperIngot", Sprite2("GenericModFiles/Items/Leek.png"));
