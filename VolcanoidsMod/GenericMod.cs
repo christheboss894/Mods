@@ -17,20 +17,20 @@ namespace VolcanoidsMod
         }
 
         // Token: 0x06000005 RID: 5 RVA: 0x0000217C File Offset: 0x0000037C
-        private void OnSceneLoaded(Scene arg0, LoadSceneMode arg1)
+        private void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
         {
-            if (scene.name != "Island" || onSceneLoadedDone) return;
-            onSceneLoadedDone = true;
+            if (scene.name != "Island") return;
+            SceneManager.sceneLoaded -= OnSceneLoaded;
+            Debug.Log("what the fuck");
             InfiniteInventory = false;
             InfiniteInventory = false;
             Cheese = false;
             ArtificialSun = false;
-            if (arg0.name == "Island")
+            if (scene.name == "Island")
             {
                 InfiniteInventoryCheck();
                 CheeseCheck();
                 ArtificialSunCheck();
-                scene = arg0;
                 new GameObject("GenericModFramework", typeof(Framework));
                 new GameObject("GenericModBaseScript", typeof(ModBehaviour));
                 new GameObject("GenericModItemScript", typeof(Items));
