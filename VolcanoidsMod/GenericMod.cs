@@ -19,8 +19,8 @@ namespace VolcanoidsMod
         // Token: 0x06000005 RID: 5 RVA: 0x0000217C File Offset: 0x0000037C
         private void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
         {
-            if (scene.name != "Island") return;
-            SceneManager.sceneLoaded -= OnSceneLoaded;
+            if (scene.name != "Island" || onSceneLoadedDone) return;
+            onSceneLoadedDone = true;
             Debug.Log("what the fuck");
             InfiniteInventory = false;
             InfiniteInventory = false;
