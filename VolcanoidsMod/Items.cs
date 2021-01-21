@@ -106,7 +106,7 @@ namespace VolcanoidsMod
 
             CreateItem("Volcanite", 20, "Volcanite Ingot",
                 "An ingot made by refining Volcanite Ore, has many uses",
-                "864DF411-103A-4CF4-9B44-07BCE047222C", "UnobtainiumIngot", Sprite2("GenericModFiles/Items/Cheese.png"));
+                "864DF411103A4CF49B4407BCE047222C", "UnobtainiumIngot", Sprite2("GenericModFiles/Items/Cheese.png"));
 
             /*
             CreateItem("VolcaniteOre", 20, "Volcanite Ore",
