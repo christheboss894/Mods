@@ -65,6 +65,12 @@ namespace VolcanoidsMod
 
             // CreateRecipeSimple("AlloyT2Ingot", 10, "IntelProductionT2", 1, "C6A85ACFE1504FAFB437A89553B84144", "TurretImproved", 1, "TurretModuleRecipe", "TurretImprovedRecipe", 1.5f, null);
 
+            var Grenade = GameResources.Instance.Items.FirstOrDefault(s => s.name == "Grenade").ItemPrefab.GetComponent<WeaponReloaderAmmo>().LoadedAmmo;
+            typeof(AmmoStats).GetField("Damage", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance).SetValue(Grenade, Grenade.Damage *= 50f);
+            typeof(AmmoStats).GetField("Range", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance).SetValue(Grenade, Grenade.Range *= 50f);
+            {
+
+            }
             if (GenericMod.Cheese)
             {
                 CreateRecipeSimple("CoalOre", 1, GUID.Create().ToString(), "Cheese", 1, "ShipCoreUpgrade5Recipe", "Cheese", 0.01f, null);

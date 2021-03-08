@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -17,10 +18,14 @@ namespace VolcanoidsMod
         }
 
         // Token: 0x06000005 RID: 5 RVA: 0x0000217C File Offset: 0x0000037C
-        private void OnSceneLoaded(Scene scene, LoadSceneMode loadSceneMode)
+        private void OnSceneLoaded(Scene scene, LoadSceneMode arg1)
         {
             if (scene.name != "Island" || onSceneLoadedDone) return;
             onSceneLoadedDone = true;
+            if (GameResources.Instance.Items.FirstOrDefault(s => s.name == "NullItem") != null)
+            {
+                return;
+            }
             Debug.Log("what the fuck");
             InfiniteInventory = false;
             InfiniteInventory = false;
@@ -82,7 +87,7 @@ namespace VolcanoidsMod
         }
         public bool Loaded;
         public static bool InfiniteInventory;
-        private bool onSceneLoadedDone;
+        public static bool onSceneLoadedDone;
         public static bool Cheese;
         public static bool ArtificialSun;
 
