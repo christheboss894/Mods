@@ -8,8 +8,10 @@ namespace VolcanoidsMod
 {
     public class CustomRecipes : MonoBehaviour
     {
+        public string ModPath;
         private void Awake()
         {
+            ModPath = Path.Combine(Application.persistentDataPath, "Mods/GenericMod");
             Debug.Log("Module: " + GetType().Name + " loaded successfully");
             // Add custom recipes below here
 
@@ -46,7 +48,7 @@ namespace VolcanoidsMod
             }
         }
 
-        public void CreateRecipe(InventoryItemData[] Inputs, InventoryItemData Output, string guidstring, Recipe recipecategory, string name, float ProductionTimeMultiplier, Sprite icon)
+        public void CreateRecipe(InventoryItem[] Inputs, InventoryItem Output, string guidstring, Recipe recipecategory, string name, float ProductionTimeMultiplier, Sprite icon)
         {
             var newrecipe = ScriptableObject.CreateInstance<Recipe>();
             newrecipe.name = name;
@@ -63,7 +65,7 @@ namespace VolcanoidsMod
             typeof(Definition).GetField("m_assetId", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance).SetValue(newrecipe, guid);
 
             AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = newrecipe, Guid = guid, Labels = new string[0] } };
-            RuntimeAssetStorage.Add(assets, default);
+            RuntimeAssetStorage.Add(assets);
         }
         public ItemDefinition GetItem(string itemname)
         {
@@ -83,7 +85,7 @@ namespace VolcanoidsMod
             {
                 return null;
             }
-            var path = System.IO.Path.Combine(Application.persistentDataPath, "Mods", iconpath);
+            var path = System.IO.Path.Combine(ModPath, iconpath);
             if (!File.Exists(path))
             {
                 Debug.LogError("Specified Icon path not found: " + path);
@@ -110,40 +112,40 @@ namespace VolcanoidsMod
             }
             return recipe;
         }
-        public InventoryItemData CreateSingleIID(string itemname, int amount)
+        public InventoryItem CreateSingleIID(string itemname, int amount)
         {
-            return new InventoryItemData { Item = GetItem(itemname), Amount = amount };
+            return new InventoryItem { Item = GetItem(itemname), Amount = amount };
         }
         public void CreateRecipeSimple(string Input1name, int Input1amount, string Input2name, int Input2amount, string GUID, string Output, int Outputamount, string recipecategory, string RecipeName, float ProductionTimeMultiplier, Sprite icon)
         {
-            CreateRecipe(new InventoryItemData[] { CreateSingleIID(Input1name, Input1amount),
+            CreateRecipe(new InventoryItem[] { CreateSingleIID(Input1name, Input1amount),
             CreateSingleIID(Input2name, Input2amount) },
             CreateSingleIID(Output, Outputamount), GUID,
             GetRecipe(recipecategory), RecipeName, ProductionTimeMultiplier, icon);
         }
         public void CreateRecipeSimple(string Input1name, int Input1amount, string GUID, string Output, int Outputamount, string recipecategory, string RecipeName, float ProductionTimeMultiplier, Sprite icon)
         {
-            CreateRecipe(new InventoryItemData[] { CreateSingleIID(Input1name, Input1amount) },
+            CreateRecipe(new InventoryItem[] { CreateSingleIID(Input1name, Input1amount) },
             CreateSingleIID(Output, Outputamount), GUID,
             GetRecipe(recipecategory), RecipeName, ProductionTimeMultiplier, icon);
         }
         public void CreateRecipeSimple(string Input1name, int Input1amount, string Input2name, int Input2amount, string Input3name, int Input3amount, string GUID, string Output, int Outputamount, string recipecategory, string RecipeName, float ProductionTimeMultiplier, Sprite icon)
         {
-            CreateRecipe(new InventoryItemData[] { CreateSingleIID(Input1name, Input1amount),
+            CreateRecipe(new InventoryItem[] { CreateSingleIID(Input1name, Input1amount),
             CreateSingleIID(Input2name, Input2amount), CreateSingleIID(Input3name, Input3amount) },
             CreateSingleIID(Output, Outputamount), GUID,
             GetRecipe(recipecategory), RecipeName, ProductionTimeMultiplier, icon);
         }
         public void CreateRecipeSimple(string Input1name, int Input1amount, string Input2name, int Input2amount, string Input3name, int Input3amount, string Input4name, int Input4amount, string GUID, string Output, int Outputamount, string recipecategory, string RecipeName, float ProductionTimeMultiplier, Sprite icon)
         {
-            CreateRecipe(new InventoryItemData[] { CreateSingleIID(Input1name, Input1amount),
+            CreateRecipe(new InventoryItem[] { CreateSingleIID(Input1name, Input1amount),
             CreateSingleIID(Input2name, Input2amount), CreateSingleIID(Input3name, Input3amount), CreateSingleIID(Input4name, Input4amount) },
             CreateSingleIID(Output, Outputamount), GUID,
             GetRecipe(recipecategory), RecipeName, ProductionTimeMultiplier, icon);
         }
         public void CreateRecipeSimple(string Input1name, int Input1amount, string Input2name, int Input2amount, string Input3name, int Input3amount, string Input4name, int Input4amount, string Input5name, int Input5amount, string GUID, string Output, int Outputamount, string recipecategory, string RecipeName, float ProductionTimeMultiplier, Sprite icon)
         {
-            CreateRecipe(new InventoryItemData[] { CreateSingleIID(Input1name, Input1amount),
+            CreateRecipe(new InventoryItem[] { CreateSingleIID(Input1name, Input1amount),
             CreateSingleIID(Input2name, Input2amount), CreateSingleIID(Input3name, Input3amount), CreateSingleIID(Input4name, Input4amount), CreateSingleIID(Input5name, Input5amount) },
             CreateSingleIID(Output, Outputamount), GUID,
             GetRecipe(recipecategory), RecipeName, ProductionTimeMultiplier, icon);
