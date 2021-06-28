@@ -24,7 +24,7 @@ namespace VolcanoidsMod
                 "and allow it to maintain ultimate grip no matter the weight of the drillship",
                 "713A4D41B14346EFB234A548B16BADEC", "TracksT4_Advanced", Sprite2("GenericModFiles/Upgrades/TracksUpgrade5.png"));
 
-            CreateItemCore("ShipCoreUpgrade4", 350, 1200, 1, "Drillship Core 4",
+            CreateItemCore("ShipCoreUpgrade4", 400, 1200, 1, "Drillship Core 4",
                 "Specialised steam tubes allow for a higher flow to the modules",
                 "787AE6617DA54690BBD05D89653FF707", "ShipCoreUpgrade3", Sprite2("GenericModFiles/Upgrades/CoreUpgrade4.png"));
 
@@ -95,7 +95,7 @@ namespace VolcanoidsMod
                 "Utilises the cores specialised steam tubes to provide better flow to the engine",
                 "D550C8AA6D6E408385F40C66882B15BA", "EngineUpgrade3", Sprite2("GenericModFiles/Upgrades/EngineUpgrade4.png"));
 
-            CreateItemEngine("EngineUpgrade5", 6, 800, 1, "Engine 5",
+            CreateItemEngine("EngineUpgrade5", 6, 500, 1, "Engine 5",
                 "Using a tungsten titanium alloy allows for the engine to let in more steam and provide more torque",
                 "4F0ACF6B26A541A2AF2DB7D7FA50134C", "EngineUpgrade4", Sprite2("GenericModFiles/Upgrades/EngineUpgrade5.png"));
 
