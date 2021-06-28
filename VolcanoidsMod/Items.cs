@@ -162,7 +162,7 @@ namespace VolcanoidsMod
             var texture = new Texture2D(512, 512, TextureFormat.ARGB32, true);
             texture.LoadImage(bytes);
 
-            var sprite = Sprite.Create(texture, new Rect(Vector2.zero, Vector2.one * texture.width), new Vector2(0.5f, 0.5f), texture.width, 0, SpriteMeshType.FullRect, Vector4.zero, false);
+            var sprite = Sprite.Create(texture, new Rect(Vector2.zero, new Vector2(texture.width, texture.height)), new Vector2(0.5f, 0.5f), texture.width, 0, SpriteMeshType.FullRect, Vector4.zero, false);
             return sprite;
         }
         public void CreateItemTracks(string codename, int surfacemovementspeed, int undergroundmovementspeed, int maxstack, string name, string desc, string guidstring, string recipecategoryname, Sprite icon)
@@ -220,14 +220,9 @@ namespace VolcanoidsMod
             item.ArmorBonus = armorbonus;
             item.Materials = materials;
             item.MaxStack = maxstack;
-            if (recipecategory.ItemPrefab.TryGetComponentInParent(out TrainDrillItemDefinition component))
-            {
-                item.DrillPrefabs = component.DrillPrefabs;
-            }
-            else if (recipecategory.ItemPrefab.TryGetComponentInParent(out TrainDrillItemDefinition component2))
-            {
-                item.DrillPrefabs = component.DrillPrefabs;
-            }
+            var recipecategorydrill = GameResources.Instance.Items.FirstOrDefault(s => s.name == recipecategoryname) as TrainDrillItemDefinition;
+            item.DrillPrefabs = recipecategorydrill.DrillPrefabs;
+            item.DrillPrefabTrashes = recipecategorydrill.DrillPrefabTrashes;
             item.Icon = icon;
             item.NameLocalization = new LocalizedString(".", name, null, name);
             item.DescriptionLocalization = new LocalizedString(".", desc, null, name);
