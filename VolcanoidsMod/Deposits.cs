@@ -12,7 +12,10 @@ namespace VolcanoidsMod
             Debug.Log("Module: " + GetType().Name + " loaded successfully");
             depositsurface = Resources.FindObjectsOfTypeAll<DepositLocationSurface>();
             depositunderground = Resources.FindObjectsOfTypeAll<DepositLocationUnderground>();
-            CreateDeposit(false, 20, "TungstenOre", 2, 5, "CoalOre");
+            CreateDeposit(false, 10, "TungstenOre", 2, 5, "CoalOre");
+            CreateDeposit(false, 5, "TungstenOre", 2, 5, "TitaniumOre");
+            CreateDeposit(true, 10, "TungstenOre", 2, 5, "CoalOre");
+            CreateDeposit(true, 5, "TungstenOre", 2, 5, "TitaniumOre");
             if (haserror)
             {
                 Debug.LogError("Module: " + GetType().Name + " Initialized with error");
@@ -29,7 +32,7 @@ namespace VolcanoidsMod
             {
                 foreach(DepositLocationUnderground underground in depositunderground)
                 {
-                    if (UnityEngine.Random.Range(0,100) <= PercentageToReplace)
+                    if (UnityEngine.Random.Range(0, 100) <= PercentageToReplace)
                     {
                         if ((ItemToReplace != null && underground.Ore == GetItem(ItemToReplace)) || ItemToReplace == null)
                         {

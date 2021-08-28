@@ -177,7 +177,7 @@ namespace VolcanoidsMod
             item.MaxStack = maxstack;
             item.Icon = icon;
             item.NameLocalization = new LocalizedString(".", name, null, name);
-            item.DescriptionLocalization = new LocalizedString(".", desc, null, name);
+            item.DescriptionLocalization = new LocalizedString(".", desc, null, desc);
 
             var guid = GUID.Parse(guidstring);
 
@@ -200,7 +200,7 @@ namespace VolcanoidsMod
             item.MaxStack = maxstack;
             item.Icon = icon;
             item.NameLocalization = new LocalizedString(".", name, null, name);
-            item.DescriptionLocalization = new LocalizedString(".", desc, null, name);
+            item.DescriptionLocalization = new LocalizedString(".", desc, null, desc);
 
             var guid = GUID.Parse(guidstring);
 
@@ -225,7 +225,7 @@ namespace VolcanoidsMod
             item.DrillPrefabTrashes = recipecategorydrill.DrillPrefabTrashes;
             item.Icon = icon;
             item.NameLocalization = new LocalizedString(".", name, null, name);
-            item.DescriptionLocalization = new LocalizedString(".", desc, null, name);
+            item.DescriptionLocalization = new LocalizedString(".", desc, null, desc);
 
 
             var guid = GUID.Parse(guidstring);
@@ -247,7 +247,7 @@ namespace VolcanoidsMod
             item.MaxStack = maxstack;
             item.Icon = icon;
             item.NameLocalization = new LocalizedString(".", name, null, name);
-            item.DescriptionLocalization = new LocalizedString(".", desc, null, name);
+            item.DescriptionLocalization = new LocalizedString(".", desc, null, desc);
 
 
             var guid = GUID.Parse(guidstring);
@@ -269,7 +269,7 @@ namespace VolcanoidsMod
             item.Icon = icon;
             item.MaxStack = maxstack;
             item.NameLocalization = new LocalizedString(".", name, null, name);
-            item.DescriptionLocalization = new LocalizedString(".", desc, null, name);
+            item.DescriptionLocalization = new LocalizedString(".", desc, null, desc);
 
             var guid = GUID.Parse(guidstring);
 
@@ -288,7 +288,7 @@ namespace VolcanoidsMod
             item.MaxStack = maxstack;
             item.Icon = icon;
             item.NameLocalization = new LocalizedString(".", name, null, name);
-            item.DescriptionLocalization = new LocalizedString(".", desc, null, name);
+            item.DescriptionLocalization = new LocalizedString(".", desc, null, desc);
 
 
             var guid = GUID.Parse(guidstring);
