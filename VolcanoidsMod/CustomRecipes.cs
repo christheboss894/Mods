@@ -19,17 +19,17 @@ namespace VolcanoidsMod
 
             CreateRecipeSimple("CopperScrapMetal", 5, "C887223B8D2E4A35BD21412BC6243BD5", "CopperIngot", 12, "CopperIngotRecipe2", "5xCopperScrapSmeltingRecipe", 2f, null);
 
-            CreateRecipeSimple("CopperOre", 10, "B98720D4DB54470B82DBC2D1B4D7C8C4", "CopperIngot", 11, "5xCopperSmeltingRecipe", "10xCopperSmeltingRecipe", 1.225f, null);
+            CreateRecipeSimple("CopperOre", 10, "B98720D4DB54470B82DBC2D1B4D7C8C4", "CopperIngot", 12, "5xCopperSmeltingRecipe", "10xCopperSmeltingRecipe", 1.225f, null);
 
             CreateRecipeSimple("IronOre", 5, "D2EFA87BECC544D28864889E28A9A022", "IronIngot", 6, "IronIngotRecipe", "5xIronSmeltingRecipe", 2f, null);
 
-            CreateRecipeSimple("IronScrapMetal", 5, "33AB9A638A9748528674F2857007CC2A", "IronIngot", 11, "IronIngotRecipe2", "5xIronScrapSmeltingRecipe", 2f, null);
+            CreateRecipeSimple("IronScrapMetal", 5, "33AB9A638A9748528674F2857007CC2A", "IronIngot", 12, "IronIngotRecipe2", "5xIronScrapSmeltingRecipe", 2f, null);
 
-            CreateRecipeSimple("IronOre", 10, "9E9FBCF1D8B649D8A89D970AC316B6C0", "IronIngot", 11, "5xIronSmeltingRecipe", "10xIronSmeltingRecipe", 1.225f, null);
+            CreateRecipeSimple("IronOre", 10, "9E9FBCF1D8B649D8A89D970AC316B6C0", "IronIngot", 12, "5xIronSmeltingRecipe", "10xIronSmeltingRecipe", 1.225f, null);
 
             CreateRecipeSimple("CrystalOre", 5, "BE6B310CCD124943A9F66D49083BCAEC", "CrystalIngot", 6, "CrystalIngotRecipe", "5xCrystalSmeltingRecipe", 2f, null);
 
-            CreateRecipeSimple("CrystalOre", 10, "D7AD946D9CE340EBBADB19D96D2A48B7", "CrystalIngot", 11, "5xCrystalSmeltingRecipe", "10xCrystalSmeltingRecipe", 1.225f, null);
+            CreateRecipeSimple("CrystalOre", 10, "D7AD946D9CE340EBBADB19D96D2A48B7", "CrystalIngot", 12, "5xCrystalSmeltingRecipe", "10xCrystalSmeltingRecipe", 1.225f, null);
 
             CreateRecipeSimple("TitaniumOre", 5, "3244E6E78A9043D99BC1D847A30473B1", "TitaniumIngot", 6, "TitaniumIngotRecipe", "5xTitaniumSmeltingRecipe", 2f, null);
 

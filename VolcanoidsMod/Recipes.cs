@@ -26,17 +26,17 @@ namespace VolcanoidsMod
 
             CreateRecipeSimple("TungstenIngot", 2, "TitaniumIngot", 1, "A7E62288C0D646739C2F53968C210957", "AlloyT4Ingot", 1, "UnobtainiumIngotRecipe", "AlloyT4Recipe", 2f, null);
 
-            CreateRecipeSimple("TungstenIngot", 1, "46ACCE55EE28490BA14F73C08A83050C", "TungstenPlates", 2, "ResearchT3_AnalyzerRecipe", "TungstenPlatesRecipe", 1.5f, null);
+            CreateRecipeSimple("TungstenIngot", 1, "46ACCE55EE28490BA14F73C08A83050C", "TungstenPlates", 1, "ResearchT3_AnalyzerRecipe", "TungstenPlatesRecipe", 1.5f, null);
 
             CreateRecipeSimple("TungstenIngot", 1, "A5D9565795624D7FAD861F8FC0B0403D", "TungstenTubes", 1, "TungstenPlatesRecipe", "TungstenTubesRecipe", 1.5f, null);
 
-            CreateRecipeSimple("TungstenIngot", 1, "CFA38F3064494CF884D40EE8DA2772E8", "TungstenBolts", 2, "TungstenTubesRecipe", "TungstenBoltsRecipe", 1.5f, null);
+            CreateRecipeSimple("TungstenIngot", 1, "CFA38F3064494CF884D40EE8DA2772E8", "TungstenBolts", 1, "TungstenTubesRecipe", "TungstenBoltsRecipe", 1.5f, null);
 
-            CreateRecipeSimple("UnobtainiumIngot", 1, "71FAB79094F4495291EDABB2D67146B0", "UnobtainiumPlates", 2, "TungstenPlatesRecipe", "UnobtainiumPlatesRecipe", 1.5f, null);
+            CreateRecipeSimple("UnobtainiumIngot", 1, "71FAB79094F4495291EDABB2D67146B0", "UnobtainiumPlates", 1, "TungstenPlatesRecipe", "UnobtainiumPlatesRecipe", 1.5f, null);
 
             CreateRecipeSimple("UnobtainiumIngot", 1, "66BFCE9D2EEF494BA6AC7CF56DB66E1C", "UnobtainiumTubes", 1, "UnobtainiumPlatesRecipe", "UnobtainiumTubesRecipe", 1.5f, null);
 
-            CreateRecipeSimple("UnobtainiumIngot", 1, "4C1A520F5ECB45B0A0C0CD3E2A2CC109", "UnobtainiumBolts", 2, "UnobtainiumTubesRecipe", "UnobtainiumBoltsRecipe", 1.5f, null);
+            CreateRecipeSimple("UnobtainiumIngot", 1, "4C1A520F5ECB45B0A0C0CD3E2A2CC109", "UnobtainiumBolts", 1, "UnobtainiumTubesRecipe", "UnobtainiumBoltsRecipe", 1.5f, null);
 
             CreateRecipeSimple("AlloyT3Ingot", 40, "IntelResearchT3", 5, "IntelRefineryT3", 5, "IntelProductionT3", 5, "Parts_TracksT4_Advanced", 5, "EABEBE7067F44B228BDEBAC23548AE47", "TracksT5_Supreme", 1, "TracksUpgrade4Recipe", "TracksT5Recipe", 2f, null);
 
