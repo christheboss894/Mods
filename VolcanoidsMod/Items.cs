@@ -119,12 +119,18 @@ namespace VolcanoidsMod
             CreateItem("Leek", 1, "Leek", 
                 "Oh no, devs will be mad about you leeking this", 
                 "33AA3296DE0342888497AFC837AE8E62", "CopperIngot", Sprite2("GenericModFiles/Items/Leek.png"));
+            
+
+            CreateItemArmor("TungstenArmor", "TungstenArmorDef", 
+                "E26571F2E79A45F5AF7099FFE443CFD7", 800f, 4, 5, 
+                "Tungsten Armor", "Cheese", "E64CF8A06C06401796B27CF25B3AFDD5", 
+                "TitanArmor", Sprite2("GenericModFiles/Items/Cheese.png"));
             */
             if (GenericMod.Cheese)
             {
-                CreateItemEngine("Cheese", 100, 0, 10, "Cheese",
+                CreateItemEngine("EngineUpgrade6", 100, 501, 1, "Cheese",
                     "By replacing coal with Cheese, we can enhance the flavor of our steam",
-                    "C58EA469639340BF99A89F29BF434386", "ShipCoreUpgrade4", Sprite2("GenericModFiles/Items/Cheese.png"));
+                    "C58EA469639340BF99A89F29BF434386", "EngineUpgrade5", Sprite2("GenericModFiles/Items/Cheese.png"));
             }
             if (GenericMod.InfiniteInventory)
             {
@@ -164,6 +170,50 @@ namespace VolcanoidsMod
 
             var sprite = Sprite.Create(texture, new Rect(Vector2.zero, new Vector2(texture.width, texture.height)), new Vector2(0.5f, 0.5f), texture.width, 0, SpriteMeshType.FullRect, Vector4.zero, false);
             return sprite;
+        }
+        public ArmorDefinition CreateArmor(string codename, string guidarmorstring, float maxhp, string armorinheritname)
+        {
+            var armorinherit = GameResources.Instance.Items.FirstOrDefault(s => s.name == armorinheritname);
+            var oldarmordef = armorinherit.ItemPrefab.GetComponent<Armor>().Definition;
+            var armor = ScriptableObject.CreateInstance<ArmorDefinition>();
+            armor.name = codename;
+            armor.MaxHP = maxhp;
+            armor.Material = oldarmordef.Material;
+            armor.HandsSkin = oldarmordef.HandsSkin;
+            armor.CharacterSkin = oldarmordef.CharacterSkin;
+            armor.DestroyedSkin = oldarmordef.DestroyedSkin;
+            armor.DamagedCharacterMaterial = oldarmordef.DamagedCharacterMaterial;
+            armor.DamagedHandsMaterial = oldarmordef.DamagedHandsMaterial;
+            armor.DamageThreshold = oldarmordef.DamageThreshold;
+
+            var guidarmor = GUID.Parse(guidarmorstring);
+
+            typeof(Definition).GetField("m_assetId", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance).SetValue(armor, guidarmor);
+
+            AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = armor, Guid = guidarmor, Labels = new string[0] } };
+            RuntimeAssetStorage.Add(assets);
+
+            return armor;
+        }
+        public void CreateItemArmor(string codename, string armorcodename, string armorguidstring, float maxhp, float armorlevel, int maxstack, string name, string desc, string guidstring, string recipecategoryname, Sprite icon)
+        {
+            var recipecategory = GameResources.Instance.Items.FirstOrDefault(s => s.name == recipecategoryname);
+
+            var item = ScriptableObject.CreateInstance<ItemDefinition>();
+            item.name = codename;
+            item.Category = recipecategory.Category;
+            item.MaxStack = maxstack;
+            item.ItemPrefab.AddComponent<Armor>().SetArmor(CreateArmor(armorcodename, armorguidstring, maxhp, recipecategoryname), armorlevel);
+            item.Icon = icon;
+            item.NameLocalization = new LocalizedString(".", name, null, name);
+            item.DescriptionLocalization = new LocalizedString(".", desc, null, desc);
+
+            var guid = GUID.Parse(guidstring);
+
+            typeof(Definition).GetField("m_assetId", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance).SetValue(item, guid);
+
+            AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = item, Guid = guid, Labels = new string[0] } };
+            RuntimeAssetStorage.Add(assets);
         }
         public void CreateItemTracks(string codename, int surfacemovementspeed, int undergroundmovementspeed, int maxstack, string name, string desc, string guidstring, string recipecategoryname, Sprite icon)
         {

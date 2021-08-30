@@ -71,7 +71,7 @@ namespace VolcanoidsMod
             }
             if (GenericMod.Cheese)
             {
-                CreateRecipeSimple("CoalOre", 1, GUID.Create().ToString(), "Cheese", 1, "ShipCoreUpgrade5Recipe", "Cheese", 0.01f, null);
+                CreateRecipeSimple("CoalOre", 1, GUID.Create().ToString(), "EngineUpgrade6", 1, "ShipCoreUpgrade5Recipe", "Cheese", 0.01f, null);
             }
             if (GenericMod.InfiniteInventory)
             {
