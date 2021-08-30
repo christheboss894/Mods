@@ -27,7 +27,7 @@ namespace VolcanoidsMod
         {
             if (scene.name != "Island" || onSceneLoadedDone) return;
             onSceneLoadedDone = true;
-            if (GameResources.Instance.Items.FirstOrDefault(s => s.name == "NullItem") != null)
+            if (RuntimeAssetDatabase.Get<ItemDefinition>().FirstOrDefault(s => s.name == "NullItem") != null)
             {
                 return;
             }

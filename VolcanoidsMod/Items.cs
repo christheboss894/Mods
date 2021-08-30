@@ -1,7 +1,6 @@
 ﻿using System.Linq;
 using System.Reflection;
 using UnityEngine;
-using Volcanoids;
 using System.IO;
 
 namespace VolcanoidsMod
@@ -134,7 +133,7 @@ namespace VolcanoidsMod
             }
             if (GenericMod.InfiniteInventory)
             {
-                foreach (ItemDefinition item in GameResources.Instance.Items)
+                foreach (ItemDefinition item in RuntimeAssetDatabase.Get<ItemDefinition>())
                 {
                     item.MaxStack = 999;
                 }
@@ -173,53 +172,39 @@ namespace VolcanoidsMod
         }
         public ArmorDefinition CreateArmor(string codename, string guidarmorstring, float maxhp, string armorinheritname)
         {
-            var armorinherit = GameResources.Instance.Items.FirstOrDefault(s => s.name == armorinheritname);
-            var oldarmordef = armorinherit.ItemPrefab.GetComponent<Armor>().Definition;
-            var armor = ScriptableObject.CreateInstance<ArmorDefinition>();
+            var armorinherit = RuntimeAssetDatabase.Get<ToolItemDefinition>().FirstOrDefault(s => s.name == armorinheritname);
+            var oldarmordef = armorinherit.Prefab.GetComponent<Armor>().Definition;
+            var armor = GameMod.CreateAndRegister<ArmorDefinition>(guidarmorstring);
             armor.name = codename;
             armor.MaxHP = maxhp;
             armor.Material = oldarmordef.Material;
             armor.HandsSkin = oldarmordef.HandsSkin;
             armor.CharacterSkin = oldarmordef.CharacterSkin;
             armor.DestroyedSkin = oldarmordef.DestroyedSkin;
-            armor.DamagedCharacterMaterial = oldarmordef.DamagedCharacterMaterial;
-            armor.DamagedHandsMaterial = oldarmordef.DamagedHandsMaterial;
+            armor.DamagedCharacterMaterials = oldarmordef.DamagedCharacterMaterials;
+            armor.DamagedHandsMaterials = oldarmordef.DamagedHandsMaterials;
             armor.DamageThreshold = oldarmordef.DamageThreshold;
-
-            var guidarmor = GUID.Parse(guidarmorstring);
-
-            typeof(Definition).GetField("m_assetId", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance).SetValue(armor, guidarmor);
-
-            AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = armor, Guid = guidarmor, Labels = new string[0] } };
-            RuntimeAssetStorage.Add(assets);
 
             return armor;
         }
         public void CreateItemArmor(string codename, string armorcodename, string armorguidstring, float maxhp, float armorlevel, int maxstack, string name, string desc, string guidstring, string recipecategoryname, Sprite icon)
         {
-            var recipecategory = GameResources.Instance.Items.FirstOrDefault(s => s.name == recipecategoryname);
+            var recipecategory = RuntimeAssetDatabase.Get<ItemDefinition>().FirstOrDefault(s => s.name == recipecategoryname);
 
-            var item = ScriptableObject.CreateInstance<ItemDefinition>();
+            var item = GameMod.CreateAndRegister<ToolItemDefinition>(guidstring);
             item.name = codename;
             item.Category = recipecategory.Category;
             item.MaxStack = maxstack;
-            item.ItemPrefab.AddComponent<Armor>().SetArmor(CreateArmor(armorcodename, armorguidstring, maxhp, recipecategoryname), armorlevel);
+            //item.Prefab.AddComponent<Armor>().SetArmor(CreateArmor(armorcodename, armorguidstring, maxhp, recipecategoryname), armorlevel);
             item.Icon = icon;
             item.NameLocalization = new LocalizedString(".", name, null, name);
             item.DescriptionLocalization = new LocalizedString(".", desc, null, desc);
-
-            var guid = GUID.Parse(guidstring);
-
-            typeof(Definition).GetField("m_assetId", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance).SetValue(item, guid);
-
-            AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = item, Guid = guid, Labels = new string[0] } };
-            RuntimeAssetStorage.Add(assets);
         }
         public void CreateItemTracks(string codename, int surfacemovementspeed, int undergroundmovementspeed, int maxstack, string name, string desc, string guidstring, string recipecategoryname, Sprite icon)
         {
-            var recipecategory = GameResources.Instance.Items.FirstOrDefault(s => s.name == recipecategoryname);
+            var recipecategory = RuntimeAssetDatabase.Get<ItemDefinition>().FirstOrDefault(s => s.name == recipecategoryname);
 
-            var item = ScriptableObject.CreateInstance<TrainTracksItemDefinition>();
+            var item = GameMod.CreateAndRegister<TrainTracksItemDefinition>(guidstring);
             item.name = codename;
             item.Category = recipecategory.Category;
             item.SurfaceMovementSpeed = surfacemovementspeed;
@@ -228,19 +213,12 @@ namespace VolcanoidsMod
             item.Icon = icon;
             item.NameLocalization = new LocalizedString(".", name, null, name);
             item.DescriptionLocalization = new LocalizedString(".", desc, null, desc);
-
-            var guid = GUID.Parse(guidstring);
-
-            typeof(Definition).GetField("m_assetId", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance).SetValue(item, guid);
-
-            AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = item, Guid = guid, Labels = new string[0] } };
-            RuntimeAssetStorage.Add(assets);
         }
         public void CreateItemHull(string codename, float damageperdegree, float armorbonus, float temperatureflow, float temperature, int maxstack, string name, string desc, string guidstring, string recipecategoryname, Sprite icon)
         {
-            var recipecategory = GameResources.Instance.Items.FirstOrDefault(s => s.name == recipecategoryname);
+            var recipecategory = RuntimeAssetDatabase.Get<ItemDefinition>().FirstOrDefault(s => s.name == recipecategoryname);
 
-            var item = ScriptableObject.CreateInstance<TrainHullItemDefinition>();
+            var item = GameMod.CreateAndRegister<TrainHullItemDefinition>(guidstring);
             item.name = codename;
             item.Category = recipecategory.Category;
             item.Temperature = temperature;
@@ -251,45 +229,30 @@ namespace VolcanoidsMod
             item.Icon = icon;
             item.NameLocalization = new LocalizedString(".", name, null, name);
             item.DescriptionLocalization = new LocalizedString(".", desc, null, desc);
-
-            var guid = GUID.Parse(guidstring);
-
-            typeof(Definition).GetField("m_assetId", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance).SetValue(item, guid);
-
-            AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = item, Guid = guid, Labels = new string[0] } };
-            RuntimeAssetStorage.Add(assets);
         }
         public void CreateItemDrill(string codename, float armorbonus, int maxstack, string name, string desc, string guidstring, string recipecategoryname, Sprite icon)
         {
-            var recipecategory = GameResources.Instance.Items.FirstOrDefault(s => s.name == recipecategoryname);
-            var materials = GameResources.Instance.CellMaterials.ToArray();
+            var recipecategory = RuntimeAssetDatabase.Get<ItemDefinition>().FirstOrDefault(s => s.name == recipecategoryname);
+            var materials = RuntimeAssetDatabase.Get<CellMaterial>().ToArray();
 
-            var item = ScriptableObject.CreateInstance<TrainDrillItemDefinition>();
+            var item = GameMod.CreateAndRegister<TrainDrillItemDefinition>(guidstring);
             item.name = codename;
             item.Category = recipecategory.Category;
             item.ArmorBonus = armorbonus;
             item.Materials = materials;
             item.MaxStack = maxstack;
-            var recipecategorydrill = GameResources.Instance.Items.FirstOrDefault(s => s.name == recipecategoryname) as TrainDrillItemDefinition;
+            var recipecategorydrill = RuntimeAssetDatabase.Get<ItemDefinition>().FirstOrDefault(s => s.name == recipecategoryname) as TrainDrillItemDefinition;
             item.DrillPrefabs = recipecategorydrill.DrillPrefabs;
             item.DrillPrefabTrashes = recipecategorydrill.DrillPrefabTrashes;
             item.Icon = icon;
             item.NameLocalization = new LocalizedString(".", name, null, name);
             item.DescriptionLocalization = new LocalizedString(".", desc, null, desc);
-
-
-            var guid = GUID.Parse(guidstring);
-
-            typeof(Definition).GetField("m_assetId", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance).SetValue(item, guid);
-
-            AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = item, Guid = guid, Labels = new string[0] } };
-            RuntimeAssetStorage.Add(assets);
         }
         public void CreateItemEngine(string codename, int segmentcount, int mincoreslotcount, int maxstack, string name, string desc, string guidstring, string recipecategoryname, Sprite icon)
         {
-            var recipecategory = GameResources.Instance.Items.FirstOrDefault(s => s.name == recipecategoryname);
+            var recipecategory = RuntimeAssetDatabase.Get<ItemDefinition>().FirstOrDefault(s => s.name == recipecategoryname);
 
-            var item = ScriptableObject.CreateInstance<TrainEngineItemDefinition>();
+            var item = GameMod.CreateAndRegister<TrainEngineItemDefinition>(guidstring);
             item.name = codename;
             item.Category = recipecategory.Category;
             item.SegmentCount = segmentcount;
@@ -298,20 +261,12 @@ namespace VolcanoidsMod
             item.Icon = icon;
             item.NameLocalization = new LocalizedString(".", name, null, name);
             item.DescriptionLocalization = new LocalizedString(".", desc, null, desc);
-
-
-            var guid = GUID.Parse(guidstring);
-
-            typeof(Definition).GetField("m_assetId", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance).SetValue(item, guid);
-
-            AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = item, Guid = guid, Labels = new string[0] } };
-            RuntimeAssetStorage.Add(assets);
         }
         public void CreateItemCore(string codename, int slotcount, int maxenergy, int maxstack, string name, string desc, string guidstring, string recipecategoryname, Sprite icon)
         {
-            var recipecategory = GameResources.Instance.Items.FirstOrDefault(s => s.name == recipecategoryname);
+            var recipecategory = RuntimeAssetDatabase.Get<ItemDefinition>().FirstOrDefault(s => s.name == recipecategoryname);
 
-            var item = ScriptableObject.CreateInstance<TrainCoreItemDefinition>();
+            var item = GameMod.CreateAndRegister<TrainCoreItemDefinition>(guidstring);
             item.name = codename;
             item.Category = recipecategory.Category;
             item.SlotCount = slotcount;
@@ -320,33 +275,18 @@ namespace VolcanoidsMod
             item.MaxStack = maxstack;
             item.NameLocalization = new LocalizedString(".", name, null, name);
             item.DescriptionLocalization = new LocalizedString(".", desc, null, desc);
-
-            var guid = GUID.Parse(guidstring);
-
-            typeof(Definition).GetField("m_assetId", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance).SetValue(item, guid);
-
-            AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = item, Guid = guid, Labels = new string[0] } };
-            RuntimeAssetStorage.Add(assets);
         }
         public void CreateItem(string codename, int maxstack, string name, string desc, string guidstring, string recipecategoryname, Sprite icon)
         {
-            var recipecategory = GameResources.Instance.Items.FirstOrDefault(s => s.name == recipecategoryname);
+            var recipecategory = RuntimeAssetDatabase.Get<ItemDefinition>().FirstOrDefault(s => s.name == recipecategoryname);
 
-            var item = ScriptableObject.CreateInstance<ItemDefinition>();
+            var item = GameMod.CreateAndRegister<ItemDefinition>(guidstring);
             item.name = codename;
             item.Category = recipecategory.Category;
             item.MaxStack = maxstack;
             item.Icon = icon;
             item.NameLocalization = new LocalizedString(".", name, null, name);
             item.DescriptionLocalization = new LocalizedString(".", desc, null, desc);
-
-
-            var guid = GUID.Parse(guidstring);
-
-            typeof(Definition).GetField("m_assetId", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance).SetValue(item, guid);
-
-            AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = item, Guid = guid, Labels = new string[0] } };
-            RuntimeAssetStorage.Add(assets);
         }
         private bool haserror;
     }

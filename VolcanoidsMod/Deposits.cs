@@ -59,12 +59,12 @@ namespace VolcanoidsMod
         }
         public ItemDefinition GetItem(string itemname)
         {
-            ItemDefinition item = GameResources.Instance.Items.FirstOrDefault(s => s.name == itemname);
+            ItemDefinition item = RuntimeAssetDatabase.Get<ItemDefinition>().FirstOrDefault(s => s.name == itemname);
             if (item == null)
             {
                 Debug.LogError("Item is null, name: " + itemname + ". Replacing with NullItem");
                 haserror = true;
-                return GameResources.Instance.Items.FirstOrDefault(s => s.name == "NullItem");
+                return RuntimeAssetDatabase.Get<ItemDefinition>().FirstOrDefault(s => s.name == "NullItem");
             }
             return item;
 

@@ -75,7 +75,7 @@ namespace VolcanoidsMod
             }
             if (GenericMod.InfiniteInventory)
             {
-                foreach (Recipe recipe in GameResources.Instance.Recipes)
+                foreach (Recipe recipe in RuntimeAssetDatabase.Get<Recipe>())
                 {
                     recipe.Inputs = new InventoryItem[0];
                     recipe.ProductionTime = 0f;
@@ -84,7 +84,7 @@ namespace VolcanoidsMod
             }
             if (GenericMod.ArtificialSun)
             {
-                GameResources.Instance.Recipes.FirstOrDefault(s => s.name == "LightRecipe").Inputs = new InventoryItem[0];
+                RuntimeAssetDatabase.Get<Recipe>().FirstOrDefault(s => s.name == "LightRecipe").Inputs = new InventoryItem[0];
             }
             if (haserror)
             {
@@ -97,7 +97,7 @@ namespace VolcanoidsMod
         }
         public void CreateRecipe(InventoryItem[] Inputs, InventoryItem Output, string guidstring, Recipe recipecategory, string name, float ProductionTimeMultiplier, Sprite icon)
         {
-            var newrecipe = ScriptableObject.CreateInstance<Recipe>();
+            var newrecipe = GameMod.CreateAndRegister<Recipe>(guidstring);
             newrecipe.name = name;
             newrecipe.Order = recipecategory.Order;
             newrecipe.Inputs = Inputs;
@@ -106,22 +106,15 @@ namespace VolcanoidsMod
             newrecipe.RequiredUpgrades = recipecategory.RequiredUpgrades;
             newrecipe.Categories = recipecategory.Categories.ToArray();
             newrecipe.ProductionTime = recipecategory.ProductionTime * ProductionTimeMultiplier;
-
-            var guid = GUID.Parse(guidstring);
-
-            typeof(Definition).GetField("m_assetId", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance).SetValue(newrecipe, guid);
-
-            AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = newrecipe, Guid = guid, Labels = new string[0] } };
-            RuntimeAssetStorage.Add(assets);
         }
         public ItemDefinition GetItem(string itemname)
         {
-            ItemDefinition item = GameResources.Instance.Items.FirstOrDefault(s => s.name == itemname);
+            ItemDefinition item = RuntimeAssetDatabase.Get<ItemDefinition>().FirstOrDefault(s => s.name == itemname);
             if (item == null)
             {
                 Debug.LogError("Item is null, name: " + itemname + ". Replacing with NullItem");
                 haserror = true;
-                return GameResources.Instance.Items.FirstOrDefault(s => s.name == "NullItem");
+                return RuntimeAssetDatabase.Get<ItemDefinition>().FirstOrDefault(s => s.name == "NullItem");
             }
             return item;
 
@@ -151,12 +144,12 @@ namespace VolcanoidsMod
         public string ModPath;
         public Recipe GetRecipe(string recipename)
         {
-            var recipe = GameResources.Instance.Recipes.FirstOrDefault(s => s.name == recipename);
+            var recipe = RuntimeAssetDatabase.Get<Recipe>().FirstOrDefault(s => s.name == recipename);
             if (recipe == null)
             {
                 Debug.LogError("Specified Recipe not found: " + recipename);
                 haserror = true;
-                return GameResources.Instance.Recipes.FirstOrDefault(s => s.name == "NullItem");
+                return RuntimeAssetDatabase.Get<Recipe>().FirstOrDefault(s => s.name == "NullItem");
             }
             return recipe;
         }
@@ -206,7 +199,7 @@ namespace VolcanoidsMod
         }
         public void NewNoInputRecipe(InventoryItem Output, string guidstring, Recipe recipecategory, string name, float ProductionTimeMultiplier, Sprite icon)
         {
-            var newrecipe = ScriptableObject.CreateInstance<Recipe>();
+            var newrecipe = GameMod.CreateAndRegister<Recipe>(guidstring);
             newrecipe.name = name;
             newrecipe.Order = recipecategory.Order;
             newrecipe.Inputs = new InventoryItem[0];
@@ -215,13 +208,6 @@ namespace VolcanoidsMod
             newrecipe.RequiredUpgrades = recipecategory.RequiredUpgrades;
             newrecipe.Categories = recipecategory.Categories.ToArray();
             newrecipe.ProductionTime = recipecategory.ProductionTime * ProductionTimeMultiplier;
-
-            var guid = GUID.Parse(guidstring);
-
-            typeof(Definition).GetField("m_assetId", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance).SetValue(newrecipe, guid);
-
-            AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = newrecipe, Guid = guid, Labels = new string[0] } };
-            RuntimeAssetStorage.Add(assets);
         }
         private bool haserror;
 
