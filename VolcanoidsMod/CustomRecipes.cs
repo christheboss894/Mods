@@ -50,7 +50,8 @@ namespace VolcanoidsMod
 
         public void CreateRecipe(InventoryItem[] Inputs, InventoryItem Output, string guidstring, Recipe recipecategory, string name, float ProductionTimeMultiplier, Sprite icon)
         {
-            var newrecipe = ScriptableObject.CreateInstance<Recipe>();
+            var newrecipe = GameMod.CreateAndRegister<Recipe>(guidstring);
+
             newrecipe.name = name;
             newrecipe.Order = recipecategory.Order;
             newrecipe.Inputs = Inputs;
@@ -59,22 +60,15 @@ namespace VolcanoidsMod
             newrecipe.RequiredUpgrades = recipecategory.RequiredUpgrades;
             newrecipe.Categories = recipecategory.Categories.ToArray();
             newrecipe.ProductionTime = recipecategory.ProductionTime * ProductionTimeMultiplier;
-
-            var guid = GUID.Parse(guidstring);
-
-            typeof(Definition).GetField("m_assetId", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance).SetValue(newrecipe, guid);
-
-            AssetReference[] assets = new AssetReference[] { new AssetReference() { Object = newrecipe, Guid = guid, Labels = new string[0] } };
-            RuntimeAssetStorage.Add(assets);
         }
         public ItemDefinition GetItem(string itemname)
         {
-            ItemDefinition item = GameResources.Instance.Items.First(s => s.name == itemname);
+            ItemDefinition item = RuntimeAssetDatabase.Get<ItemDefinition>().First(s => s.name == itemname);
             if (item == null)
             {
                 Debug.LogError("Item is null, name: " + itemname + ". Replacing with NullItem");
                 haserror = true;
-                return GameResources.Instance.Items.First(s => s.name == "NullItem");
+                return RuntimeAssetDatabase.Get<ItemDefinition>().First(s => s.name == "NullItem");
             }
             return item;
 
@@ -103,12 +97,12 @@ namespace VolcanoidsMod
         }
         public Recipe GetRecipe(string recipename)
         {
-            var recipe = GameResources.Instance.Recipes.First(s => s.name == recipename);
+            var recipe = RuntimeAssetDatabase.Get<Recipe>().First(s => s.name == recipename);
             if (recipe == null)
             {
                 Debug.LogError("Specified Recipe not found: " + recipename);
                 haserror = true;
-                return GameResources.Instance.Recipes.First(s => s.name == "GenericNullItem");
+                return RuntimeAssetDatabase.Get<Recipe>().First(s => s.name == "GenericNullItem");
             }
             return recipe;
         }
