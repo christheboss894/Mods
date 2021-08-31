@@ -25,24 +25,39 @@ namespace VolcanoidsMod
         // Token: 0x06000005 RID: 5 RVA: 0x0000217C File Offset: 0x0000037C
         private void OnSceneLoaded(Scene scene, LoadSceneMode arg1)
         {
-            if (scene.name != "Island" || onSceneLoadedDone) return;
-            onSceneLoadedDone = true;
-            if (RuntimeAssetDatabase.Get<ItemDefinition>().FirstOrDefault(s => s.name == "NullItem") != null)
-            {
-                return;
-            }
+            if (scene.name == "Island")
             {
                 InfiniteInventoryCheck();
                 CheeseCheck();
                 ArtificialSunCheck();
-                new GameObject("GenericModItemScript", typeof(Items));
-                new GameObject("GenericModRecipeScript", typeof(Recipes));
-                new GameObject("GenericModCustomRecipesScript", typeof(CustomRecipes));
-                new GameObject("GenericModDepositsScript", typeof(Deposits));
+                Items.Run();
+                Recipes.Run();
+                CustomRecipes.Run();
+                Deposits.Run();
+                // Adds a new lava source to keep volcano running after end game
+                new GameObject("UnstableLavaSource", typeof(LavaSource));
+            }
+
+        }
+        /*private void OnGameLoaded(Scene gameScene)
+        {
+            if (gameScene.name == "Island")
+            {
+                Deposits.Run();
                 // Adds a new lava source to keep volcano running after end game
                 new GameObject("UnstableLavaSource", typeof(LavaSource));
             }
         }
+        private void OnInitData()
+        {
+            InfiniteInventoryCheck();
+            CheeseCheck();
+            ArtificialSunCheck();
+            Items.Run();
+            Recipes.Run();
+            CustomRecipes.Run();
+        }
+        */
         private void InfiniteInventoryCheck()
         {
             if (File.Exists(Path.Combine(

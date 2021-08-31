@@ -7,11 +7,10 @@ namespace VolcanoidsMod
 {
     public class Items : MonoBehaviour
     {
-        public string ModPath;
-        private void Awake()
+        public static string ModPath;
+        public  static void Run()
         {
             ModPath = Path.Combine(Application.persistentDataPath, "Mods/GenericMod");
-            Debug.Log("Module: " + GetType().Name + " loaded successfully");
             haserror = false;
             /*
             CreateItem("CaptainHead", 1, "Captain",
@@ -138,22 +137,18 @@ namespace VolcanoidsMod
                     item.MaxStack = 999;
                 }
             }
-            if (haserror)
-            {
-                Debug.LogError("Module: " + GetType().Name + " Initialized with error");
-            }
-            else
-            {
-                Debug.Log("Module: " + GetType().Name + " Initialized successfully");
-            }
         }
         private static void Initialize<T>(ref T str)
     where T : struct, ISerializationCallbackReceiver
         {
             str.OnAfterDeserialize();
         }
-        public Sprite Sprite2(string iconpath)
+        public static Sprite Sprite2(string iconpath)
         {
+            if (iconpath == null)
+            {
+                return null;
+            }
             var path = System.IO.Path.Combine(ModPath, iconpath);
             if (!File.Exists(path))
             {
@@ -170,7 +165,7 @@ namespace VolcanoidsMod
             var sprite = Sprite.Create(texture, new Rect(Vector2.zero, new Vector2(texture.width, texture.height)), new Vector2(0.5f, 0.5f), texture.width, 0, SpriteMeshType.FullRect, Vector4.zero, false);
             return sprite;
         }
-        public ArmorDefinition CreateArmor(string codename, string guidarmorstring, float maxhp, string armorinheritname)
+        public static ArmorDefinition CreateArmor(string codename, string guidarmorstring, float maxhp, string armorinheritname)
         {
             var armorinherit = RuntimeAssetDatabase.Get<ToolItemDefinition>().FirstOrDefault(s => s.name == armorinheritname);
             var oldarmordef = armorinherit.Prefab.GetComponent<Armor>().Definition;
@@ -187,7 +182,7 @@ namespace VolcanoidsMod
 
             return armor;
         }
-        public void CreateItemArmor(string codename, string armorcodename, string armorguidstring, float maxhp, float armorlevel, int maxstack, string name, string desc, string guidstring, string recipecategoryname, Sprite icon)
+        public static void CreateItemArmor(string codename, string armorcodename, string armorguidstring, float maxhp, float armorlevel, int maxstack, string name, string desc, string guidstring, string recipecategoryname, Sprite icon)
         {
             var recipecategory = RuntimeAssetDatabase.Get<ItemDefinition>().FirstOrDefault(s => s.name == recipecategoryname);
 
@@ -195,12 +190,12 @@ namespace VolcanoidsMod
             item.name = codename;
             item.Category = recipecategory.Category;
             item.MaxStack = maxstack;
-            //item.Prefab.AddComponent<Armor>().SetArmor(CreateArmor(armorcodename, armorguidstring, maxhp, recipecategoryname), armorlevel);
+            item.Prefab.AddComponent<Armor>().SetArmor(CreateArmor(armorcodename, armorguidstring, maxhp, recipecategoryname), armorlevel);
             item.Icon = icon;
             item.NameLocalization = new LocalizedString(".", name, null, name);
             item.DescriptionLocalization = new LocalizedString(".", desc, null, desc);
         }
-        public void CreateItemTracks(string codename, int surfacemovementspeed, int undergroundmovementspeed, int maxstack, string name, string desc, string guidstring, string recipecategoryname, Sprite icon)
+        public static void CreateItemTracks(string codename, int surfacemovementspeed, int undergroundmovementspeed, int maxstack, string name, string desc, string guidstring, string recipecategoryname, Sprite icon)
         {
             var recipecategory = RuntimeAssetDatabase.Get<ItemDefinition>().FirstOrDefault(s => s.name == recipecategoryname);
 
@@ -214,7 +209,7 @@ namespace VolcanoidsMod
             item.NameLocalization = new LocalizedString(".", name, null, name);
             item.DescriptionLocalization = new LocalizedString(".", desc, null, desc);
         }
-        public void CreateItemHull(string codename, float damageperdegree, float armorbonus, float temperatureflow, float temperature, int maxstack, string name, string desc, string guidstring, string recipecategoryname, Sprite icon)
+        public static void CreateItemHull(string codename, float damageperdegree, float armorbonus, float temperatureflow, float temperature, int maxstack, string name, string desc, string guidstring, string recipecategoryname, Sprite icon)
         {
             var recipecategory = RuntimeAssetDatabase.Get<ItemDefinition>().FirstOrDefault(s => s.name == recipecategoryname);
 
@@ -230,7 +225,7 @@ namespace VolcanoidsMod
             item.NameLocalization = new LocalizedString(".", name, null, name);
             item.DescriptionLocalization = new LocalizedString(".", desc, null, desc);
         }
-        public void CreateItemDrill(string codename, float armorbonus, int maxstack, string name, string desc, string guidstring, string recipecategoryname, Sprite icon)
+        public static void CreateItemDrill(string codename, float armorbonus, int maxstack, string name, string desc, string guidstring, string recipecategoryname, Sprite icon)
         {
             var recipecategory = RuntimeAssetDatabase.Get<ItemDefinition>().FirstOrDefault(s => s.name == recipecategoryname);
             var materials = RuntimeAssetDatabase.Get<CellMaterial>().ToArray();
@@ -248,7 +243,7 @@ namespace VolcanoidsMod
             item.NameLocalization = new LocalizedString(".", name, null, name);
             item.DescriptionLocalization = new LocalizedString(".", desc, null, desc);
         }
-        public void CreateItemEngine(string codename, int segmentcount, int mincoreslotcount, int maxstack, string name, string desc, string guidstring, string recipecategoryname, Sprite icon)
+        public static void CreateItemEngine(string codename, int segmentcount, int mincoreslotcount, int maxstack, string name, string desc, string guidstring, string recipecategoryname, Sprite icon)
         {
             var recipecategory = RuntimeAssetDatabase.Get<ItemDefinition>().FirstOrDefault(s => s.name == recipecategoryname);
 
@@ -262,7 +257,7 @@ namespace VolcanoidsMod
             item.NameLocalization = new LocalizedString(".", name, null, name);
             item.DescriptionLocalization = new LocalizedString(".", desc, null, desc);
         }
-        public void CreateItemCore(string codename, int slotcount, int maxenergy, int maxstack, string name, string desc, string guidstring, string recipecategoryname, Sprite icon)
+        public static void CreateItemCore(string codename, int slotcount, int maxenergy, int maxstack, string name, string desc, string guidstring, string recipecategoryname, Sprite icon)
         {
             var recipecategory = RuntimeAssetDatabase.Get<ItemDefinition>().FirstOrDefault(s => s.name == recipecategoryname);
 
@@ -276,7 +271,7 @@ namespace VolcanoidsMod
             item.NameLocalization = new LocalizedString(".", name, null, name);
             item.DescriptionLocalization = new LocalizedString(".", desc, null, desc);
         }
-        public void CreateItem(string codename, int maxstack, string name, string desc, string guidstring, string recipecategoryname, Sprite icon)
+        public static void CreateItem(string codename, int maxstack, string name, string desc, string guidstring, string recipecategoryname, Sprite icon)
         {
             var recipecategory = RuntimeAssetDatabase.Get<ItemDefinition>().FirstOrDefault(s => s.name == recipecategoryname);
 
@@ -288,6 +283,6 @@ namespace VolcanoidsMod
             item.NameLocalization = new LocalizedString(".", name, null, name);
             item.DescriptionLocalization = new LocalizedString(".", desc, null, desc);
         }
-        private bool haserror;
+        private static bool haserror;
     }
 }

@@ -7,25 +7,16 @@ namespace VolcanoidsMod
 {
     public class Deposits : MonoBehaviour
     {
-        private void Awake()
+        public static void Run()
         {
-            Debug.Log("Module: " + GetType().Name + " loaded successfully");
             depositsurface = Resources.FindObjectsOfTypeAll<DepositLocationSurface>();
             depositunderground = Resources.FindObjectsOfTypeAll<DepositLocationUnderground>();
             CreateDeposit(false, 10, "TungstenOre", 2, 5, "CoalOre");
             CreateDeposit(false, 5, "TungstenOre", 2, 5, "TitaniumOre");
             CreateDeposit(true, 10, "TungstenOre", 2, 5, "CoalOre");
             CreateDeposit(true, 5, "TungstenOre", 2, 5, "TitaniumOre");
-            if (haserror)
-            {
-                Debug.LogError("Module: " + GetType().Name + " Initialized with error");
-            }
-            else
-            {
-                Debug.Log("Module: " + GetType().Name + " Initialized successfully");
-            }
         }
-        public void CreateDeposit(bool Underground, int PercentageToReplace, string outputname, float minyield, float maxyield, string ItemToReplace)
+        public static void CreateDeposit(bool Underground, int PercentageToReplace, string outputname, float minyield, float maxyield, string ItemToReplace)
         {
             
             if(Underground)
@@ -57,7 +48,7 @@ namespace VolcanoidsMod
                 }
             }
         }
-        public ItemDefinition GetItem(string itemname)
+        public static ItemDefinition GetItem(string itemname)
         {
             ItemDefinition item = RuntimeAssetDatabase.Get<ItemDefinition>().FirstOrDefault(s => s.name == itemname);
             if (item == null)
@@ -70,9 +61,9 @@ namespace VolcanoidsMod
 
         }
         static readonly FieldInfo OreField = typeof(DepositLocation).GetField("m_ore", BindingFlags.NonPublic | BindingFlags.Instance);
-        private DepositLocationSurface[] depositsurface;
-        private DepositLocationUnderground[] depositunderground;
-        private bool haserror;
+        private static DepositLocationSurface[] depositsurface;
+        private static DepositLocationUnderground[] depositunderground;
+        private static bool haserror;
     }
     
 }
