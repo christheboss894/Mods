@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be1e1d28b2a975240a2e64d79b7d21c7, type: 3}
+  m_Name: GenericModTungstenPlates
+  m_EditorClassIdentifier: 
+  m_assetId:
+    Value0: 2433033979
+    Value1: 1234447768
+    Value2: 2467279785
+    Value3: 3213439466
+  m_name:
+    m_id: .
+    m_text: Tungsten plates
+    m_comment: 
+  m_description:
+    m_id: .
+    m_text: Used in production to produce devices
+    m_comment: 
+  Category: {fileID: 11400000, guid: 3f7b5aeb5d9f3494ea12aef61c202228, type: 2}
+  Prefabs: []
+  Icon: {fileID: 21300000, guid: 1d9944af1ccc7104abccb037d0d758a4, type: 3}
+  MaxStack: 10
+  HelpPageId: 
+  Stats:
+    m_properties: []

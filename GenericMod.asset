@@ -28,7 +28,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ce4e29b865b3fd47879e73172d49cd5, type: 3}
   m_Name: GenericMod
   m_EditorClassIdentifier: 
-  WorkshopItemId: 0
+  WorkshopItemId: 2589937980
   DeployDir: chris.GenericMod
   UploadTimestamp: 0
   UniqueModId: chris.GenericMod

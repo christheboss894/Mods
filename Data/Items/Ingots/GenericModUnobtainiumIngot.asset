@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be1e1d28b2a975240a2e64d79b7d21c7, type: 3}
+  m_Name: GenericModUnobtainiumIngot
+  m_EditorClassIdentifier: 
+  m_assetId:
+    Value0: 34535204
+    Value1: 1209362193
+    Value2: 3698079637
+    Value3: 3173314264
+  m_name:
+    m_id: .
+    m_text: Unobtainium Ingot
+    m_comment: 
+  m_description:
+    m_id: .
+    m_text: "A once hypothetical element has come to life due to the close proximity
+      to the volcano. \r\nThe use of Unobtainium allows for practically infinite
+      durability and protection"
+    m_comment: 
+  Category: {fileID: 11400000, guid: e7e24adb46dea6041bff192cbd506202, type: 2}
+  Prefabs: []
+  Icon: {fileID: 21300000, guid: ffeff2f04b6a343459728e4106331858, type: 3}
+  MaxStack: 10
+  HelpPageId: 
+  Stats:
+    m_properties: []

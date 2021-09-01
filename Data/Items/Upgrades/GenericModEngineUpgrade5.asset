@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35dd4601fa0fac648a14a46e3be29f65, type: 3}
+  m_Name: GenericModEngineUpgrade5
+  m_EditorClassIdentifier: 
+  m_assetId:
+    Value0: 50438496
+    Value1: 1091313394
+    Value2: 1014131614
+    Value3: 3518884069
+  m_name:
+    m_id: .
+    m_text: Engine 5
+    m_comment: 
+  m_description:
+    m_id: .
+    m_text: Using a tungsten titanium alloy allows for the engine to let in more
+      steam and provide more torque
+    m_comment: 
+  Category: {fileID: 11400000, guid: 04b09805a0c20f74d8dc92061ce9e505, type: 2}
+  Prefabs: []
+  Icon: {fileID: 21300000, guid: a4cdf49cc2444404eacee8e2b92e4cc1, type: 3}
+  MaxStack: 1
+  HelpPageId: 
+  Stats:
+    m_properties: []
+  MinimumCoreSlotCount: 500
+  SegmentCount: 6

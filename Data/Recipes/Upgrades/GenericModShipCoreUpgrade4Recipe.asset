@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ad48868c50a58b43b6914a2b2a83097, type: 3}
+  m_Name: GenericModShipCoreUpgrade4Recipe
+  m_EditorClassIdentifier: 
+  m_assetId:
+    Value0: 2261847486
+    Value1: 1300632757
+    Value2: 3506712968
+    Value3: 3586703496
+  Inputs:
+  - Item: {fileID: 11400000, guid: b3a0b7be95f2ec146a98f25dd98e7f98, type: 2}
+    Amount: 4
+    Stats:
+      m_set:
+        m_properties: []
+  - Item: {fileID: 11400000, guid: f878209ee44486c4faaf53d535e39ffc, type: 2}
+    Amount: 2
+    Stats:
+      m_set:
+        m_properties: []
+  - Item: {fileID: 11400000, guid: 7ba2d6c7d6bf2eb41b9732aa1b8f2396, type: 2}
+    Amount: 6
+    Stats:
+      m_set:
+        m_properties: []
+  - Item: {fileID: 11400000, guid: 8550516dc00b41e448a35d9246b71960, type: 2}
+    Amount: 4
+    Stats:
+      m_set:
+        m_properties: []
+  Output:
+    Item: {fileID: 11400000, guid: 026eaff5e43fa5b4aad6c2611e46eb86, type: 2}
+    Amount: 1
+    Stats:
+      m_set:
+        m_properties: []
+  Icon: {fileID: 0}
+  Order: 0
+  RequiredUpgrades:
+  - {fileID: 11400000, guid: c961d56fd4ca7c644abcb029eec8b993, type: 2}
+  Categories:
+  - {fileID: 11400000, guid: 0ab62bbf78086bc42be0e21b0b0a6f67, type: 2}
+  ProductionTime: 1200
