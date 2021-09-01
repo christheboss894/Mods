@@ -11,10 +11,10 @@ namespace VolcanoidsMod
         {
             depositsurface = Resources.FindObjectsOfTypeAll<DepositLocationSurface>();
             depositunderground = Resources.FindObjectsOfTypeAll<DepositLocationUnderground>();
-            CreateDeposit(false, 10, "TungstenOre", 2, 5, "CoalOre");
-            CreateDeposit(false, 5, "TungstenOre", 2, 5, "TitaniumOre");
-            CreateDeposit(true, 10, "TungstenOre", 2, 5, "CoalOre");
-            CreateDeposit(true, 5, "TungstenOre", 2, 5, "TitaniumOre");
+            CreateDeposit(false, 10, "GenericModTungstenOre", 2, 5, "CoalOre");
+            CreateDeposit(false, 5, "GenericModTungstenOre", 2, 5, "TitaniumOre");
+            CreateDeposit(true, 10, "GenericModTungstenOre", 2, 5, "CoalOre");
+            CreateDeposit(true, 5, "GenericModTungstenOre", 2, 5, "TitaniumOre");
         }
         public static void CreateDeposit(bool Underground, int PercentageToReplace, string outputname, float minyield, float maxyield, string ItemToReplace)
         {
@@ -55,7 +55,7 @@ namespace VolcanoidsMod
             {
                 Debug.LogError("Item is null, name: " + itemname + ". Replacing with NullItem");
                 haserror = true;
-                return RuntimeAssetDatabase.Get<ItemDefinition>().FirstOrDefault(s => s.name == "NullItem");
+                return RuntimeAssetDatabase.Get<ItemDefinition>().FirstOrDefault(s => s.name == "GenericModNullItem");
             }
             return item;
 

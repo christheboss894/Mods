@@ -15,7 +15,7 @@ namespace VolcanoidsMod
             System.Version version = typeof(GenericMod).Assembly.GetName().Version;
             SceneManager.sceneLoaded += OnSceneLoaded;
             InfiniteInventory = false;
-            Cheese = false;
+            //Cheese = false;
             ArtificialSun = false;
             if (scene.name == "Island")
                 Debug.Log(string.Format("GenericMod loaded: {0}, build time: {1}", version, File.GetLastWriteTime(typeof(GenericMod).Assembly.Location).ToShortTimeString()));
@@ -27,12 +27,9 @@ namespace VolcanoidsMod
         {
             if (scene.name == "Island")
             {
-                InfiniteInventoryCheck();
-                CheeseCheck();
                 ArtificialSunCheck();
-                Items.Run();
-                Recipes.Run();
-                CustomRecipes.Run();
+                //CheeseCheck();
+                InfiniteInventoryCheck();
                 Deposits.Run();
                 // Adds a new lava source to keep volcano running after end game
                 new GameObject("UnstableLavaSource", typeof(LavaSource));
@@ -65,7 +62,11 @@ namespace VolcanoidsMod
                     "InfiniteInventory.txt")))
             {
                 Debug.Log("Infinite Inventory enabled");
-                InfiniteInventory = true;
+                foreach (Recipe recipe in RuntimeAssetDatabase.Get<Recipe>())
+                {
+                    recipe.Inputs = new InventoryItem[0];
+                    recipe.ProductionTime = 0f;
+                }
             }
         }
         private void ArtificialSunCheck()
@@ -75,7 +76,8 @@ namespace VolcanoidsMod
                     "ArtificialSun.txt")))
             {
                 Debug.Log("Artificial Sun enabled");
-                ArtificialSun = true;
+                RuntimeAssetDatabase.Get<Recipe>().FirstOrDefault(s => s.name == "LightRecipe").Inputs = new InventoryItem[0];
+
             }
         }
         private void CheeseCheck()

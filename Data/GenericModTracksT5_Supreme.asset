@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae53a98b558484b42ae8716ebd40dd21, type: 3}
+  m_Name: GenericModTracksT5_Supreme
+  m_EditorClassIdentifier: 
+  m_assetId:
+    Value0: 2346339140
+    Value1: 1155484263
+    Value2: 1574867611
+    Value3: 1926726845
+  m_name:
+    m_id: .
+    m_text: Supreme Tracks
+    m_comment: 
+  m_description:
+    m_id: .
+    m_text: "Supremely engineered Tracks and efficient Gearbox ratios result in unmatched
+      performance, \r\n and allow it to maintain ultimate grip no matter the weight
+      of the drillship"
+    m_comment: 
+  Category: {fileID: 11400000, guid: 04b09805a0c20f74d8dc92061ce9e505, type: 2}
+  Prefabs: []
+  Icon: {fileID: 21300000, guid: d14c7612b1915e440a971f7e6351c98f, type: 3}
+  MaxStack: 1
+  HelpPageId: 
+  Stats:
+    m_properties: []
+  SurfaceMovementSpeed: 18
+  UndergroundMovementSpeed: 62
