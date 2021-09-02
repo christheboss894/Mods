@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be1e1d28b2a975240a2e64d79b7d21c7, type: 3}
+  m_Name: GenericModOmniIntel
+  m_EditorClassIdentifier: 
+  m_assetId:
+    Value0: 775868965
+    Value1: 1310402949
+    Value2: 2395791241
+    Value3: 682110457
+  m_name:
+    m_id: item.OmniIntel.name
+    m_text: Omni Intel
+    m_comment: Item name - OmniIntel
+  m_description:
+    m_id: item.OmniIntel.description
+    m_text: Combined Intel
+    m_comment: Item description - OmniIntel
+  Category: {fileID: 11400000, guid: 89848f11dee476a4f88b451568d0ac5f, type: 2}
+  Prefabs: []
+  Icon: {fileID: 21300000, guid: b3fea13a4efe33f40b584cf78c2694ac, type: 3}
+  MaxStack: 10
+  HelpPageId: 
+  Stats:
+    m_properties: []

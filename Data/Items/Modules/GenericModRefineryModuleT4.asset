@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be1e1d28b2a975240a2e64d79b7d21c7, type: 3}
+  m_Name: GenericModRefineryModuleT4
+  m_EditorClassIdentifier: 
+  m_assetId:
+    Value0: 3320717890
+    Value1: 1106430336
+    Value2: 2240913550
+    Value3: 2715599005
+  m_name:
+    m_id: item.RefineryModuleSide4.name
+    m_text: Refinery Module Tier 4
+    m_comment: Item name - RefineryModuleSide4
+  m_description:
+    m_id: item.RefineryModuleSide4.description
+    m_text: Module allowing refination of ore and scrap items
+    m_comment: Item description - RefineryModuleSide4
+  Category: {fileID: 11400000, guid: b134512597fc13343827d37bd52de8a6, type: 2}
+  Prefabs:
+  - {fileID: 1374079035428402, guid: 9ec32b71334a2624c96af8abba0b19c3, type: 3}
+  Icon: {fileID: 21300000, guid: 73edc5354a93d4347927accd94903e0d, type: 3}
+  MaxStack: 5
+  HelpPageId: '!ProductionModules#RefineryModuleSide3'
+  Stats:
+    m_properties:
+    - Property: {fileID: 11400000, guid: c635e5fb87ff7f24e9ad6b5bdeb10872, type: 2}
+      Value:
+        IntValue: 0
+        FloatValue: 0
+        StringValue: Side
+        ObjectValue: {fileID: 11400000, guid: 5055f8d03c74fd848853a7b4ebd15d2b, type: 2}

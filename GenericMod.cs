@@ -1,5 +1,7 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -33,8 +35,61 @@ namespace VolcanoidsMod
                 Deposits.Run();
                 // Adds a new lava source to keep volcano running after end game
                 new GameObject("UnstableLavaSource", typeof(LavaSource));
+                var fStationPrefabs = RuntimeAssetDatabase.Get<ItemDefinition>().FirstOrDefault(s => s.AssetId == REFINERY_STATION)?.Prefabs;
+                fStationPrefabs.Append(RuntimeAssetDatabase.Get<ItemDefinition>().FirstOrDefault(s => s.AssetId == REFINERY_HUB)?.Prefabs);
+                if (fStationPrefabs != null)
+                {
+                    foreach (var prefab in fStationPrefabs)
+                    {
+                        if (prefab.TryGetComponent<FactoryStation>(out var component))
+                        {
+                            var categories = component.Categories.ToList();
+                            categories.Add(RuntimeAssetDatabase.Get<Recipe>().First(s => s.name == "GenericModUnobtainiumIngotRecipe")?.Categories.First());
+                            var newList = new ArrayReader<RecipeCategory>(categories.ToArray());
+                            PRODUCER_M_CATEGORIES.SetValue(component, newList.ToArray());
+                        }
+                    }
+                }
+                var pStationPrefabs = RuntimeAssetDatabase.Get<ItemDefinition>().FirstOrDefault(s => s.AssetId == PRODUCTION_STATION)?.Prefabs;
+                pStationPrefabs.Append(RuntimeAssetDatabase.Get<ItemDefinition>().FirstOrDefault(s => s.AssetId == PRODUCTION_HUB)?.Prefabs);
+                if (pStationPrefabs != null)
+                {
+                    foreach (var prefab in pStationPrefabs)
+                    {
+                        if (prefab.TryGetComponent<FactoryStation>(out var component))
+                        {
+                            var categories = component.Categories.ToList();
+                            categories.Add(RuntimeAssetDatabase.Get<Recipe>().FirstOrDefault(s => s.name == "GenericModUnobtainiumBoltsRecipe")?.Categories.First());
+                            var newList = new ArrayReader<RecipeCategory>(categories.ToArray());
+                            PRODUCER_M_CATEGORIES.SetValue(component, newList.ToArray());
+                        }
+                    }
+                }
+                RuntimeAssetDatabase.Get<ModuleCategory>().FirstOrDefault(s => s.AssetId == PRODUCTION_CATEGORY).Modules.Append(RuntimeAssetDatabase.Get<ItemDefinition>().FirstOrDefault(s => s.name == "GenericModProductionModuleT4"));
+                RuntimeAssetDatabase.Get<ModuleCategory>().FirstOrDefault(s => s.AssetId == REFINEMENT_CATEGORY).Modules.Append(RuntimeAssetDatabase.Get<ItemDefinition>().FirstOrDefault(s => s.name == "GenericModRefineryModuleT4"));
+                RuntimeAssetDatabase.Get<ModuleCategory>().FirstOrDefault(s => s.AssetId == RESEARCH_CATEGORY).Modules.Append(RuntimeAssetDatabase.Get<ItemDefinition>().FirstOrDefault(s => s.name == "GenericModResearchModuleT4"));
+                /*
+                var rStationPrefabs = RuntimeAssetDatabase.Get<ItemDefinition>().FirstOrDefault(s => s.AssetId == RESEARCH_STATION)?.Prefabs;
+                rStationPrefabs.Append(RuntimeAssetDatabase.Get<ItemDefinition>().FirstOrDefault(s => s.AssetId == RESEARCH_HUB)?.Prefabs);
+                if (rStationPrefabs != null)
+                {
+                    foreach (var prefab in rStationPrefabs)
+                    {
+                        if (prefab.TryGetComponent<FactoryStation>(out var component))
+                        {
+                            var categories = component.Categories.ToList();
+                            categories.Add(RuntimeAssetDatabase.Get<Recipe>().FirstOrDefault(s => s.name == "")?.Categories.First());
+                            var newList = new ArrayReader<RecipeCategory>(categories.ToArray());
+                            PRODUCER_M_CATEGORIES.SetValue(component, newList.ToArray());
+                            foreach (RecipeCategory category in categories)
+                            {
+                                Debug.Log(category.name);
+                            }
+                        }
+                    }
+                }
+                */
             }
-
         }
         /*private void OnGameLoaded(Scene gameScene)
         {
@@ -67,8 +122,20 @@ namespace VolcanoidsMod
                     recipe.Inputs = new InventoryItem[0];
                     recipe.ProductionTime = 0f;
                 }
+
             }
         }
+        private static readonly GUID REFINERY_STATION = GUID.Parse("3b35b8f4f39847945b9881e25bb01f5a");
+        private static readonly GUID RESEARCH_STATION = GUID.Parse("a7764724dfb030a47a531f7c5e87ff9e");
+        private static readonly GUID PRODUCTION_STATION = GUID.Parse("7c32d187420152f4da3a79d465cbe87a");
+        private static readonly GUID REFINERY_HUB = GUID.Parse("d4446b96f5a46494e8bed91cc40c06b7");
+        private static readonly GUID RESEARCH_HUB = GUID.Parse("00175574f3d8b8c41b2da96cd19cfc40");
+        private static readonly GUID PRODUCTION_HUB = GUID.Parse("ca0964a43824b38468eed492d2385ec4");
+        private static readonly GUID PRODUCTION_CATEGORY = GUID.Parse("dc8b5ae383f169340a9b108e643b681f");
+        private static readonly GUID REFINEMENT_CATEGORY = GUID.Parse("b7e64936fe9469d4abe811b66f863cd3");
+        private static readonly GUID RESEARCH_CATEGORY = GUID.Parse("b425d7e3255eb054999d94d503ac2f04");
+
+        private static readonly FieldInfo PRODUCER_M_CATEGORIES = typeof(Producer).GetField("m_categories", BindingFlags.NonPublic | BindingFlags.Instance);
         private void ArtificialSunCheck()
         {
             if (File.Exists(Path.Combine(
@@ -77,7 +144,6 @@ namespace VolcanoidsMod
             {
                 Debug.Log("Artificial Sun enabled");
                 RuntimeAssetDatabase.Get<Recipe>().FirstOrDefault(s => s.name == "LightRecipe").Inputs = new InventoryItem[0];
-
             }
         }
         private void CheeseCheck()

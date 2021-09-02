@@ -10,26 +10,36 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9ad48868c50a58b43b6914a2b2a83097, type: 3}
-  m_Name: GenericModHullUpgrade5Recipe
+  m_Name: GenericModTracksT6Recipe
   m_EditorClassIdentifier: 
   m_assetId:
-    Value0: 2972876009
-    Value1: 1104892410
-    Value2: 276037799
-    Value3: 1256729518
+    Value0: 204377211
+    Value1: 1103718483
+    Value2: 3909406369
+    Value3: 503639583
   Inputs:
-  - Item: {fileID: 11400000, guid: bf62501989d249949a3bf039ae1398fb, type: 2}
-    Amount: 5
+  - Item: {fileID: 11400000, guid: 021e6cda674c72c49b05bb89d1d13650, type: 2}
+    Amount: 9
     Stats:
       m_set:
         m_properties: []
-  - Item: {fileID: 11400000, guid: c7b2d26ee3e27804086f0e194a7b5212, type: 2}
-    Amount: 4
+  - Item: {fileID: 11400000, guid: b5bf8bde3609bd04aa59fe93c1967931, type: 2}
+    Amount: 6
+    Stats:
+      m_set:
+        m_properties: []
+  - Item: {fileID: 11400000, guid: 3cdbf16ad0dc770469838c65d8f08c89, type: 2}
+    Amount: 6
+    Stats:
+      m_set:
+        m_properties: []
+  - Item: {fileID: 11400000, guid: 269115397915c4441a63dfb0a977278c, type: 2}
+    Amount: 2
     Stats:
       m_set:
         m_properties: []
   Output:
-    Item: {fileID: 11400000, guid: 16d2cb7a9d3dddc4aa5f5845554576c9, type: 2}
+    Item: {fileID: 11400000, guid: 13705fac475d50649a670be668f39b54, type: 2}
     Amount: 1
     Stats:
       m_set:
@@ -40,4 +50,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9ec0ab5515743fd4eaac5401ce4fa863, type: 2}
   Categories:
   - {fileID: 11400000, guid: 46d23cabf81f15e4a8f561723cdcc2a7, type: 2}
-  ProductionTime: 1600
+  ProductionTime: 5600

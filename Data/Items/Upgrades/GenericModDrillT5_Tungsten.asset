@@ -33,7 +33,7 @@ MonoBehaviour:
   HelpPageId: 
   Stats:
     m_properties: []
-  ArmorBonus: 0.9
+  ArmorBonus: 0.75
   Materials:
   - {fileID: 11400000, guid: 07f832e22aaa7f14d8efc146162692f9, type: 2}
   - {fileID: 11400000, guid: dd95e726c1fa2d145bb2feca10b51238, type: 2}

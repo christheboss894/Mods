@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6163efd03df19a43a19d5c0ca169515, type: 3}
+  m_Name: GenericModCategoryTechOmni
+  m_EditorClassIdentifier: 
+  m_assetId:
+    Value0: 301484184
+    Value1: 1248284397
+    Value2: 1364506767
+    Value3: 4123659654
+  m_name:
+    m_id: itemCategory.GenericModCategoryTechOmni.name
+    m_text: Omni Tech
+    m_comment: Item category name - GenericModCategoryTechOmni
+  m_description:
+    m_id: itemCategory.GenericModCategoryTechOmni.description
+    m_text: Technology for improving all fields
+    m_comment: Item category description - GenericModCategoryTechOmni
+  Icon: {fileID: 21300000, guid: b3fea13a4efe33f40b584cf78c2694ac, type: 3}
+  SortOrder: 1

@@ -32,7 +32,7 @@ MonoBehaviour:
   Icon: {fileID: 0}
   Order: 100
   RequiredUpgrades:
-  - {fileID: 11400000, guid: e6a3240191e18654fb22c183c8cfdffd, type: 2}
+  - {fileID: 11400000, guid: 159e6147774427e48944028e31867280, type: 2}
   Categories:
   - {fileID: 11400000, guid: a18c3ec1935bc4e438326de78e1728a8, type: 2}
   ProductionTime: 40

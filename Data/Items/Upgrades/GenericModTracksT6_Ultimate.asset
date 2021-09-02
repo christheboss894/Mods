@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae53a98b558484b42ae8716ebd40dd21, type: 3}
+  m_Name: GenericModTracksT6_Ultimate
+  m_EditorClassIdentifier: 
+  m_assetId:
+    Value0: 3405055793
+    Value1: 1174787444
+    Value2: 1857058473
+    Value3: 1169768326
+  m_name:
+    m_id: item.GenericModTracksT6_Ultimate.name
+    m_text: Ultimate Tracks
+    m_comment: Item name - GenericModTracksT6_Ultimate
+  m_description:
+    m_id: item.GenericModTracksT6_Ultimate.description
+    m_text: The ultimate track, made from Unobtainium to increase traction
+    m_comment: Item description - GenericModTracksT6_Ultimate
+  Category: {fileID: 11400000, guid: 04b09805a0c20f74d8dc92061ce9e505, type: 2}
+  Prefabs: []
+  Icon: {fileID: 21300000, guid: 51ceb8d2a69e93e4281f585b130ab7de, type: 3}
+  MaxStack: 1
+  HelpPageId: 
+  Stats:
+    m_properties: []
+  SurfaceMovementSpeed: 15
+  UndergroundMovementSpeed: 60

@@ -32,7 +32,7 @@ MonoBehaviour:
   HelpPageId: 
   Stats:
     m_properties: []
-  ArmorBonus: 0.9999
-  Temperature: 9999
-  TemperatureFlow: 0
-  DamagePerDegree: 0
+  ArmorBonus: 0.95
+  Temperature: 7500
+  TemperatureFlow: 0.1
+  DamagePerDegree: 5

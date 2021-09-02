@@ -34,5 +34,5 @@ MonoBehaviour:
   HelpPageId: 
   Stats:
     m_properties: []
-  SurfaceMovementSpeed: 18
-  UndergroundMovementSpeed: 62
+  SurfaceMovementSpeed: 13
+  UndergroundMovementSpeed: 34

@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be1e1d28b2a975240a2e64d79b7d21c7, type: 3}
+  m_Name: GenericModUpgradeEliteResearch
+  m_EditorClassIdentifier: 
+  m_assetId:
+    Value0: 1779514390
+    Value1: 1207017171
+    Value2: 2439069328
+    Value3: 989285290
+  m_name:
+    m_id: item.GenericModUpgradeEliteResearch.name
+    m_text: Upgrade elite research
+    m_comment: Item name - GenericModUpgradeEliteResearch
+  m_description:
+    m_id: item.GenericModUpgradeEliteResearch.description
+    m_text: Schematics for a built-in research module technology of Tier 4.
+    m_comment: Item description - GenericModUpgradeEliteResearch
+  Category: {fileID: 11400000, guid: 30c1f1eabe9eaff4aa05fe46ec864cec, type: 2}
+  Prefabs: []
+  Icon: {fileID: 21300000, guid: 24d92d663cde2584cb1e7a9725ba81b4, type: 3}
+  MaxStack: 5
+  HelpPageId: 
+  Stats:
+    m_properties: []
