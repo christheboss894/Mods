@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ad48868c50a58b43b6914a2b2a83097, type: 3}
+  m_Name: GenericModTungstenRevolverAmmoRecipe
+  m_EditorClassIdentifier: 
+  m_assetId:
+    Value0: 548351088
+    Value1: 1215203348
+    Value2: 2315678645
+    Value3: 4111936737
+  Inputs:
+  - Item: {fileID: 11400000, guid: 544aa72bbdafe42458a20393096b86e2, type: 2}
+    Amount: 1
+    Stats:
+      m_set:
+        m_properties: []
+  - Item: {fileID: 11400000, guid: d328101fb2c64b44fbb0e2748a64a037, type: 2}
+    Amount: 2
+    Stats:
+      m_set:
+        m_properties: []
+  Output:
+    Item: {fileID: 11400000, guid: e9b2cef840acb814aaad7735b48ce95d, type: 2}
+    Amount: 30
+    Stats:
+      m_set:
+        m_properties: []
+  Icon: {fileID: 0}
+  Order: 0
+  RequiredUpgrades:
+  - {fileID: 11400000, guid: c961d56fd4ca7c644abcb029eec8b993, type: 2}
+  Categories:
+  - {fileID: 11400000, guid: 0ab62bbf78086bc42be0e21b0b0a6f67, type: 2}
+  ProductionTime: 5

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: be1e1d28b2a975240a2e64d79b7d21c7, type: 3}
-  m_Name: GenericModVolcanite
+  m_Name: GenericModVolcaniteOre
   m_EditorClassIdentifier: 
   m_assetId:
     Value0: 3120742681
@@ -19,16 +19,22 @@ MonoBehaviour:
     Value3: 1307606730
   m_name:
     m_id: .
-    m_text: Volcanite Ingot
+    m_text: Volcanite Ore
     m_comment: 
   m_description:
     m_id: .
-    m_text: An ingot made by refining Volcanite Ore, has many uses
+    m_text: A highly potent fuel source.
     m_comment: 
-  Category: {fileID: 11400000, guid: e7e24adb46dea6041bff192cbd506202, type: 2}
+  Category: {fileID: 11400000, guid: 88fd6c5211a0f9744880c875b8ccd999, type: 2}
   Prefabs: []
-  Icon: {fileID: 21300000, guid: 1c8dd61a6dc12bf4e88337bc5dec6a8d, type: 3}
+  Icon: {fileID: 21300000, guid: 112a93df5937b034ea8facad12179f99, type: 3}
   MaxStack: 20
   HelpPageId: 
   Stats:
-    m_properties: []
+    m_properties:
+    - Property: {fileID: 11400000, guid: 01f395cf480d6864994aac5d15791d79, type: 2}
+      Value:
+        IntValue: 0
+        FloatValue: 25
+        StringValue: 
+        ObjectValue: {fileID: 0}

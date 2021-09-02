@@ -65,6 +65,7 @@ namespace VolcanoidsMod
                         }
                     }
                 }
+                //RuntimeAssetDatabase.Get<WeaponReloaderAmmoDefinition>().FirstOrDefault(s => s.AssetId == REVOLVER_RELOADER).Ammunition.Append(RuntimeAssetDatabase.Get<AmmoDefinition>().FirstOrDefault(s => s.name == "GenericModTungstenRevolverAmmo"));
                 RuntimeAssetDatabase.Get<ModuleCategory>().FirstOrDefault(s => s.AssetId == PRODUCTION_CATEGORY).Modules.Append(RuntimeAssetDatabase.Get<ItemDefinition>().FirstOrDefault(s => s.name == "GenericModProductionModuleT4"));
                 RuntimeAssetDatabase.Get<ModuleCategory>().FirstOrDefault(s => s.AssetId == REFINEMENT_CATEGORY).Modules.Append(RuntimeAssetDatabase.Get<ItemDefinition>().FirstOrDefault(s => s.name == "GenericModRefineryModuleT4"));
                 RuntimeAssetDatabase.Get<ModuleCategory>().FirstOrDefault(s => s.AssetId == RESEARCH_CATEGORY).Modules.Append(RuntimeAssetDatabase.Get<ItemDefinition>().FirstOrDefault(s => s.name == "GenericModResearchModuleT4"));
@@ -125,6 +126,7 @@ namespace VolcanoidsMod
 
             }
         }
+        private static readonly GUID REVOLVER_RELOADER = GUID.Parse("17d679d30a80ba941a68374092614434");
         private static readonly GUID REFINERY_STATION = GUID.Parse("3b35b8f4f39847945b9881e25bb01f5a");
         private static readonly GUID RESEARCH_STATION = GUID.Parse("a7764724dfb030a47a531f7c5e87ff9e");
         private static readonly GUID PRODUCTION_STATION = GUID.Parse("7c32d187420152f4da3a79d465cbe87a");

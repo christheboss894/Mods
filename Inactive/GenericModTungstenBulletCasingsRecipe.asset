@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ad48868c50a58b43b6914a2b2a83097, type: 3}
+  m_Name: GenericModTungstenBulletCasingsRecipe
+  m_EditorClassIdentifier: 
+  m_assetId:
+    Value0: 3487760639
+    Value1: 1141297467
+    Value2: 128872618
+    Value3: 2177106714
+  Inputs:
+  - Item: {fileID: 11400000, guid: b1e65113727a24446998b905a60c29b9, type: 2}
+    Amount: 1
+    Stats:
+      m_set:
+        m_properties: []
+  Output:
+    Item: {fileID: 11400000, guid: 544aa72bbdafe42458a20393096b86e2, type: 2}
+    Amount: 1
+    Stats:
+      m_set:
+        m_properties: []
+  Icon: {fileID: 0}
+  Order: 0
+  RequiredUpgrades:
+  - {fileID: 11400000, guid: c961d56fd4ca7c644abcb029eec8b993, type: 2}
+  Categories:
+  - {fileID: 11400000, guid: 0ab62bbf78086bc42be0e21b0b0a6f67, type: 2}
+  ProductionTime: 10

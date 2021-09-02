@@ -15,6 +15,10 @@ namespace VolcanoidsMod
             CreateDeposit(false, 5, "GenericModTungstenOre", 2, 5, "TitaniumOre");
             CreateDeposit(true, 10, "GenericModTungstenOre", 2, 5, "CoalOre");
             CreateDeposit(true, 5, "GenericModTungstenOre", 2, 5, "TitaniumOre");
+            CreateDeposit(false, 7, "GenericModVolcaniteOre", 2, 5, "IronOre");
+            CreateDeposit(false, 5, "GenericModVolcaniteOre", 2, 5, "CoalOre");
+            CreateDeposit(true, 10, "GenericModVolcaniteOre", 2, 5, "IronOre");
+            CreateDeposit(true, 4, "GenericModVolcaniteOre", 2, 5, "CoalOre");
         }
         public static void CreateDeposit(bool Underground, int PercentageToReplace, string outputname, float minyield, float maxyield, string ItemToReplace)
         {
@@ -54,7 +58,6 @@ namespace VolcanoidsMod
             if (item == null)
             {
                 Debug.LogError("Item is null, name: " + itemname + ". Replacing with NullItem");
-                haserror = true;
                 return RuntimeAssetDatabase.Get<ItemDefinition>().FirstOrDefault(s => s.name == "GenericModNullItem");
             }
             return item;
@@ -63,7 +66,6 @@ namespace VolcanoidsMod
         static readonly FieldInfo OreField = typeof(DepositLocation).GetField("m_ore", BindingFlags.NonPublic | BindingFlags.Instance);
         private static DepositLocationSurface[] depositsurface;
         private static DepositLocationUnderground[] depositunderground;
-        private static bool haserror;
     }
     
 }
