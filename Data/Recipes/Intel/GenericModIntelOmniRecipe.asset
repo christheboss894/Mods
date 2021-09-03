@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ad48868c50a58b43b6914a2b2a83097, type: 3}
+  m_Name: GenericModIntelOmniRecipe
+  m_EditorClassIdentifier: 
+  m_assetId:
+    Value0: 194658406
+    Value1: 1277515367
+    Value2: 3450008241
+    Value3: 436151556
+  Inputs:
+  - Item: {fileID: 11400000, guid: 536eaf1a97724d74f88779f8b5c0b6c0, type: 2}
+    Amount: 3
+    Stats:
+      m_set:
+        m_properties: []
+  - Item: {fileID: 11400000, guid: 22c217bb1f193494b925ba33f2bb96d7, type: 2}
+    Amount: 2
+    Stats:
+      m_set:
+        m_properties: []
+  - Item: {fileID: 11400000, guid: 269115397915c4441a63dfb0a977278c, type: 2}
+    Amount: 5
+    Stats:
+      m_set:
+        m_properties: []
+  Output:
+    Item: {fileID: 11400000, guid: 522de3e25892b1e498fdcce89fd28a82, type: 2}
+    Amount: 1
+    Stats:
+      m_set:
+        m_properties: []
+  Icon: {fileID: 0}
+  Order: 20
+  RequiredUpgrades:
+  - {fileID: 11400000, guid: 61c311a63de91f7409e31619aab47fa3, type: 2}
+  Categories:
+  - {fileID: 11400000, guid: ad9f6dc5050ec2b44a60d118f91b4a7c, type: 2}
+  ProductionTime: 450

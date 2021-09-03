@@ -10,24 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: be1e1d28b2a975240a2e64d79b7d21c7, type: 3}
-  m_Name: GenericModOmniIntel
+  m_Name: GenericModIntelResearchT4
   m_EditorClassIdentifier: 
   m_assetId:
-    Value0: 775868965
-    Value1: 1310402949
-    Value2: 2395791241
-    Value3: 682110457
+    Value0: 2717574709
+    Value1: 1205086073
+    Value2: 2409068687
+    Value3: 208342107
   m_name:
-    m_id: item.OmniIntel.name
-    m_text: Omni Intel
-    m_comment: Item name - OmniIntel
+    m_id: item.GenericModResearchIntelT4.name
+    m_text: Intel research t4
+    m_comment: Item name - GenericModResearchIntelT4
   m_description:
-    m_id: item.OmniIntel.description
+    m_id: item.GenericModResearchIntelT4.description
     m_text: Can be used in research to unlock new technology
-    m_comment: Item description - OmniIntel
-  Category: {fileID: 11400000, guid: 89848f11dee476a4f88b451568d0ac5f, type: 2}
+    m_comment: Item description - GenericModResearchIntelT4
+  Category: {fileID: 11400000, guid: 5d3d6cd79803f5e419774b5cb400b00f, type: 2}
   Prefabs: []
-  Icon: {fileID: 21300000, guid: b3fea13a4efe33f40b584cf78c2694ac, type: 3}
+  Icon: {fileID: 0}
   MaxStack: 10
   HelpPageId: 
   Stats:

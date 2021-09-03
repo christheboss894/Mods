@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ad48868c50a58b43b6914a2b2a83097, type: 3}
+  m_Name: GenericModIntelEngineeringRecipe
+  m_EditorClassIdentifier: 
+  m_assetId:
+    Value0: 1003839605
+    Value1: 1152929810
+    Value2: 1285520268
+    Value3: 139314213
+  Inputs:
+  - Item: {fileID: 11400000, guid: de49e8a2a5685b34e9cbd556749296f8, type: 2}
+    Amount: 3
+    Stats:
+      m_set:
+        m_properties: []
+  - Item: {fileID: 11400000, guid: 8194be0ee20cc9b47b4bc7b97345a9a3, type: 2}
+    Amount: 3
+    Stats:
+      m_set:
+        m_properties: []
+  Output:
+    Item: {fileID: 11400000, guid: 22c217bb1f193494b925ba33f2bb96d7, type: 2}
+    Amount: 1
+    Stats:
+      m_set:
+        m_properties: []
+  Icon: {fileID: 0}
+  Order: 10
+  RequiredUpgrades:
+  - {fileID: 11400000, guid: 159e6147774427e48944028e31867280, type: 2}
+  Categories:
+  - {fileID: 11400000, guid: 5488866930f44bd40baf0da145cb06df, type: 2}
+  ProductionTime: 220
