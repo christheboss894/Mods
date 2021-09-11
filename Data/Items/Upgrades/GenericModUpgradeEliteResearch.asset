@@ -28,7 +28,7 @@ MonoBehaviour:
   Category: {fileID: 11400000, guid: 30c1f1eabe9eaff4aa05fe46ec864cec, type: 2}
   Prefabs: []
   Icon: {fileID: 21300000, guid: 24d92d663cde2584cb1e7a9725ba81b4, type: 3}
-  MaxStack: 5
+  MaxStack: 1
   HelpPageId: 
   Stats:
     m_properties: []

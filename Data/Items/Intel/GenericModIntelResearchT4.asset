@@ -27,7 +27,7 @@ MonoBehaviour:
     m_comment: Item description - GenericModResearchIntelT4
   Category: {fileID: 11400000, guid: 5d3d6cd79803f5e419774b5cb400b00f, type: 2}
   Prefabs: []
-  Icon: {fileID: 0}
+  Icon: {fileID: 21300000, guid: fb841fb24f25b444fb8d89801e07f01c, type: 3}
   MaxStack: 10
   HelpPageId: 
   Stats:

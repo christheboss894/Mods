@@ -18,11 +18,11 @@ MonoBehaviour:
     Value2: 2395791241
     Value3: 682110457
   m_name:
-    m_id: item.OmniIntel.name
+    m_id: item.GenericModOmniIntel.name
     m_text: Omni Intel
     m_comment: Item name - OmniIntel
   m_description:
-    m_id: item.OmniIntel.description
+    m_id: item.GenericModOmniIntel.description
     m_text: Can be used in research to unlock new technology
     m_comment: Item description - OmniIntel
   Category: {fileID: 11400000, guid: 89848f11dee476a4f88b451568d0ac5f, type: 2}

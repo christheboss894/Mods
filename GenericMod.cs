@@ -34,7 +34,30 @@ namespace VolcanoidsMod
                 InfiniteInventoryCheck();
                 Deposits.Run();
                 // Adds a new lava source to keep volcano running after end game
-                new GameObject("UnstableLavaSource", typeof(LavaSource));
+                
+                var Zone3NewSource = new GameObject("GenericModZone3NewSource", typeof(LavaSource));
+                LAVASOURCE_M_INDEX.SetValue(Zone3NewSource.GetComponent<LavaSource>(), 3);
+                LAVASOURCE_M_KIND.SetValue(Zone3NewSource.GetComponent<LavaSource>(), LavaSourceKind.LavaSource);
+                Zone3NewSource.GetComponent<LavaSource>().SetSourceActive(true);
+                Zone3NewSource.GetComponent<LavaSource>().Save();
+
+                var VolcanoNewSource = new GameObject("GenericModVolcanoNewSource", typeof(LavaSource));
+                LAVASOURCE_M_INDEX.SetValue(VolcanoNewSource.GetComponent<LavaSource>(), 4);
+                LAVASOURCE_M_KIND.SetValue(VolcanoNewSource.GetComponent<LavaSource>(), LavaSourceKind.VolcanoSource);
+                VolcanoNewSource.GetComponent<LavaSource>().SetSourceActive(true);
+                VolcanoNewSource.GetComponent<LavaSource>().Save();
+
+                
+                foreach (LavaSource source in LavaSource.Instances)
+                {
+                    if (source.Kind == LavaSourceKind.VolcanoSource)
+                    {
+                        source.enabled = true;
+                        source.SetActive(true);
+                        source.SetSourceActive(true);
+                    }
+                }
+
                 var fStationPrefabs = RuntimeAssetDatabase.Get<ItemDefinition>().FirstOrDefault(s => s.AssetId == REFINERY_STATION)?.Prefabs;
                 fStationPrefabs.Append(RuntimeAssetDatabase.Get<ItemDefinition>().FirstOrDefault(s => s.AssetId == REFINERY_HUB)?.Prefabs);
                 if (fStationPrefabs != null)
@@ -65,11 +88,6 @@ namespace VolcanoidsMod
                         }
                     }
                 }
-                //RuntimeAssetDatabase.Get<WeaponReloaderAmmoDefinition>().FirstOrDefault(s => s.AssetId == REVOLVER_RELOADER).Ammunition.Append(RuntimeAssetDatabase.Get<AmmoDefinition>().FirstOrDefault(s => s.name == "GenericModTungstenRevolverAmmo"));
-                RuntimeAssetDatabase.Get<ModuleCategory>().FirstOrDefault(s => s.AssetId == PRODUCTION_CATEGORY).Modules.Append(RuntimeAssetDatabase.Get<ItemDefinition>().FirstOrDefault(s => s.name == "GenericModProductionModuleT4"));
-                RuntimeAssetDatabase.Get<ModuleCategory>().FirstOrDefault(s => s.AssetId == REFINEMENT_CATEGORY).Modules.Append(RuntimeAssetDatabase.Get<ItemDefinition>().FirstOrDefault(s => s.name == "GenericModRefineryModuleT4"));
-                RuntimeAssetDatabase.Get<ModuleCategory>().FirstOrDefault(s => s.AssetId == RESEARCH_CATEGORY).Modules.Append(RuntimeAssetDatabase.Get<ItemDefinition>().FirstOrDefault(s => s.name == "GenericModResearchModuleT4"));
-                /*
                 var rStationPrefabs = RuntimeAssetDatabase.Get<ItemDefinition>().FirstOrDefault(s => s.AssetId == RESEARCH_STATION)?.Prefabs;
                 rStationPrefabs.Append(RuntimeAssetDatabase.Get<ItemDefinition>().FirstOrDefault(s => s.AssetId == RESEARCH_HUB)?.Prefabs);
                 if (rStationPrefabs != null)
@@ -79,17 +97,18 @@ namespace VolcanoidsMod
                         if (prefab.TryGetComponent<FactoryStation>(out var component))
                         {
                             var categories = component.Categories.ToList();
-                            categories.Add(RuntimeAssetDatabase.Get<Recipe>().FirstOrDefault(s => s.name == "")?.Categories.First());
+                            categories.Add(RuntimeAssetDatabase.Get<Recipe>().FirstOrDefault(s => s.name == "GenericModIntelOmniRecipe")?.Categories.First());
                             var newList = new ArrayReader<RecipeCategory>(categories.ToArray());
                             PRODUCER_M_CATEGORIES.SetValue(component, newList.ToArray());
-                            foreach (RecipeCategory category in categories)
-                            {
-                                Debug.Log(category.name);
-                            }
                         }
                     }
                 }
-                */
+
+                //RuntimeAssetDatabase.Get<WeaponReloaderAmmoDefinition>().FirstOrDefault(s => s.AssetId == REVOLVER_RELOADER).Ammunition.Append(RuntimeAssetDatabase.Get<AmmoDefinition>().FirstOrDefault(s => s.name == "GenericModTungstenRevolverAmmo"));
+                RuntimeAssetDatabase.Get<ModuleCategory>().FirstOrDefault(s => s.AssetId == PRODUCTION_CATEGORY).Modules.Append(RuntimeAssetDatabase.Get<ItemDefinition>().FirstOrDefault(s => s.name == "GenericModProductionModuleT4"));
+                RuntimeAssetDatabase.Get<ModuleCategory>().FirstOrDefault(s => s.AssetId == REFINEMENT_CATEGORY).Modules.Append(RuntimeAssetDatabase.Get<ItemDefinition>().FirstOrDefault(s => s.name == "GenericModRefineryModuleT4"));
+                RuntimeAssetDatabase.Get<ModuleCategory>().FirstOrDefault(s => s.AssetId == RESEARCH_CATEGORY).Modules.Append(RuntimeAssetDatabase.Get<ItemDefinition>().FirstOrDefault(s => s.name == "GenericModResearchModuleT4"));
+                
             }
         }
         /*private void OnGameLoaded(Scene gameScene)
@@ -138,6 +157,8 @@ namespace VolcanoidsMod
         private static readonly GUID RESEARCH_CATEGORY = GUID.Parse("b425d7e3255eb054999d94d503ac2f04");
 
         private static readonly FieldInfo PRODUCER_M_CATEGORIES = typeof(Producer).GetField("m_categories", BindingFlags.NonPublic | BindingFlags.Instance);
+        private static readonly FieldInfo LAVASOURCE_M_INDEX = typeof(LavaSource).GetField("m_index", BindingFlags.NonPublic | BindingFlags.Instance);
+        private static readonly FieldInfo LAVASOURCE_M_KIND = typeof(LavaSource).GetField("m_kind", BindingFlags.NonPublic | BindingFlags.Instance);
         private void ArtificialSunCheck()
         {
             if (File.Exists(Path.Combine(
