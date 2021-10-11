@@ -30,14 +30,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WorkshopItemId: 2589937980
   DeployDir: chris.GenericMod
-  UploadTimestamp: 0
+  UploadTimestamp: 1633668336870
   UniqueModId: chris.GenericMod
   Title: GenericMod
   Thumbnail: {fileID: 2800000, guid: 53f79276d288e704b829dbab6618611a, type: 3}
+  Tags: 628
+  MultiplayerMode: 0
   LoadGroup: 0
   LoadOrder: 0
-  Version: 1.0
-  ChangeNote: Updated from Customization to Workshop
+  PersistentDirName: 
+  Version: 1.1.1
+  ChangeNote: Lol fixed big oof
   SkipContentPatches: 0
   DebugBuild: 0
   AssemblyDefinitions:

@@ -11,14 +11,19 @@ namespace VolcanoidsMod
         {
             depositsurface = Resources.FindObjectsOfTypeAll<DepositLocationSurface>();
             depositunderground = Resources.FindObjectsOfTypeAll<DepositLocationUnderground>();
+
+            //Aboveground
             CreateDeposit(false, 10, "GenericModTungstenOre", 2, 5, "CoalOre");
             CreateDeposit(false, 5, "GenericModTungstenOre", 2, 5, "TitaniumOre");
+            CreateDeposit(false, 5, "GenericModVolcaniteOre", 1, 5, "IronOre");
+            CreateDeposit(false, 3, "GenericModVolcaniteOre", 1, 3, "CoalOre");
+
+            //Underground
             CreateDeposit(true, 10, "GenericModTungstenOre", 2, 5, "CoalOre");
             CreateDeposit(true, 5, "GenericModTungstenOre", 2, 5, "TitaniumOre");
-            CreateDeposit(false, 7, "GenericModVolcaniteOre", 2, 5, "IronOre");
-            CreateDeposit(false, 5, "GenericModVolcaniteOre", 2, 5, "CoalOre");
-            CreateDeposit(true, 10, "GenericModVolcaniteOre", 2, 5, "IronOre");
-            CreateDeposit(true, 4, "GenericModVolcaniteOre", 2, 5, "CoalOre");
+            CreateDeposit(true, 7, "GenericModVolcaniteOre", 1, 5, "IronOre");
+            CreateDeposit(true, 5, "GenericModVolcaniteOre", 1, 3, "CoalOre");
+
         }
         public static void CreateDeposit(bool Underground, int PercentageToReplace, string outputname, float minyield, float maxyield, string ItemToReplace)
         {

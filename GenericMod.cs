@@ -3,6 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using UnityEngine;
+using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
 
 namespace VolcanoidsMod
@@ -13,36 +14,37 @@ namespace VolcanoidsMod
         // Token: 0x06000004 RID: 4 RVA: 0x00002110 File Offset: 0x00000310
         public override void Load()
         {
-            ModPath = Path.Combine(Application.persistentDataPath, "Mods/GenericMod");
             System.Version version = typeof(GenericMod).Assembly.GetName().Version;
-            SceneManager.sceneLoaded += OnSceneLoaded;
-            InfiniteInventory = false;
-            //Cheese = false;
-            ArtificialSun = false;
-            if (scene.name == "Island")
-                Debug.Log(string.Format("GenericMod loaded: {0}, build time: {1}", version, File.GetLastWriteTime(typeof(GenericMod).Assembly.Location).ToShortTimeString()));
-            Loaded = true;
+            Debug.Log(string.Format("GenericMod loaded: {0}, build time: {1}", version, File.GetLastWriteTime(typeof(GenericMod).Assembly.Location).ToShortTimeString()));
         }
 
         // Token: 0x06000005 RID: 5 RVA: 0x0000217C File Offset: 0x0000037C
-        private void OnSceneLoaded(Scene scene, LoadSceneMode arg1)
+        public override void OnGameLoaded(Scene scene)
         {
-            if (scene.name == "Island")
+            if (scene.name == "Island" && !NetworkServer.active)
             {
-                ArtificialSunCheck();
-                //CheeseCheck();
-                InfiniteInventoryCheck();
                 Deposits.Run();
-                // Adds a new lava source to keep volcano running after end game
-                
+                // Adds new lava sources to keep volcano running after end game
+                var Zone1NewSource = new GameObject("GenericModZone1NewSource", typeof(LavaSource));
+                LAVASOURCE_M_INDEX.SetValue(Zone1NewSource.GetComponent<LavaSource>(), 0);
+                LAVASOURCE_M_KIND.SetValue(Zone1NewSource.GetComponent<LavaSource>(), LavaSourceKind.LavaSource);
+                Zone1NewSource.GetComponent<LavaSource>().SetSourceActive(true);
+                Zone1NewSource.GetComponent<LavaSource>().Save();
+
+                var Zone2NewSource = new GameObject("GenericModZone2NewSource", typeof(LavaSource));
+                LAVASOURCE_M_INDEX.SetValue(Zone2NewSource.GetComponent<LavaSource>(), 1);
+                LAVASOURCE_M_KIND.SetValue(Zone2NewSource.GetComponent<LavaSource>(), LavaSourceKind.LavaSource);
+                Zone2NewSource.GetComponent<LavaSource>().SetSourceActive(true);
+                Zone2NewSource.GetComponent<LavaSource>().Save();
+
                 var Zone3NewSource = new GameObject("GenericModZone3NewSource", typeof(LavaSource));
-                LAVASOURCE_M_INDEX.SetValue(Zone3NewSource.GetComponent<LavaSource>(), 3);
+                LAVASOURCE_M_INDEX.SetValue(Zone3NewSource.GetComponent<LavaSource>(), 2);
                 LAVASOURCE_M_KIND.SetValue(Zone3NewSource.GetComponent<LavaSource>(), LavaSourceKind.LavaSource);
                 Zone3NewSource.GetComponent<LavaSource>().SetSourceActive(true);
                 Zone3NewSource.GetComponent<LavaSource>().Save();
 
                 var VolcanoNewSource = new GameObject("GenericModVolcanoNewSource", typeof(LavaSource));
-                LAVASOURCE_M_INDEX.SetValue(VolcanoNewSource.GetComponent<LavaSource>(), 4);
+                LAVASOURCE_M_INDEX.SetValue(VolcanoNewSource.GetComponent<LavaSource>(), 3);
                 LAVASOURCE_M_KIND.SetValue(VolcanoNewSource.GetComponent<LavaSource>(), LavaSourceKind.VolcanoSource);
                 VolcanoNewSource.GetComponent<LavaSource>().SetSourceActive(true);
                 VolcanoNewSource.GetComponent<LavaSource>().Save();
@@ -73,6 +75,7 @@ namespace VolcanoidsMod
                         }
                     }
                 }
+
                 var pStationPrefabs = RuntimeAssetDatabase.Get<ItemDefinition>().FirstOrDefault(s => s.AssetId == PRODUCTION_STATION)?.Prefabs;
                 pStationPrefabs.Append(RuntimeAssetDatabase.Get<ItemDefinition>().FirstOrDefault(s => s.AssetId == PRODUCTION_HUB)?.Prefabs);
                 if (pStationPrefabs != null)
@@ -88,6 +91,7 @@ namespace VolcanoidsMod
                         }
                     }
                 }
+
                 var rStationPrefabs = RuntimeAssetDatabase.Get<ItemDefinition>().FirstOrDefault(s => s.AssetId == RESEARCH_STATION)?.Prefabs;
                 rStationPrefabs.Append(RuntimeAssetDatabase.Get<ItemDefinition>().FirstOrDefault(s => s.AssetId == RESEARCH_HUB)?.Prefabs);
                 if (rStationPrefabs != null)
@@ -108,41 +112,6 @@ namespace VolcanoidsMod
                 RuntimeAssetDatabase.Get<ModuleCategory>().FirstOrDefault(s => s.AssetId == PRODUCTION_CATEGORY).Modules.Append(RuntimeAssetDatabase.Get<ItemDefinition>().FirstOrDefault(s => s.name == "GenericModProductionModuleT4"));
                 RuntimeAssetDatabase.Get<ModuleCategory>().FirstOrDefault(s => s.AssetId == REFINEMENT_CATEGORY).Modules.Append(RuntimeAssetDatabase.Get<ItemDefinition>().FirstOrDefault(s => s.name == "GenericModRefineryModuleT4"));
                 RuntimeAssetDatabase.Get<ModuleCategory>().FirstOrDefault(s => s.AssetId == RESEARCH_CATEGORY).Modules.Append(RuntimeAssetDatabase.Get<ItemDefinition>().FirstOrDefault(s => s.name == "GenericModResearchModuleT4"));
-                
-            }
-        }
-        /*private void OnGameLoaded(Scene gameScene)
-        {
-            if (gameScene.name == "Island")
-            {
-                Deposits.Run();
-                // Adds a new lava source to keep volcano running after end game
-                new GameObject("UnstableLavaSource", typeof(LavaSource));
-            }
-        }
-        private void OnInitData()
-        {
-            InfiniteInventoryCheck();
-            CheeseCheck();
-            ArtificialSunCheck();
-            Items.Run();
-            Recipes.Run();
-            CustomRecipes.Run();
-        }
-        */
-        private void InfiniteInventoryCheck()
-        {
-            if (File.Exists(Path.Combine(
-                    ModPath,
-                    "InfiniteInventory.txt")))
-            {
-                Debug.Log("Infinite Inventory enabled");
-                foreach (Recipe recipe in RuntimeAssetDatabase.Get<Recipe>())
-                {
-                    recipe.Inputs = new InventoryItem[0];
-                    recipe.ProductionTime = 0f;
-                }
-
             }
         }
         private static readonly GUID REVOLVER_RELOADER = GUID.Parse("17d679d30a80ba941a68374092614434");
@@ -159,36 +128,5 @@ namespace VolcanoidsMod
         private static readonly FieldInfo PRODUCER_M_CATEGORIES = typeof(Producer).GetField("m_categories", BindingFlags.NonPublic | BindingFlags.Instance);
         private static readonly FieldInfo LAVASOURCE_M_INDEX = typeof(LavaSource).GetField("m_index", BindingFlags.NonPublic | BindingFlags.Instance);
         private static readonly FieldInfo LAVASOURCE_M_KIND = typeof(LavaSource).GetField("m_kind", BindingFlags.NonPublic | BindingFlags.Instance);
-        private void ArtificialSunCheck()
-        {
-            if (File.Exists(Path.Combine(
-                    ModPath,
-                    "ArtificialSun.txt")))
-            {
-                Debug.Log("Artificial Sun enabled");
-                RuntimeAssetDatabase.Get<Recipe>().FirstOrDefault(s => s.name == "LightRecipe").Inputs = new InventoryItem[0];
-            }
-        }
-        private void CheeseCheck()
-        {
-            if (File.Exists(Path.Combine(
-                    ModPath,
-                    "Cheese.txt")))
-            {
-                Debug.Log("Cheese enabled");
-                Cheese = true;
-            }
-        }
-
-        public bool Loaded;
-        public static bool InfiniteInventory;
-        public static bool onSceneLoadedDone;
-        public static bool Cheese;
-        public static bool ArtificialSun;
-
-        public static Scene scene;
-
-        public string ModPath;
-
     }
 }
