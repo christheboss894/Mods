@@ -33,7 +33,7 @@ MonoBehaviour:
     Stats:
       m_set:
         m_properties: []
-  - Item: {fileID: 11400000, guid: 522de3e25892b1e498fdcce89fd28a82, type: 2}
+  - Item: {fileID: 11400000, guid: 536eaf1a97724d74f88779f8b5c0b6c0, type: 2}
     Amount: 1
     Stats:
       m_set:

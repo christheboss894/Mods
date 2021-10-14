@@ -40,4 +40,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 159e6147774427e48944028e31867280, type: 2}
   Categories:
   - {fileID: 11400000, guid: 5488866930f44bd40baf0da145cb06df, type: 2}
+  - {fileID: 11400000, guid: ad9f6dc5050ec2b44a60d118f91b4a7c, type: 2}
   ProductionTime: 220

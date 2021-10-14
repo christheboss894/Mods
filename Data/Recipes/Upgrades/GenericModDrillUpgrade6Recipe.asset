@@ -38,6 +38,11 @@ MonoBehaviour:
     Stats:
       m_set:
         m_properties: []
+  - Item: {fileID: 11400000, guid: 522de3e25892b1e498fdcce89fd28a82, type: 2}
+    Amount: 2
+    Stats:
+      m_set:
+        m_properties: []
   Output:
     Item: {fileID: 11400000, guid: d88ff503b5c7a7c41bca618e39e18bb6, type: 2}
     Amount: 1
