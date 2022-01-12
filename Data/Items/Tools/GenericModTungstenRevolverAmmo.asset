@@ -18,29 +18,26 @@ MonoBehaviour:
     Value2: 1400363690
     Value3: 3583952971
   m_name:
-    m_id: item.RevolverHighPowerAmmo.name
+    m_id: item.GenericModTungstenRevolverAmmo.name
     m_text: Tungsten revolver ammo
-    m_comment: Item name - RevolverHighPowerAmmo
+    m_comment: Item name - GenericModTungstenRevolverAmmo
   m_description:
-    m_id: item.RevolverHighPowerAmmo.description
-    m_text: Very powerful tungsten ammo for revolver
-    m_comment: Item description - RevolverHighPowerAmmo
+    m_id: item.GenericModTungstenRevolverAmmo.description
+    m_text: 'Very powerful tungsten ammo for revolver
+
+      Press middle mouse button
+      to switch ammo'
+    m_comment: Item description - GenericModTungstenRevolverAmmo
   Category: {fileID: 11400000, guid: 2e709134fa556f646a13d9c36077569b, type: 2}
   Prefabs: []
   Icon: {fileID: 21300000, guid: 67d11068bb9ee194db1f61ffdd47bef1, type: 3}
   MaxStack: 60
   HelpPageId: '!Ammo#RevolverHighPowerAmmo'
   Stats:
-    m_properties:
-    - Property: {fileID: 0}
-      Value:
-        IntValue: 0
-        FloatValue: 0
-        StringValue: 
-        ObjectValue: {fileID: 0}
+    m_properties: []
   AmmoStats:
     Item: {fileID: 0}
-    Damage: 65
+    Damage: 45
     DamageType: 2
     Spread: 1
     ProjectileCount: 1
@@ -56,9 +53,9 @@ MonoBehaviour:
     EffectiveRange: 15
     Range: 120
     DamageAtRangeMult: 0.2
-    MuzzleVelocity: 130
-    GravityFactor: 0.6
-    Noise: 10
+    MuzzleVelocity: 200
+    GravityFactor: 0.3
+    Noise: 15
     HipAccuracy:
       Cone: 3
       ConeMoving: 4.5

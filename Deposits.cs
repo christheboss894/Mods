@@ -13,14 +13,14 @@ namespace VolcanoidsMod
             depositunderground = Resources.FindObjectsOfTypeAll<DepositLocationUnderground>();
 
             //Aboveground
-            CreateDeposit(false, 10, "GenericModTungstenOre", 2, 5, "CoalOre");
-            CreateDeposit(false, 5, "GenericModTungstenOre", 2, 5, "TitaniumOre");
+            CreateDeposit(false, 10, "GenericModTungstenOre", 5, 12, "CoalOre");
+            CreateDeposit(false, 5, "GenericModTungstenOre", 6, 16, "TitaniumOre");
             CreateDeposit(false, 5, "GenericModVolcaniteOre", 1, 5, "IronOre");
             CreateDeposit(false, 3, "GenericModVolcaniteOre", 1, 3, "CoalOre");
 
             //Underground
-            CreateDeposit(true, 10, "GenericModTungstenOre", 2, 5, "CoalOre");
-            CreateDeposit(true, 5, "GenericModTungstenOre", 2, 5, "TitaniumOre");
+            CreateDeposit(true, 10, "GenericModTungstenOre", 5, 12, "CoalOre");
+            CreateDeposit(true, 5, "GenericModTungstenOre", 6, 16, "TitaniumOre");
             CreateDeposit(true, 7, "GenericModVolcaniteOre", 1, 5, "IronOre");
             CreateDeposit(true, 5, "GenericModVolcaniteOre", 1, 3, "CoalOre");
 

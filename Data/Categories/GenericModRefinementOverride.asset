@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b01986a11d8956b498797ca65d0ba5c8, type: 3}
+  m_Name: GenericModRefinementOverride
+  m_EditorClassIdentifier: 
+  Category:
+  - {fileID: 11400000, guid: 90f2222c1d00f434c9f3abce8ba94f8d, type: 2}
+  Stations:
+  - {fileID: 3924226329657938539, guid: 733577add2410a54284033ebcb17e07c, type: 3}
+  - {fileID: 7103669225355330171, guid: a23becc170809e64283e356c42b87cfd, type: 3}

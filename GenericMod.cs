@@ -25,8 +25,9 @@ namespace VolcanoidsMod
             if (scene.name == "Island" && !NetworkServer.active)
             {
                 Deposits.Run();
+
                 Sources();
-                Stations();
+                //Stations();
                 Volcanite();
             }
         }

@@ -19,13 +19,14 @@ MonoBehaviour:
     Value3: 1926726845
   m_name:
     m_id: .
-    m_text: Supreme Tracks
+    m_text: Tungsten Tracks
     m_comment: 
   m_description:
     m_id: .
-    m_text: "Supremely engineered Tracks and efficient Gearbox ratios result in unmatched
-      performance, \r\n and allow it to maintain ultimate grip no matter the weight
-      of the drillship"
+    m_text: 'By introducing Tungsten into the threads of the tracks,
+
+      we are
+      able to maintain grip at the steepest of angles'
     m_comment: 
   Category: {fileID: 11400000, guid: 04b09805a0c20f74d8dc92061ce9e505, type: 2}
   Prefabs: []
@@ -35,4 +36,4 @@ MonoBehaviour:
   Stats:
     m_properties: []
   SurfaceMovementSpeed: 13
-  UndergroundMovementSpeed: 34
+  UndergroundMovementSpeed: 63

@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 467a01f6b3469a440ae22c7688de155e, type: 3}
+  m_Name: GenericModResearchCategoryOverride
+  m_EditorClassIdentifier: 
+  Modules:
+  - {fileID: 11400000, guid: 7e066335e05a12a41bec41efcbc3814e, type: 2}
+  Category: {fileID: 11400000, guid: b425d7e3255eb054999d94d503ac2f04, type: 2}

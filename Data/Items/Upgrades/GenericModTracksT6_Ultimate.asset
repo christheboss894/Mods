@@ -23,7 +23,7 @@ MonoBehaviour:
     m_comment: Item name - GenericModTracksT6_Ultimate
   m_description:
     m_id: item.GenericModTracksT6_Ultimate.description
-    m_text: The ultimate track, made from Unobtainium to increase traction
+    m_text: With unobtainium tracks.. ehh I can't be bothered making a description
     m_comment: Item description - GenericModTracksT6_Ultimate
   Category: {fileID: 11400000, guid: 04b09805a0c20f74d8dc92061ce9e505, type: 2}
   Prefabs: []
@@ -33,4 +33,4 @@ MonoBehaviour:
   Stats:
     m_properties: []
   SurfaceMovementSpeed: 15
-  UndergroundMovementSpeed: 60
+  UndergroundMovementSpeed: 72
